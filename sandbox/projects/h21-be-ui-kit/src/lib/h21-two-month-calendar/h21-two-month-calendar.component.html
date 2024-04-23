@@ -1,0 +1,94 @@
+<div class="c-h21-two-month-calendar_field">
+
+  <!-- Range mode form field -->
+  <ng-container *ngIf="rangeSelectMode">
+
+    <ng-container *ngIf="rangeViewMode == 'JOINT'">
+      <mat-form-field color="primary"
+                      [class.mat-focused]="inFocus"
+                      [appearance]="formFieldAppearance"
+                      (click)="openDialog()">
+        <mat-label>{{ fromLabel }} / {{ toLabel }}</mat-label>
+        <input matInput type="text"
+               [formControl]="fromFormControl"
+               [readonly]="true"
+               [required]="required"
+               (focus)="inFocus = true"
+               (blur)="inFocus = false"
+               (keydown.enter)="openDialog()" />
+        <mat-error *ngIf="required && fromFormControl.hasError('required')">
+          {{ requiredErrorText }}
+        </mat-error>
+        <mat-hint *ngIf="showWeekdayHint">
+          {{ selectedFromDate | date: 'EEEE / ' }}  {{ selectedToDate | date: 'EEEE' }}
+        </mat-hint>
+        <mat-icon matSuffix matRipple>date_range</mat-icon>
+      </mat-form-field>
+    </ng-container>
+
+    <ng-container *ngIf="rangeViewMode == 'DIVIDED'">
+      <div class="c-h21-two-month-calendar_field-flex">
+        <mat-form-field color="primary"
+                        [class.mat-focused]="inFocus"
+                        [appearance]="formFieldAppearance"
+                        (click)="openDialog()">
+          <mat-label>{{ fromLabel }}</mat-label>
+          <input matInput type="text"
+                 [formControl]="fromFormControl"
+                 [required]="required"
+                 [readonly]="true"
+                 (focus)="inFocus = true"
+                 (blur)="inFocus = false"
+                 (keydown.enter)="openDialog()" />
+          <mat-error *ngIf="required && fromFormControl.hasError('required')">{{ requiredErrorText }}</mat-error>
+          <mat-hint *ngIf="showWeekdayHint">{{ selectedFromDate | date: 'EEEE' }}</mat-hint>
+          <mat-icon matSuffix>date_range</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field color="primary" class="h21-form-field__text-center">
+          <mat-label>Nights</mat-label>
+          <input matInput type="text"
+                 [value]="nightQuantity"
+                 [readonly]="true"
+                 tabindex="-1" />
+        </mat-form-field>
+
+        <mat-form-field color="primary"
+                        [class.mat-focused]="inFocusSecondField"
+                        [appearance]="formFieldAppearance"
+                        (click)="openDialog()">
+          <mat-label>{{ toLabel }}</mat-label>
+          <input matInput type="text"
+                 [formControl]="toFormControl"
+                 [required]="required"
+                 [readonly]="true"
+                 (focus)="inFocusSecondField = true"
+                 (blur)="inFocusSecondField = false"
+                 (keydown.enter)="openDialog()" />
+          <mat-error *ngIf="fromFormControl.hasError('required')">{{ requiredErrorText }}</mat-error>
+          <mat-hint *ngIf="showWeekdayHint">{{ selectedToDate | date: 'EEEE' }}</mat-hint>
+          <mat-icon matSuffix>date_range</mat-icon>
+        </mat-form-field>
+      </div>
+    </ng-container>
+  </ng-container>
+
+  <!-- Single mode form field -->
+  <ng-container *ngIf="!rangeSelectMode">
+    <mat-form-field color="primary"
+                    [class.mat-focused]="inFocus"
+                    [appearance]="formFieldAppearance"
+                    (click)="openDialog()">
+      <mat-label>{{ fromLabel }}</mat-label>
+      <input matInput type="text"
+             [formControl]="fromFormControl"
+             [required]="required"
+             (focus)="inFocus = true"
+             (blur)="inFocus = false"
+             (keydown.enter)="openDialog()" />
+      <mat-error *ngIf="required && fromFormControl.hasError('required')">{{ requiredErrorText }}</mat-error>
+      <mat-hint *ngIf="showWeekdayHint">{{ selectedFromDate | date: 'EEEE' }}</mat-hint>
+      <mat-icon matSuffix>date_range</mat-icon>
+    </mat-form-field>
+  </ng-container>
+</div>

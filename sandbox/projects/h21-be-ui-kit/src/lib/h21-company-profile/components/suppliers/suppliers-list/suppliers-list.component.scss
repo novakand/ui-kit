@@ -1,0 +1,48 @@
+//----------------------------------------------------------------------------------------------------------------------
+// Suppliers list component style
+
+::ng-deep .c-suppliers-list_item.c-suppliers-list_item {
+  display: block;
+  height: 56px;
+
+  .mat-slide-toggle-content {
+    width: 100%;
+  }
+}
+
+.c-suppliers-list_loader-item {
+  min-height: 56px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.c-suppliers-list_loader-checkbox {
+  flex: none;
+  display: block;
+  height: 18px;
+  width: 18px;
+  background: rgba(var(--foregraund-rgb), 0.07);
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.c-suppliers-list_loader-text {
+  display: block;
+  background: rgba(var(--foregraund-rgb), 0.07);
+  height: 18px;
+  width: 60%;
+  border-radius: 4px;
+}
+
+.c-suppliers-list_provider-name {
+  font-size: 13px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.c-suppliers-list_logo {
+  max-width: 80px;
+  max-height: 40px;
+}

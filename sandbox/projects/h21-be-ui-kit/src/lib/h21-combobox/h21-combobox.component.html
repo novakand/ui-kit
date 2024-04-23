@@ -1,0 +1,43 @@
+<button mat-button class="c-h21-combobox_button"
+        matTooltip="{{ tooltipText }}"
+        #dropBoxTrigger="matMenuTrigger"
+        [matMenuTriggerFor]="dropBox"
+        [disabled]="disabled">
+  <div class="c-h21-combobox_button-flex">
+    <span class="c-h21-combobox_button-value">{{ selectedOption.valueLabel }}</span>
+    <mat-icon class="c-h21-combobox_button-arrow">arrow_drop_down</mat-icon>
+  </div>
+</button>
+
+<!-- Drop box -->
+<mat-menu class="c-h21-combobox_drop-box"
+          #dropBox="matMenu"
+          [yPosition]="'below'"
+          [xPosition]="xPosition"
+          [overlapTrigger]="false"
+          (closed)="dropBoxClosed($event)">
+  <ng-template matMenuContent>
+    <div (keydown.tab)="$event.stopPropagation()">
+      <mat-form-field class="c-h21-combobox_drop-box-filter-input"
+                      (click)="$event.stopPropagation()"
+                      [tabindex]="1000">
+        <input type="text" matInput [formControl]="filterControl" [autofocus]="true"/>
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+      <mat-selection-list role="listbox">
+        <mat-list-option *ngFor="let item of filteredOptions | async; trackBy: trackByFn"
+                         (click)="selectOption(item.value)"
+                         (keydown.enter)="selectOption(item.value)"
+                         [class.__is-selected]="item.value == selectedOption.value"
+        >{{ item.optionLabel }}</mat-list-option>
+      </mat-selection-list>
+      <div class="c-h21-combobox_drop-box-no-matches" *ngIf="filteredOptionCount == 0">
+        <mat-icon class="__size-l">block</mat-icon>
+        <span>No matches</span>
+      </div>
+    </div>
+  </ng-template>
+</mat-menu>
+
+<!-- todo: refactor a component for use mat-menu-item instead of mat-selection-list -->
+<!--<button mat-menu-item *ngFor="let item of filteredOptions | async">{{item.optionLabel}}</button>-->

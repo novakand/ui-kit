@@ -1,0 +1,128 @@
+<div class="c-company-filter h21-dialog-panel"
+     #container
+     tabindex="0"
+     cdkTrapFocus
+     h21EnterPressed
+     (pressed)="submit()"
+     [@toggleSlide]="animationState"
+     (@toggleSlide.start)="onAnimation($event)"
+     (@toggleSlide.done)="onAnimation($event)">
+
+  <button mat-icon-button (click)="close()" class="h21-dialog-panel_close __size-l">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <div class="h21-dialog-panel_title">
+    <h2>Filter</h2>
+  </div>
+
+  <div class="h21-dialog-panel_content">
+    <form [formGroup]="form">
+      <!-- Company name -->
+      <mat-form-field color="primary" class="__w-100 h21-mb-1">
+        <input type="text"
+               autocomplete="off"
+               matInput
+               formControlName="shortNameContains"
+               placeholder="Company name"/>
+      </mat-form-field>
+
+      <!-- Company type -->
+      <mat-form-field color="primary" class="__w-100 h21-mb-1">
+        <mat-select placeholder="Company type"
+                    panelClass="h21-select-panel"
+                    formControlName="typeIdIn"
+                    multiple>
+          <mat-option *ngFor="let type of vocabulary.companyType; trackBy: trackByFn" [value]="type.id">
+            {{ type.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Country -->
+      <mat-form-field color="primary" class="__w-100 h21-mb-1">
+        <input matInput placeholder="Choose a country" type="text" #countryData [matAutocomplete]="country" formControlName="countryCode" />
+        <mat-autocomplete #country="matAutocomplete" class="h21-autocomplete-panel" [displayWith]="displayFn.bind(this)">
+          <mat-option *ngFor="let country of countries$ | async; trackBy: trackByFn" [value]="country.code">
+            <span [title]="country.name">{{ country.name }}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <!-- Reg Num | INN -->
+      <mat-form-field color="primary" class="__w-100 h21-mb-1">
+        <input type="text"
+               autocomplete="off"
+               matInput
+               formControlName="innExpr"
+               placeholder="Registration number"/>
+      </mat-form-field>
+
+      <!-- Status -->
+      <mat-form-field color="primary" class="__w-100 h21-mb-1">
+        <mat-select placeholder="Status"
+                    panelClass="h21-select-panel"
+                    formControlName="stateIdIn"
+                    multiple>
+          <mat-option *ngFor="let state of companyStates; trackBy: trackByFn" [value]="state.id">
+            {{ state.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- State -->
+      <mat-form-field color="primary" class="__w-100 h21-mb-1">
+        <mat-select placeholder="State"
+                    #select
+                    (selectionChange)="resetFocus()"
+                    panelClass="h21-select-panel"
+                    formControlName="hasActualContract">
+          <mat-option *ngFor="let state of companyActualContractStates; trackBy: trackByFn" [value]="state.hasActualContract">
+            {{ state.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Create period -->
+      <h4 class="h21-dialog-panel_caption">Date of creation </h4>
+      <div class="row h21-mb-1">
+        <ng-container
+          *ngTemplateOutlet="dateElement; context: { control: 'createDateGreaterEqual', picker: 'creDatePickerFrom', placeholder: 'From', max: 'createDateLessEqual' }"></ng-container>
+        <ng-container
+          *ngTemplateOutlet="dateElement; context: { control: 'createDateLessEqual', picker: 'creDatePickerTo', placeholder: 'To', min: 'createDateGreaterEqual' }"></ng-container>
+      </div>
+
+      <!-- Last change period -->
+      <h4 class="h21-dialog-panel_caption">Date of the last change</h4>
+      <div class="row h21-mb-1">
+        <ng-container
+          *ngTemplateOutlet="dateElement; context: { control: 'updateDateGreaterEqual', picker: 'lastUpdPickerFrom', placeholder: 'From', max: 'updateDateLessEqual' }"></ng-container>
+        <ng-container
+          *ngTemplateOutlet="dateElement; context: { control: 'updateDateLessEqual', picker: 'lastUpdPickerTo', placeholder: 'To', min: 'updateDateGreaterEqual' }"></ng-container>
+      </div>
+      <ng-template #dateElement let-control="control" let-picker="picker" let-placeholder="placeholder" let-min="min" let-max="max">
+        <div class="col-6">
+          <mat-form-field color="primary" class="__w-100">
+            <input matInput
+                   autocomplete="off"
+                   [placeholder]="placeholder"
+                   [matDatepicker]="picker"
+                   [formControlName]="control"
+                   [min]="min && form.get(min).value"
+                   [max]="max && form.get(max).value"
+                   (dateChange)="onDateChanged(control, $event)">
+            <mat-datepicker  #picker></mat-datepicker>
+            <span class="cursor-pointer" matSuffix (click)="picker.open()">
+              <mat-icon>date_range</mat-icon>
+            </span>
+          </mat-form-field>
+        </div>
+      </ng-template>
+    </form>
+  </div>
+
+  <div class="h21-dialog-panel_actions">
+    <button mat-button color="primary" (click)="clear()">Clear filter</button>
+    <button mat-raised-button color="primary" (click)="submit()">Filter</button>
+  </div>
+</div>

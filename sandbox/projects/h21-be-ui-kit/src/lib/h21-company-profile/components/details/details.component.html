@@ -1,0 +1,174 @@
+<ng-container *ngIf="inProgress">
+  <h21-card-loader></h21-card-loader>
+</ng-container>
+
+<ng-container *ngIf="!inProgress">
+  <mat-card class="c-user-profile-card h21-profile-card" *ngIf="company$ | async as company">
+    <div class="h21-profile-card_header">
+
+      <mat-card-title *ngIf="company.shortName" class="h21-profile-card_title">
+        {{ company.shortName }}
+      </mat-card-title>
+
+      <button mat-mini-fab
+              color="primary"
+              class="h21-profile-card_header-collapse-toggle"
+              (click)="toggleCardHeaderVisibility()"
+              [matTooltip]="tooltip"
+              matTooltipPosition="below">
+        <ng-container *ngIf="
+          animationState === animationStateType.COLLAPSED;
+          then expandMoreIcon else expandLessIcon"
+        ></ng-container>
+      </button>
+      <ng-template #expandMoreIcon>
+        <mat-icon>expand_more</mat-icon>
+      </ng-template>
+      <ng-template #expandLessIcon>
+        <mat-icon>expand_less</mat-icon>
+      </ng-template>
+
+      <div [@toggleMatExpansion]="animationState">
+        <mat-card-header>
+          <h21-profile-image
+            mat-card-avatar
+            [withBorder]="true"
+            [firstName]="company.name"
+            size="large"
+            (fileChange)="setLogo($event, company)"
+            [fileHash]="company.logo?.fileHash"
+            [readonly]="mode === viewMode.View"
+          ></h21-profile-image>
+          <div class="h21-profile-card_meta-data-box">
+            <div class="row">
+              <div class="col-12 col-xxl-6">
+                <div class="row no-gutters h21-profile-card_meta-data-item">
+                  <div class="col-6 col-xl-5 col-xxl-6">Registration number</div>
+                  <div class="col-6 col-xl-7 col-xxl-6">
+                    <b>{{ getRegisterNumber(company) }}</b>
+                  </div>
+                </div>
+                <div class="row no-gutters h21-profile-card_meta-data-item">
+                  <div class="col-6 col-xl-5 col-xxl-6">Company type</div>
+                  <div class="col-6 col-xl-7 col-xxl-6">
+                    <mat-chip-list class="h21-chip-list">
+                      <mat-chip class="h21-chip"
+                                [ngClass]="getCompanyTypeCssClassName(company.typeId)"
+                                [disableRipple]="true"
+                                [selectable]="false"
+                                [removable]="false">
+                        {{ companyType(company.typeId) }}
+                      </mat-chip>
+                    </mat-chip-list>
+                  </div>
+                </div>
+                <div class="row no-gutters h21-profile-card_meta-data-item" *ngIf="company?.id != null">
+                  <div class="col-6 col-xl-5 col-xxl-6">Profile ID</div>
+                  <div class="col-6 col-xl-7 col-xxl-6">
+                    <b>{{ company.id }}</b>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-xxl-6">
+                <div class="row no-gutters h21-profile-card_meta-data-item">
+                  <div class="col-6 col-xl-5 col-xxl-6">Date and time of creation</div>
+                  <div class="col-6 col-xl-7 col-xxl-6">
+                    <b>{{ company.createDate | date:'MM.dd.yyyy HH:mm' }}</b>
+                  </div>
+                </div>
+                <div class="row no-gutters h21-profile-card_meta-data-item">
+                  <div class="col-6 col-xl-5 col-xxl-6">Date and time of change</div>
+                  <div class="col-6 col-xl-7 col-xxl-6">
+                    <b>{{ company.updateDate | date:'MM.dd.yyyy HH:mm' }}</b>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card-header>
+      </div>
+    </div>
+
+    <mat-card-content>
+      <mat-tab-group [selectedIndex]="selectedIndex" (selectedTabChange)="tabChange($event)">
+        <mat-tab label="General info">
+          <h21-general-info #generalInfo [company]="originCompany" [profile]="profile" [mode]="mode" [isAdmin]="isAdmin" [validate]="validate"
+                            (emitCompany)="updateCompany($event)" (emitMode)="setMode($event)"></h21-general-info>
+        </mat-tab>
+        <mat-tab label="Users">
+          <ng-container *ngIf="selectedTab === 'Users'">
+            <h21-users [companyId]="originCompany.id" [company]="originCompany" [mode]="mode" [isAdmin]="isAdmin"
+                       (emitCompany)="updateCompany($event)" (emitMode)="setMode($event)"></h21-users>
+          </ng-container>
+        </mat-tab>
+        <mat-tab label="Departments">
+          <ng-container *ngIf="selectedTab === 'Departments'">
+            <h21-departments [companyId]="originCompany.id" [company]="originCompany" [typeId]="originCompany.typeId" [mode]="mode" [isAdmin]="isAdmin"
+                             (emitCompany)="updateCompany($event)" (emitMode)="setMode($event)"></h21-departments>
+          </ng-container>
+        </mat-tab>
+        <mat-tab label="Settings">
+          <ng-container *ngIf="selectedTab === 'Settings'">
+            <h21-services [form]="generalInfo?.form" [company]="originCompany" [mode]="mode" [isAdmin]="isAdmin"
+                          (emitMode)="setMode($event)" (emitCompany)="updateCompany($event)"></h21-services>
+          </ng-container>
+        </mat-tab>
+        <mat-tab label="Invoicing">
+          <ng-container *ngIf="selectedTab === 'Invoicing'">
+            <h21-company-invoicing [form]="generalInfo?.form" [isAdmin]="isAdmin" [company]="company" [mode]="mode"
+                                   (emitCompany)="updateCompany($event)" (emitMode)="setMode($event)"></h21-company-invoicing>
+          </ng-container>
+        </mat-tab>
+        <mat-tab label="Hierarchy">
+          <ng-container *ngIf="selectedTab === 'Hierarchy'">
+            <h21-hierarchy-company [profileId]="originCompany.id" [typeId]="originCompany.typeId"></h21-hierarchy-company>
+          </ng-container>
+        </mat-tab>
+
+        <!-- Interface settings -->
+        <mat-tab label="Interface settings">
+          <ng-container *ngIf="selectedTab === 'Interface settings'">
+            <h21-interface-settings [cmp]="generalInfo" [company]="originCompany" [mode]="mode" [isAdmin]="isAdmin"
+                                    (emitMode)="setMode($event)" (emitCompany)="updateCompany($event)">
+            </h21-interface-settings>
+          </ng-container>
+        </mat-tab>
+
+        <!-- Policy -->
+        <mat-tab label="Policy">
+          <ng-container *ngIf="selectedTab === 'Policy'">
+            <h21-policy></h21-policy>
+          </ng-container>
+        </mat-tab>
+
+        <!-- References -->
+        <mat-tab label="References" [disabled]="mode === viewMode.Add">
+          <ng-container *ngIf="selectedTab === 'References'">
+            <h21-company-references-list [companyProfileId]="originCompany.id" [mode]="mode" [isAdmin]="isAdmin"></h21-company-references-list>
+          </ng-container>
+        </mat-tab>
+
+        <!-- Suppliers -->
+        <mat-tab label="Suppliers" [disabled]="mode === viewMode.Add">
+          <ng-container *ngIf="selectedTab === 'Suppliers'">
+            <h21-suppliers-list [companyProfileId]="originCompany.id" [mode]="mode" (emitMode)="setMode($event)" [isAdmin]="isAdmin"></h21-suppliers-list>
+          </ng-container>
+        </mat-tab>
+
+        <mat-tab label="History" [disabled]="mode === viewMode.Add">
+          <ng-container *ngIf="selectedTab === 'History'">
+            <h21-history [entityRefId]="company.entityRefId" (dataLoaded)="loadedData($event)"></h21-history>
+          </ng-container>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+
+  <button mat-fab
+          *ngIf="showSaveButton()"
+          color="primary"
+          class="h21-fixed-fab-button"
+          (click)="save()">
+    <mat-icon>save</mat-icon>
+  </button>
+</ng-container>

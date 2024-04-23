@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="no-luggage" transform="translate(6.000000, 2.000000)">
+            <path d="M12,8 L0,8 L0,6 C-6.76353751e-17,5.44771525 0.44771525,5 1,5 L11,5 C11.5522847,5 12,5.44771525 12,6 L12,8 Z M12,9 L12,18 C12,18.5522847 11.5522847,19 11,19 L1,19 C0.44771525,19 6.76353751e-17,18.5522847 0,18 L0,9 L12,9 Z" id="Combined-Shape" fill="#B4B4B4"></path>
+            <rect id="Rectangle-6" stroke="#B4B4B4" x="3.5" y="0.5" width="5" height="6" rx="1"></rect>
+            <circle id="Oval" fill="#B4B4B4" cx="3" cy="19" r="1"></circle>
+            <circle id="Oval" fill="#B4B4B4" cx="9" cy="19" r="1"></circle>
+            <polygon id="Path-2" fill="#FA0909" points="3.01866912 11.0024533 5.01402868 12.9978128 3 15.0118415 3.992398 16.0042395 6.00073627 13.9959012 8.02916043 16.0243254 9.02880666 15.0246791 7.01655917 13.0124316 9.02010235 11.0088885 8.01121389 10 6.00799063 12.0032233 4.02582815 10.0210608"></polygon>
+        </g>
+    </g>
+</svg>

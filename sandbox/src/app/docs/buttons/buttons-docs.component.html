@@ -1,0 +1,163 @@
+<section class="docs_section mat-typography">
+  <h1>{{ title }}</h1>
+  <div class="mb-5">
+    <p>UI Kit использует стадартные компоненты кнопок Angular Material, представляя возможности по их
+      стилизации и модификации с помощью собственного набора CSS модификаторов. Вся подробная информация с описанием
+      базовых
+      компнонентов и доступным API представленна в <a href="https://material.angular.io/components/button/overview"
+                                                      matTooltip="Официальная документация по Button">официальной
+        документации</a>.
+    </p>
+  </div>
+  <div class="mb-5">
+    <h2>Типы кнопок</h2>
+    <p>В данном разделе приводятся примеры использования конопок типа: <span class="docs_code">mat-button</span>;
+      <span class="docs_code">mat-raised-button</span>; <span class="docs_code">mat-flat-button</span>;
+      <span class="docs_code">mat-stroked-button</span>. Примеры кнопок с иконками <span class="docs_code">mat-icon-button</span>
+      можно найти в разделе "<a href="/style/icons">Style / Icons</a>"</p>
+    <h21-docs-example-viewer [title]="'Button types'"
+                             [pathToHtml]="'./assets/code_examples/buttons/example-1.html'"
+                             [pathToTs]="'./assets/code_examples/buttons/example.txt'"
+                             [pathToCss]="'./assets/code_examples/buttons/example.css'">
+      <div class="docs_buttons-row">
+        <button mat-button color="primary">Button</button>
+        <button mat-raised-button color="primary">Raised button</button>
+        <button mat-flat-button color="primary">Flat button</button>
+        <button mat-stroked-button color="primary">Stroked button</button>
+      </div>
+    </h21-docs-example-viewer>
+  </div>
+
+  <div class="mb-5">
+    <h2>Тематизация</h2>
+    <p>Окраска кнопок в соответствии с использемой цветовой темой производится сдандартым путем, с помощью атрибута
+      <span class="docs_code">color</span>. Возможны три стадартных варианта цветовой темой: <span class="docs_code">primary</span>,
+      <span class="docs_code">accent</span> и <span class="docs_code">warn</span>.
+    </p>
+    <h21-docs-example-viewer [title]="'Button colors'"
+                             [pathToHtml]="'./assets/code_examples/buttons/example-2.html'"
+                             [pathToTs]="'./assets/code_examples/buttons/example.txt'"
+                             [pathToCss]="'./assets/code_examples/buttons/example.css'">
+      <div class="docs_buttons-row">
+        <button mat-raised-button>Basic color</button>
+        <button mat-raised-button color="primary">Primary color</button>
+        <button mat-raised-button color="accent">Accent color</button>
+        <button mat-raised-button color="warn">Warn color</button>
+      </div>
+    </h21-docs-example-viewer>
+  </div>
+
+  <div class="mb-5">
+    <h2>Изменение размера</h2>
+    <p>Кнопки могут иметь одит из трех предопределенных рамеров: маленький, средний (соответствует базовому размеру)
+      и большой. Для изменения размера кнопки используются используются соответствующие CSS модификаторы, которые
+      необходимо указать в атрибуте <span class="docs_code">class</span> компонента кнопки: <span class="docs_code">__size-s</span>,
+      <span class="docs_code">__size-m</span>, <span class="docs_code">__size-l</span>.
+    </p>
+    <h21-docs-example-viewer [title]="'Button sizes'"
+                             [pathToHtml]="'./assets/code_examples/buttons/example-3.html'"
+                             [pathToTs]="'./assets/code_examples/buttons/example.txt'"
+                             [pathToCss]="'./assets/code_examples/buttons/example.css'">
+      <div class="docs_buttons-row">
+        <button mat-raised-button color="primary">Basic size</button>
+        <button mat-raised-button color="primary" class="__size-s">Small size</button>
+        <button mat-raised-button color="primary" class="__size-m">Medium size</button>
+        <button mat-raised-button color="primary" class="__size-l">Large size</button>
+      </div>
+    </h21-docs-example-viewer>
+  </div>
+
+  <div class="mb-5">
+    <h2>Деактивация кнопки</h2>
+    <p>Отображение деактивированных кнопок:</p>
+    <h21-docs-example-viewer [title]="'Disabled buttons'"
+                             [pathToHtml]="'./assets/code_examples/buttons/example-4.html'"
+                             [pathToTs]="'./assets/code_examples/buttons/example.txt'"
+                             [pathToCss]="'./assets/code_examples/buttons/example.css'">
+      <div class="docs_buttons-row">
+        <button mat-button disabled>Button</button>
+        <button mat-raised-button disabled>Raised button</button>
+        <button mat-flat-button disabled>Flat button</button>
+        <button mat-stroked-button disabled>Stroked button</button>
+      </div>
+    </h21-docs-example-viewer>
+  </div>
+
+  <h2>
+    Configurator
+    <mat-icon class="__size-s">settings</mat-icon>
+  </h2>
+  <mat-card class="conf_card">
+    <mat-card-content>
+      <div class="row">
+        <div class="col-12">
+          <h3>View example</h3>
+          <div class="conf_view-example">
+            <button mat-button *ngIf="confType == 'mat-button'" ngClass="{{confSize}}" color="{{confColor}}"
+                    [disabled]="confDisable">Button
+            </button>
+            <button mat-raised-button *ngIf="confType == 'mat-raised-button'" ngClass="{{confSize}}"
+                    color="{{confColor}}" [disabled]="confDisable">Button
+            </button>
+            <button mat-flat-button *ngIf="confType == 'mat-flat-button'" ngClass="{{confSize}}" color="{{confColor}}"
+                    [disabled]="confDisable">Button
+            </button>
+            <button mat-stroked-button *ngIf="confType == 'mat-stroked-button'" ngClass="{{confSize}}"
+                    color="{{confColor}}" [disabled]="confDisable">Button
+            </button>
+          </div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="conf_setting-options">
+        <h3>Setting options</h3>
+        <div class="row">
+          <div class="col-3">
+            <h4>Type</h4>
+            <mat-radio-group [(ngModel)]="confType" (change)="updateCodeSample()">
+              <mat-radio-button class="__w-100" color="primary" [value]="'mat-button'" [checked]="true">mat-button
+              </mat-radio-button>
+              <mat-radio-button class="__w-100" color="primary" [value]="'mat-raised-button'">mat-raised-button
+              </mat-radio-button>
+              <mat-radio-button class="__w-100" color="primary" [value]="'mat-flat-button'">mat-flat-button
+              </mat-radio-button>
+              <mat-radio-button class="__w-100" color="primary" [value]="'mat-stroked-button'">mat-stroked-button
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="col-3">
+            <h4>Size</h4>
+            <mat-radio-group [(ngModel)]="confSize" (change)="updateCodeSample()">
+              <mat-radio-button class="__w-100" color="primary" [value]="''" [checked]="true">default</mat-radio-button>
+              <mat-radio-button class="__w-100" color="primary" [value]="'__size-s'">small</mat-radio-button>
+              <mat-radio-button class="__w-100" color="primary" [value]="'__size-m'">medium</mat-radio-button>
+              <mat-radio-button class="__w-100" color="primary" [value]="'__size-l'">large</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="col-3">
+            <h4>Color</h4>
+            <mat-radio-group [(ngModel)]="confColor" (change)="updateCodeSample()">
+              <mat-radio-button class="__w-100" color="primary" [value]="''" [checked]="true">default</mat-radio-button>
+              <mat-radio-button class="__w-100" color="primary" [value]="'primary'">primary</mat-radio-button>
+              <mat-radio-button class="__w-100" color="primary" [value]="'accent'">accent</mat-radio-button>
+              <mat-radio-button class="__w-100" color="primary" [value]="'warn'">warn</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="col-3">
+            <h4>Disabled</h4>
+            <mat-radio-group [(ngModel)]="confDisable" (change)="updateCodeSample()">
+              <mat-radio-button class="__w-100" color="primary" [value]="false" [checked]="true">false
+              </mat-radio-button>
+              <mat-radio-button class="__w-100" color="primary" [value]="true">true</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="conf_code-example">
+        <h3 class="m-0">HTML code</h3>
+        <code class="docs_example-code" [innerHtml]="confCodeSample"></code>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>

@@ -1,0 +1,102 @@
+<div class="c-fly-route-selection">
+  <!-- From field -->
+  <mat-form-field color="primary" class="h21-form-field">
+    <input type="text"
+           matInput
+           placeholder="From"
+           [formControl]="cityFromControl"
+           [matAutocomplete]="citiesAutocompleteFrom"
+           required>
+    <mat-error *ngIf="cityFromControl.hasError('required')">You must enter a value</mat-error>
+    <mat-icon matSuffix>flight_takeoff</mat-icon>
+  </mat-form-field>
+  <mat-autocomplete #citiesAutocompleteFrom="matAutocomplete"
+                    [autoActiveFirstOption]="false"
+                    [displayWith]="displayCity"
+                    class="h21-search-panel_autocomplete">
+    <mat-optgroup *ngFor="let city of filteredCities | async; trackBy: trackByFn">
+      <mat-option [value]="city" class="autocomplete_optgroup-label" (onSelectionChange)="onSelectFromItem($event)">
+        <mat-icon>location_city</mat-icon>
+        <span class="autocomplete_opt-title">{{ city.name }}</span>
+        <span class="autocomplete_opt-desc" *ngIf="city.airports && city.airports.length > 1">(All airports)</span>
+      </mat-option>
+      <ng-container *ngIf="city.airports && city.airports.length != 0">
+        <mat-option [value]="airport" *ngFor="let airport of city.airports; trackBy: trackByFn"
+                    (onSelectionChange)="onSelectFromItem($event)">
+          <mat-icon>local_airport</mat-icon>
+          <span class="autocomplete_opt-title">{{ airport.name }}</span>
+          <span class="autocomplete_opt-desc">({{ airport.code }})</span>
+        </mat-option>
+      </ng-container>
+    </mat-optgroup>
+  </mat-autocomplete>
+
+  <!-- Swap button -->
+  <div class="relative-box">
+    <div class="c-fly-route-selection_route-marker route-marker__route-num-{{routeNumber}}"></div>
+    <button mat-icon-button
+            class="c-fly-route-selection_swap-btn"
+            (click)="swapCities()">
+      <mat-icon>swap_vert</mat-icon>
+    </button>
+  </div>
+
+  <!-- To field -->
+  <mat-form-field color="primary" class="h21-form-field h21-mb-2">
+    <input type="text"
+           matInput
+           placeholder="To"
+           [formControl]="cityToControl"
+           [matAutocomplete]="citiesAutocompleteTo"
+           required>
+    <mat-error *ngIf="cityToControl.hasError('required')">You must enter a value</mat-error>
+    <mat-icon matSuffix>flight_land</mat-icon>
+  </mat-form-field>
+  <mat-autocomplete #citiesAutocompleteTo="matAutocomplete"
+                    [autoActiveFirstOption]="false"
+                    [displayWith]="displayCity"
+                    class="h21-search-panel_autocomplete">
+    <mat-optgroup *ngFor="let city of filteredCities | async; trackBy: trackByFn">
+      <mat-option [value]="city" class="autocomplete_optgroup-label" (onSelectionChange)="onSelectToItem($event)">
+        <mat-icon>location_city</mat-icon>
+        <span class="autocomplete_opt-title">{{ city.name }}</span>
+        <span class="autocomplete_opt-desc" *ngIf="city.airports && city.airports.length > 1">(All airports)</span>
+      </mat-option>
+      <ng-container *ngIf="city.airports && city.airports.length != 0">
+        <mat-option [value]="airport" *ngFor="let airport of city.airports; trackBy: trackByFn"
+                    (onSelectionChange)="onSelectToItem($event)">
+          <mat-icon>local_airport</mat-icon>
+          <span class="autocomplete_opt-title">{{ airport.name }}</span>
+          <span class="autocomplete_opt-desc">({{ airport.code }})</span>
+        </mat-option>
+      </ng-container>
+    </mat-optgroup>
+  </mat-autocomplete>
+
+  <!-- Calendar -->
+  <h21-two-month-calendar #calendar
+                          [fromLabel]="'Departure date'"
+                          [toLabel]="'Return Date'"
+                          [required]="true"
+                          [showWeekdayHint]="false"
+                          [rangeViewMode]="'JOINT'"
+                          [rangeSelectMode]="rangeDateMode"
+                          [(selectedFromDate)]="departureDate"
+                          [(selectedToDate)]="returnDate"
+                          (selectedFromDateChange)="changeDepartureDate($event)"
+                          (selectedToDateChange)="changeReturnDate($event)">
+  </h21-two-month-calendar>
+
+  <div class="c-fly-route-selection_add-remove-buttons-box" *ngIf="canAdd || canRemove">
+    <button mat-icon-button class="c-fly-route-selection_remove-button"
+            *ngIf="canRemove"
+            (click)="remove.emit()">
+      <mat-icon>cancel</mat-icon>
+    </button>
+    <button mat-icon-button class="c-fly-route-selection_add-button"
+            *ngIf="canAdd"
+            (click)="add.emit()">
+      <mat-icon>add_circle</mat-icon>
+    </button>
+  </div>
+</div>

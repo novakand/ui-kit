@@ -1,0 +1,24 @@
+<mat-form-field color="{{ color }}" [ngClass]="fieldClass" [appearance]="formFieldAppearance">
+  <input type="text" matInput
+         [required]="!!valRequired"
+         [formControl]="inputControl"
+         [matAutocomplete]="auto"
+         [placeholder]="placeholder"
+         [readonly]="disabled"
+         (input)="onInputChange($event.target.value)">
+  <mat-icon *ngIf="iconSuffix" matSuffix>{{ iconSuffix }}</mat-icon>
+  <mat-error *ngIf="inputControl.hasError('required')">{{ valRequired }}</mat-error>
+  <mat-error *ngIf="inputControl.hasError('pattern')">{{ valPattern }}</mat-error>
+  <mat-autocomplete #auto="matAutocomplete"
+                    autoActiveFirstOption
+                    class="{{ panelClass }}"
+                    [displayWith]="displayFn.bind(this)"
+                    (optionSelected)="optionSelected($event)">
+    <mat-option *ngFor="let option of filteredOptions | async; trackBy: trackByFn" [value]="option" class="h21-option">
+      <mat-icon *ngIf="!!iconField" class="h21-option_icon">{{ option[iconField] }}</mat-icon>
+      <ng-container *ngIf="!descriptionField">{{ getLabel(option) }}</ng-container>
+      <span *ngIf="descriptionField" class="h21-option_title">{{ getLabel(option) }}</span>
+      <span *ngIf="descriptionField" class="h21-option_desc">{{ option[descriptionField] }}</span>
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

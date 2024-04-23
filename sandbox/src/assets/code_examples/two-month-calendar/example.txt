@@ -1,0 +1,10 @@
+import {Component} from "@angular/core";
+import {H21TwoMonthCalendarComponent} from "/h21-two-month-calendar.component";
+
+@Component ({
+    selector: 'example',
+    templateUrl: './tmc-example.component.html',
+    styles: ['./tmc-example.component.css']
+})
+
+export class TmcExampleComponent { }

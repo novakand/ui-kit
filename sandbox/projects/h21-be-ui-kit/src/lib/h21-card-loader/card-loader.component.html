@@ -1,0 +1,27 @@
+<div class="card-fake-view">
+  <div class="card-fake-view_header">
+    <div class="card-fake-view_caption">&nbsp;</div>
+    <div class="card-fake-view_header-wrapper">
+      <div class="card-fake-view_avatar"></div>
+      <div class="row large-gutters card-fake-view_header-fields">
+        <ng-container [ngTemplateOutlet]="field"></ng-container>
+        <ng-container [ngTemplateOutlet]="field"></ng-container>
+        <ng-container [ngTemplateOutlet]="field"></ng-container>
+        <ng-container [ngTemplateOutlet]="field"></ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="card-fake-view_body">
+    <div class="row large-gutters" *ngFor="let i of counts$ | async; trackBy: trackByFn">
+      <ng-container [ngTemplateOutlet]="field"></ng-container>
+      <ng-container [ngTemplateOutlet]="field"></ng-container>
+    </div>
+  </div>
+</div>
+
+<ng-template #field>
+  <div class="col-6">
+    <div class="card-fake-view_field">&nbsp;</div>
+  </div>
+</ng-template>
+

@@ -1,0 +1,20 @@
+<div class="c-h21-error-page-support-dialog">
+
+  <button mat-icon-button class="c-h21-error-page-support-dialog_close-btn" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <h1 mat-dialog-title>Send email</h1>
+
+  <div mat-dialog-content>
+    <mat-form-field class="h21-form-field-2 __w-100">
+      <textarea matInput placeholder="Message" [formControl]="messageTextCtrl" rows="11" required></textarea>
+      <mat-error *ngIf="messageTextCtrl.hasError('required')" >You must enter a value</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="send()">Send</button>
+  </div>
+
+</div>

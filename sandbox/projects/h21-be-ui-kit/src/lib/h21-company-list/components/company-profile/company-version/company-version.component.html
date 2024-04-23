@@ -1,0 +1,16 @@
+<mat-form-field color="primary" class="h21-form-field-plain">
+  <mat-select [(ngModel)]="selectedCompanyVersions" (selectionChange)="onChangeVersion($event.value)">
+    <mat-option *ngFor="let version of companyVersions; trackBy: trackByFn" [value]="version">
+      <div>
+        <span *ngIf="!isCurrentVersion(version.state); else currentVersion">
+          Version {{ version.versionNumber }} from {{ version.createDate | date: 'MM.dd.yyyy HH:mm' }}
+        </span>
+        <ng-template #currentVersion>
+          <span>
+            Current version {{ version.versionNumber }}
+          </span>
+        </ng-template>
+      </div>
+    </mat-option>
+  </mat-select>
+</mat-form-field>

@@ -1,0 +1,82 @@
+<section class="docs_section mat-typography">
+  <mat-progress-bar class="docs_section-progressbar" *ngIf="!isDataInit" mode="indeterminate"></mat-progress-bar>
+  <h1>{{ title }}</h1>
+  <div [hidden]="!isDataInit">
+    <h2>UI colors</h2>
+    <table class="docs_table">
+      <thead>
+      <tr>
+        <th style="width: 25%">Name</th>
+        <th style="width: 8%">Color</th>
+        <th style="width: 15%">Hex</th>
+        <th style="width: 15%">RGBA</th>
+        <th>Code name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of colorsUi;trackBy: trackByFn">
+        <td>{{ item.name }}</td>
+        <td>
+          <div class="color-example {{item.cssClass}}"></div>
+        </td>
+        <td>{{ item.hex }}</td>
+        <td>{{ item.rgba }}</td>
+        <td>{{ item.scssName }}</td>
+      </tr>
+      </tbody>
+    </table>
+    <p class="mb-5">For Angular Material components supporting the <span class="docs_code">color</span> property, colors
+      can be specified using the appropriate values - <span class="docs_code">primary</span>, <span class="docs_code">accent</span>
+      and <span class="docs_code">warn</span>, because the color scheme of components is redefined in the theme
+      "h21-theme.scss".
+    </p>
+
+    <h2>Background colors</h2>
+    <table class="docs_table mb-5">
+      <thead>
+      <tr>
+        <th style="width: 25%">Name</th>
+        <th style="width: 8%">Color</th>
+        <th style="width: 15%">Hex</th>
+        <th style="width: 15%">RGBA</th>
+        <th>Code name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of colorsBg;trackBy: trackByFn">
+        <td>{{ item.name }}</td>
+        <td>
+          <div class="color-example {{item.cssClass}}"></div>
+        </td>
+        <td>{{ item.hex }}</td>
+        <td>{{ item.rgba }}</td>
+        <td>{{ item.scssName }}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h2>Text colors</h2>
+    <table class="docs_table mb-5">
+      <thead>
+      <tr>
+        <th style="width: 25%">Name</th>
+        <th style="width: 8%">Color</th>
+        <th style="width: 15%">Hex</th>
+        <th style="width: 15%">RGBA</th>
+        <th>Code name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of colorsFg;trackBy: trackByFn">
+        <td>{{ item.name }}</td>
+        <td>
+          <div class="color-example {{item.cssClass}}"></div>
+        </td>
+        <td>{{ item.hex }}</td>
+        <td>{{ item.rgba }}</td>
+        <td>{{ item.scssName }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

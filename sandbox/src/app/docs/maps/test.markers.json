@@ -1,0 +1,1952 @@
+[
+    {
+        "Hotelname": "exercitation Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.36423330760212,
+            "Lng": 33.88913632215795
+        },
+        "Ratings": 1,
+        "Price": "403 EUR",
+        "Cancellationpolicy": "07.10.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "ut Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.9590905402986,
+            "Lng": -4.408037285780999
+        },
+        "Ratings": 5,
+        "Price": "552 EUR",
+        "Cancellationpolicy": "07.04.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "quis Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.03713181588388,
+            "Lng": 15.855233151985885
+        },
+        "Ratings": 0,
+        "Price": "618 EUR",
+        "Cancellationpolicy": "04.11.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "est Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.41474814702533,
+            "Lng": 6.54633177666021
+        },
+        "Ratings": 2,
+        "Price": "563 EUR",
+        "Cancellationpolicy": "26.10.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "in Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.59872057865645,
+            "Lng": 22.750093357486485
+        },
+        "Ratings": 4,
+        "Price": "201 EUR",
+        "Cancellationpolicy": "02.07.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "eu Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.589666280235335,
+            "Lng": 35.763606584077124
+        },
+        "Ratings": 0,
+        "Price": "832 EUR",
+        "Cancellationpolicy": "05.10.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "duis Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.91109665935179,
+            "Lng": -40.995028817617936
+        },
+        "Ratings": 5,
+        "Price": "858 EUR",
+        "Cancellationpolicy": "27.07.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "adipisicing Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.08985879519568,
+            "Lng": -22.238643908453597
+        },
+        "Ratings": 3,
+        "Price": "380 EUR",
+        "Cancellationpolicy": "24.03.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "et Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.88408899505437,
+            "Lng": 46.35272689372705
+        },
+        "Ratings": 3,
+        "Price": "825 EUR",
+        "Cancellationpolicy": "26.03.2018",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "laborum Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.03375757357074,
+            "Lng": -8.94060061415297
+        },
+        "Ratings": 5,
+        "Price": "379 EUR",
+        "Cancellationpolicy": "18.05.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "exercitation Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.58502251148831,
+            "Lng": 37.72619509275937
+        },
+        "Ratings": 0,
+        "Price": "914 EUR",
+        "Cancellationpolicy": "17.08.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "id Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.587833149330066,
+            "Lng": -19.74537132192326
+        },
+        "Ratings": 2,
+        "Price": "774 EUR",
+        "Cancellationpolicy": "22.08.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "in Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.26040268018507,
+            "Lng": 1.5378307346755165
+        },
+        "Ratings": 2,
+        "Price": "795 EUR",
+        "Cancellationpolicy": "26.11.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "irure Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.56522268667546,
+            "Lng": 13.05959836441621
+        },
+        "Ratings": 4,
+        "Price": "742 EUR",
+        "Cancellationpolicy": "08.06.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "esse Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.00755864272405,
+            "Lng": -20.227288555516168
+        },
+        "Ratings": 2,
+        "Price": "200 EUR",
+        "Cancellationpolicy": "04.04.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "adipisicing Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.26329418892544,
+            "Lng": 17.07842372728181
+        },
+        "Ratings": 3,
+        "Price": "903 EUR",
+        "Cancellationpolicy": "31.12.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "ea Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.402283422353236,
+            "Lng": -40.8201920226723
+        },
+        "Ratings": 0,
+        "Price": "372 EUR",
+        "Cancellationpolicy": "03.11.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "do Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.84319562851017,
+            "Lng": 9.95006060955484
+        },
+        "Ratings": 3,
+        "Price": "877 EUR",
+        "Cancellationpolicy": "22.08.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "ex Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.673309975375545,
+            "Lng": -7.324758080709081
+        },
+        "Ratings": 2,
+        "Price": "894 EUR",
+        "Cancellationpolicy": "17.10.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "nostrud Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.25429905920606,
+            "Lng": 40.32651417134501
+        },
+        "Ratings": 1,
+        "Price": "213 EUR",
+        "Cancellationpolicy": "13.03.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "enim Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.02821525152432,
+            "Lng": -1.4734097861011222
+        },
+        "Ratings": 3,
+        "Price": "837 EUR",
+        "Cancellationpolicy": "08.12.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "esse Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.98657340487498,
+            "Lng": 6.3928890627836665
+        },
+        "Ratings": 5,
+        "Price": "824 EUR",
+        "Cancellationpolicy": "07.01.2018",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "pariatur Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.67487027223082,
+            "Lng": -19.52561070747241
+        },
+        "Ratings": 5,
+        "Price": "743 EUR",
+        "Cancellationpolicy": "23.12.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "laborum Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.41591486576803,
+            "Lng": 17.283436583354472
+        },
+        "Ratings": 2,
+        "Price": "476 EUR",
+        "Cancellationpolicy": "04.08.2018",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "aliqua Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.41546615566263,
+            "Lng": 27.52595102362525
+        },
+        "Ratings": 5,
+        "Price": "892 EUR",
+        "Cancellationpolicy": "05.03.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "et Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.64072474877059,
+            "Lng": 11.991469982309859
+        },
+        "Ratings": 0,
+        "Price": "379 EUR",
+        "Cancellationpolicy": "20.07.2018",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "aliqua Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.960422414985665,
+            "Lng": 15.817552506464743
+        },
+        "Ratings": 1,
+        "Price": "976 EUR",
+        "Cancellationpolicy": "27.10.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "dolor Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.227938439253286,
+            "Lng": 45.20355660916632
+        },
+        "Ratings": 3,
+        "Price": "436 EUR",
+        "Cancellationpolicy": "28.01.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "aliquip Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.59231024824954,
+            "Lng": 29.095016788362056
+        },
+        "Ratings": 1,
+        "Price": "111 EUR",
+        "Cancellationpolicy": "08.03.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "ut Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.71173332637911,
+            "Lng": 2.4883568014096085
+        },
+        "Ratings": 3,
+        "Price": "152 EUR",
+        "Cancellationpolicy": "06.01.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "quis Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.67040773565574,
+            "Lng": 34.32257854223533
+        },
+        "Ratings": 3,
+        "Price": "959 EUR",
+        "Cancellationpolicy": "05.02.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "voluptate Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.027143819332125,
+            "Lng": 44.94933421281961
+        },
+        "Ratings": 5,
+        "Price": "364 EUR",
+        "Cancellationpolicy": "30.09.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "pariatur Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.88423946196836,
+            "Lng": -40.832423833625654
+        },
+        "Ratings": 1,
+        "Price": "904 EUR",
+        "Cancellationpolicy": "06.02.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "irure Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.92211850318123,
+            "Lng": -13.650785916434785
+        },
+        "Ratings": 2,
+        "Price": "265 EUR",
+        "Cancellationpolicy": "03.08.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "sunt Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.246936464266376,
+            "Lng": 51.40890793606456
+        },
+        "Ratings": 5,
+        "Price": "476 EUR",
+        "Cancellationpolicy": "30.09.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "irure Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.991537071454424,
+            "Lng": 32.50180483022791
+        },
+        "Ratings": 1,
+        "Price": "904 EUR",
+        "Cancellationpolicy": "15.05.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "qui Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.346552461818895,
+            "Lng": -14.512052886046789
+        },
+        "Ratings": 5,
+        "Price": "174 EUR",
+        "Cancellationpolicy": "15.03.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "sint Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.38270238461221,
+            "Lng": 34.56333400867452
+        },
+        "Ratings": 1,
+        "Price": "878 EUR",
+        "Cancellationpolicy": "29.06.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "do Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.00657158919263,
+            "Lng": -25.663411389130573
+        },
+        "Ratings": 1,
+        "Price": "135 EUR",
+        "Cancellationpolicy": "01.03.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "ut Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.03919962920763,
+            "Lng": -40.044882353556744
+        },
+        "Ratings": 2,
+        "Price": "304 EUR",
+        "Cancellationpolicy": "18.07.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "minim Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.56715665950766,
+            "Lng": 9.787358154060676
+        },
+        "Ratings": 3,
+        "Price": "387 EUR",
+        "Cancellationpolicy": "24.05.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "ad Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.16623315482814,
+            "Lng": 41.87856105763155
+        },
+        "Ratings": 0,
+        "Price": "648 EUR",
+        "Cancellationpolicy": "16.11.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "laboris Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.67631267741166,
+            "Lng": 1.5550133578763052
+        },
+        "Ratings": 1,
+        "Price": "318 EUR",
+        "Cancellationpolicy": "27.12.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "consequat Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.741187277809445,
+            "Lng": 22.807426564431417
+        },
+        "Ratings": 1,
+        "Price": "743 EUR",
+        "Cancellationpolicy": "10.02.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "in Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.26198496406039,
+            "Lng": -13.537302426018542
+        },
+        "Ratings": 0,
+        "Price": "453 EUR",
+        "Cancellationpolicy": "28.06.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "nulla Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.20688890835835,
+            "Lng": -16.966846776529636
+        },
+        "Ratings": 4,
+        "Price": "557 EUR",
+        "Cancellationpolicy": "30.04.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "cupidatat Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.77794332469758,
+            "Lng": -39.51753684411544
+        },
+        "Ratings": 4,
+        "Price": "685 EUR",
+        "Cancellationpolicy": "12.06.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "ea Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.56370499125941,
+            "Lng": 15.569379782631366
+        },
+        "Ratings": 4,
+        "Price": "430 EUR",
+        "Cancellationpolicy": "09.07.2018",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "occaecat Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 55.95900024179275,
+            "Lng": -32.102566850592666
+        },
+        "Ratings": 4,
+        "Price": "305 EUR",
+        "Cancellationpolicy": "25.06.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "minim Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.47363082111804,
+            "Lng": -16.115840424652475
+        },
+        "Ratings": 0,
+        "Price": "437 EUR",
+        "Cancellationpolicy": "03.12.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "voluptate Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.569760512322986,
+            "Lng": 41.90671981450862
+        },
+        "Ratings": 5,
+        "Price": "385 EUR",
+        "Cancellationpolicy": "13.09.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "nisi Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.579740334571994,
+            "Lng": -32.450662413456826
+        },
+        "Ratings": 5,
+        "Price": "334 EUR",
+        "Cancellationpolicy": "07.11.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "ipsum Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.32270485342286,
+            "Lng": -13.303837246486026
+        },
+        "Ratings": 1,
+        "Price": "307 EUR",
+        "Cancellationpolicy": "22.04.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "eiusmod Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.24297757925132,
+            "Lng": -33.59295710434918
+        },
+        "Ratings": 1,
+        "Price": "324 EUR",
+        "Cancellationpolicy": "30.07.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "veniam Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.864592831135624,
+            "Lng": -8.153908853292037
+        },
+        "Ratings": 2,
+        "Price": "810 EUR",
+        "Cancellationpolicy": "28.07.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "reprehenderit Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.99590382212292,
+            "Lng": 5.275662927353444
+        },
+        "Ratings": 0,
+        "Price": "498 EUR",
+        "Cancellationpolicy": "11.09.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "magna Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.27525074981566,
+            "Lng": 44.41360716728654
+        },
+        "Ratings": 0,
+        "Price": "138 EUR",
+        "Cancellationpolicy": "03.07.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "ea Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.57191461283739,
+            "Lng": 32.55573621531443
+        },
+        "Ratings": 5,
+        "Price": "667 EUR",
+        "Cancellationpolicy": "29.06.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "pariatur Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.35925964696865,
+            "Lng": 50.63848453555782
+        },
+        "Ratings": 2,
+        "Price": "895 EUR",
+        "Cancellationpolicy": "04.04.2018",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "excepteur Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.93097765591215,
+            "Lng": 38.008223188844774
+        },
+        "Ratings": 4,
+        "Price": "563 EUR",
+        "Cancellationpolicy": "17.04.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "sit Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.29699347376922,
+            "Lng": -25.51599123091158
+        },
+        "Ratings": 4,
+        "Price": "357 EUR",
+        "Cancellationpolicy": "19.01.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "commodo Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.89007187777725,
+            "Lng": -33.95149820681269
+        },
+        "Ratings": 4,
+        "Price": "441 EUR",
+        "Cancellationpolicy": "16.12.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "et Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.619190788057615,
+            "Lng": 3.18304332952939
+        },
+        "Ratings": 2,
+        "Price": "186 EUR",
+        "Cancellationpolicy": "20.11.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "quis Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.24412741354671,
+            "Lng": 27.69723829773833
+        },
+        "Ratings": 0,
+        "Price": "871 EUR",
+        "Cancellationpolicy": "07.10.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "nisi Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.00287411194318,
+            "Lng": 0.05965924795420818
+        },
+        "Ratings": 1,
+        "Price": "884 EUR",
+        "Cancellationpolicy": "07.09.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "pariatur Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.503533143950484,
+            "Lng": 17.220368140029827
+        },
+        "Ratings": 0,
+        "Price": "502 EUR",
+        "Cancellationpolicy": "18.05.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "cupidatat Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.27735568705631,
+            "Lng": -33.05087949276893
+        },
+        "Ratings": 0,
+        "Price": "422 EUR",
+        "Cancellationpolicy": "04.12.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "minim Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.66175168727396,
+            "Lng": 0.4753111380581103
+        },
+        "Ratings": 2,
+        "Price": "276 EUR",
+        "Cancellationpolicy": "02.10.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "cupidatat Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.333313983069594,
+            "Lng": -7.810175572670104
+        },
+        "Ratings": 4,
+        "Price": "350 EUR",
+        "Cancellationpolicy": "03.08.2018",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "adipisicing Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.07440378169558,
+            "Lng": -36.87839290250676
+        },
+        "Ratings": 0,
+        "Price": "856 EUR",
+        "Cancellationpolicy": "13.05.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "voluptate Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.2019329140334,
+            "Lng": -22.56246687941639
+        },
+        "Ratings": 0,
+        "Price": "875 EUR",
+        "Cancellationpolicy": "23.07.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "nulla Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.59609979153033,
+            "Lng": -17.367973321825986
+        },
+        "Ratings": 5,
+        "Price": "743 EUR",
+        "Cancellationpolicy": "21.05.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "minim Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.63627344601943,
+            "Lng": -32.020994679154555
+        },
+        "Ratings": 0,
+        "Price": "790 EUR",
+        "Cancellationpolicy": "28.04.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "incididunt Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.86313078573827,
+            "Lng": -6.845829791088036
+        },
+        "Ratings": 5,
+        "Price": "504 EUR",
+        "Cancellationpolicy": "26.02.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "laboris Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.07376612420436,
+            "Lng": -2.143799172913944
+        },
+        "Ratings": 0,
+        "Price": "977 EUR",
+        "Cancellationpolicy": "19.09.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "aute Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.382458544241416,
+            "Lng": 23.46904227508927
+        },
+        "Ratings": 5,
+        "Price": "353 EUR",
+        "Cancellationpolicy": "11.09.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "labore Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.38003481798348,
+            "Lng": 26.27116835818718
+        },
+        "Ratings": 3,
+        "Price": "363 EUR",
+        "Cancellationpolicy": "25.12.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "consequat Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 55.9388595735973,
+            "Lng": -14.17916509107691
+        },
+        "Ratings": 0,
+        "Price": "418 EUR",
+        "Cancellationpolicy": "09.02.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "amet Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.00748402343813,
+            "Lng": -28.037963902449917
+        },
+        "Ratings": 3,
+        "Price": "811 EUR",
+        "Cancellationpolicy": "22.11.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "non Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.07560873052995,
+            "Lng": -15.854192893266088
+        },
+        "Ratings": 1,
+        "Price": "631 EUR",
+        "Cancellationpolicy": "28.03.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "ut Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.27132338431234,
+            "Lng": 4.344474189814228
+        },
+        "Ratings": 3,
+        "Price": "878 EUR",
+        "Cancellationpolicy": "04.03.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "proident Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 55.88898479785446,
+            "Lng": -27.67533432632777
+        },
+        "Ratings": 5,
+        "Price": "292 EUR",
+        "Cancellationpolicy": "21.05.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "nostrud Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.75952082340994,
+            "Lng": 9.92425464242563
+        },
+        "Ratings": 4,
+        "Price": "481 EUR",
+        "Cancellationpolicy": "10.01.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "proident Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.00925401804885,
+            "Lng": 9.759540238838568
+        },
+        "Ratings": 0,
+        "Price": "755 EUR",
+        "Cancellationpolicy": "05.12.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "do Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.21210477096234,
+            "Lng": 28.086106168410097
+        },
+        "Ratings": 1,
+        "Price": "958 EUR",
+        "Cancellationpolicy": "03.03.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "commodo Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.58408246422676,
+            "Lng": -25.484111477379685
+        },
+        "Ratings": 5,
+        "Price": "434 EUR",
+        "Cancellationpolicy": "25.01.2018",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "exercitation Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.04868940056375,
+            "Lng": -24.309232915190663
+        },
+        "Ratings": 2,
+        "Price": "768 EUR",
+        "Cancellationpolicy": "13.03.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "sit Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.08619397891859,
+            "Lng": 23.669646442070427
+        },
+        "Ratings": 4,
+        "Price": "552 EUR",
+        "Cancellationpolicy": "31.10.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "amet Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.06391958174147,
+            "Lng": -13.001471887815967
+        },
+        "Ratings": 0,
+        "Price": "416 EUR",
+        "Cancellationpolicy": "22.06.2018",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "Lorem Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.86398368994053,
+            "Lng": 21.909452478627017
+        },
+        "Ratings": 1,
+        "Price": "943 EUR",
+        "Cancellationpolicy": "19.03.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "qui Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.37259477433954,
+            "Lng": -42.120395264790844
+        },
+        "Ratings": 5,
+        "Price": "324 EUR",
+        "Cancellationpolicy": "04.05.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "officia Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.12607445113889,
+            "Lng": 49.165480179602355
+        },
+        "Ratings": 3,
+        "Price": "730 EUR",
+        "Cancellationpolicy": "25.02.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "occaecat Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.481259676147836,
+            "Lng": 19.903208257441413
+        },
+        "Ratings": 4,
+        "Price": "967 EUR",
+        "Cancellationpolicy": "26.03.2018",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "occaecat Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.936263340163705,
+            "Lng": 46.707281221483626
+        },
+        "Ratings": 1,
+        "Price": "240 EUR",
+        "Cancellationpolicy": "10.11.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "nisi Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.37228335787693,
+            "Lng": 13.786556740162872
+        },
+        "Ratings": 1,
+        "Price": "623 EUR",
+        "Cancellationpolicy": "15.12.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "velit Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.587677106529554,
+            "Lng": -13.650761133795541
+        },
+        "Ratings": 3,
+        "Price": "421 EUR",
+        "Cancellationpolicy": "16.02.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "ipsum Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.42384720056553,
+            "Lng": 30.806460333232568
+        },
+        "Ratings": 1,
+        "Price": "438 EUR",
+        "Cancellationpolicy": "21.02.2018",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "enim Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.722562538379535,
+            "Lng": 11.828819411249349
+        },
+        "Ratings": 5,
+        "Price": "951 EUR",
+        "Cancellationpolicy": "10.04.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "in Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.095941351182454,
+            "Lng": -32.04239108173596
+        },
+        "Ratings": 2,
+        "Price": "859 EUR",
+        "Cancellationpolicy": "19.09.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "anim Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.850272616033415,
+            "Lng": 36.11529551513825
+        },
+        "Ratings": 3,
+        "Price": "176 EUR",
+        "Cancellationpolicy": "12.11.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "consequat Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.626560871591245,
+            "Lng": -35.75698753602133
+        },
+        "Ratings": 4,
+        "Price": "612 EUR",
+        "Cancellationpolicy": "02.09.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "pariatur Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.27834251015578,
+            "Lng": 9.091432094074491
+        },
+        "Ratings": 2,
+        "Price": "582 EUR",
+        "Cancellationpolicy": "09.02.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "id Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.148518668549436,
+            "Lng": 1.460771445041786
+        },
+        "Ratings": 0,
+        "Price": "588 EUR",
+        "Cancellationpolicy": "12.01.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "labore Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.748623031799774,
+            "Lng": -4.779447145302612
+        },
+        "Ratings": 3,
+        "Price": "851 EUR",
+        "Cancellationpolicy": "21.03.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "cillum Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.531703632367524,
+            "Lng": 41.27305871792344
+        },
+        "Ratings": 2,
+        "Price": "150 EUR",
+        "Cancellationpolicy": "23.06.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "cupidatat Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.7010061151162,
+            "Lng": 23.41997996891357
+        },
+        "Ratings": 2,
+        "Price": "218 EUR",
+        "Cancellationpolicy": "07.02.2018",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "sint Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.58162613738177,
+            "Lng": -4.519018231841258
+        },
+        "Ratings": 5,
+        "Price": "332 EUR",
+        "Cancellationpolicy": "03.12.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "quis Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.90142786567172,
+            "Lng": 18.898863788307757
+        },
+        "Ratings": 2,
+        "Price": "108 EUR",
+        "Cancellationpolicy": "29.05.2018",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "velit Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.05539220713066,
+            "Lng": -40.37143825976264
+        },
+        "Ratings": 0,
+        "Price": "704 EUR",
+        "Cancellationpolicy": "21.06.2018",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "id Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.79392737692312,
+            "Lng": 42.244847237953216
+        },
+        "Ratings": 5,
+        "Price": "260 EUR",
+        "Cancellationpolicy": "20.09.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "non Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.12826784719958,
+            "Lng": 39.09847775120512
+        },
+        "Ratings": 2,
+        "Price": "660 EUR",
+        "Cancellationpolicy": "06.11.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "magna Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.54530234148872,
+            "Lng": 27.501090546192398
+        },
+        "Ratings": 2,
+        "Price": "654 EUR",
+        "Cancellationpolicy": "01.12.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "irure Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.667145923996095,
+            "Lng": 20.50119074354493
+        },
+        "Ratings": 1,
+        "Price": "570 EUR",
+        "Cancellationpolicy": "11.10.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "anim Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.56878806844934,
+            "Lng": -23.895917409396844
+        },
+        "Ratings": 1,
+        "Price": "868 EUR",
+        "Cancellationpolicy": "22.06.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "incididunt Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.78624036057904,
+            "Lng": 49.91664318895889
+        },
+        "Ratings": 4,
+        "Price": "465 EUR",
+        "Cancellationpolicy": "03.06.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "ea Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.46638933068089,
+            "Lng": -38.76618553080708
+        },
+        "Ratings": 1,
+        "Price": "480 EUR",
+        "Cancellationpolicy": "21.04.2018",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "eu Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.72583602765409,
+            "Lng": 1.619228604155218
+        },
+        "Ratings": 2,
+        "Price": "170 EUR",
+        "Cancellationpolicy": "21.11.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "exercitation Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.53101153279807,
+            "Lng": -5.621845533051882
+        },
+        "Ratings": 4,
+        "Price": "174 EUR",
+        "Cancellationpolicy": "19.01.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "nisi Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.14018836153858,
+            "Lng": -26.652971763018144
+        },
+        "Ratings": 5,
+        "Price": "877 EUR",
+        "Cancellationpolicy": "01.11.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "id Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.352655739514404,
+            "Lng": -20.28111717639875
+        },
+        "Ratings": 2,
+        "Price": "630 EUR",
+        "Cancellationpolicy": "19.04.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "eu Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.4048632882692,
+            "Lng": -16.083020937536418
+        },
+        "Ratings": 2,
+        "Price": "241 EUR",
+        "Cancellationpolicy": "04.08.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "qui Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.68834197904628,
+            "Lng": -9.343061089945877
+        },
+        "Ratings": 3,
+        "Price": "724 EUR",
+        "Cancellationpolicy": "07.05.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "reprehenderit Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.91410586943993,
+            "Lng": 30.73292910732762
+        },
+        "Ratings": 5,
+        "Price": "752 EUR",
+        "Cancellationpolicy": "04.07.2018",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "consequat Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.32572310058477,
+            "Lng": 28.849506269831462
+        },
+        "Ratings": 0,
+        "Price": "299 EUR",
+        "Cancellationpolicy": "04.04.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "nisi Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.0839934050553,
+            "Lng": -39.3288309415823
+        },
+        "Ratings": 2,
+        "Price": "704 EUR",
+        "Cancellationpolicy": "11.02.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "duis Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.87568922185291,
+            "Lng": 17.371149737214758
+        },
+        "Ratings": 2,
+        "Price": "520 EUR",
+        "Cancellationpolicy": "27.05.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "consequat Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.02922934644221,
+            "Lng": -42.45102630343281
+        },
+        "Ratings": 0,
+        "Price": "881 EUR",
+        "Cancellationpolicy": "01.02.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "occaecat Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.21427012940507,
+            "Lng": 15.958226876745663
+        },
+        "Ratings": 3,
+        "Price": "775 EUR",
+        "Cancellationpolicy": "02.02.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "deserunt Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.22958255905954,
+            "Lng": -34.069446447243905
+        },
+        "Ratings": 4,
+        "Price": "403 EUR",
+        "Cancellationpolicy": "27.02.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "enim Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.51645060498967,
+            "Lng": 6.267444867509113
+        },
+        "Ratings": 4,
+        "Price": "480 EUR",
+        "Cancellationpolicy": "20.11.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "anim Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.22344841097099,
+            "Lng": 24.95720760174393
+        },
+        "Ratings": 0,
+        "Price": "960 EUR",
+        "Cancellationpolicy": "05.11.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "mollit Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.66536148134595,
+            "Lng": -9.42175024675862
+        },
+        "Ratings": 3,
+        "Price": "196 EUR",
+        "Cancellationpolicy": "13.10.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "eu Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.70467315953277,
+            "Lng": 16.455574671477244
+        },
+        "Ratings": 5,
+        "Price": "438 EUR",
+        "Cancellationpolicy": "13.04.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "qui Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.33633211476422,
+            "Lng": 12.997962841154383
+        },
+        "Ratings": 3,
+        "Price": "445 EUR",
+        "Cancellationpolicy": "08.02.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "nostrud Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.310189886495316,
+            "Lng": 6.331122357534525
+        },
+        "Ratings": 0,
+        "Price": "639 EUR",
+        "Cancellationpolicy": "25.04.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "proident Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 59.96119421058572,
+            "Lng": 9.66278847146961
+        },
+        "Ratings": 0,
+        "Price": "332 EUR",
+        "Cancellationpolicy": "18.02.2018",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "exercitation Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.69046139168215,
+            "Lng": 24.461556141597896
+        },
+        "Ratings": 3,
+        "Price": "563 EUR",
+        "Cancellationpolicy": "27.03.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "exercitation Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.0679190312364,
+            "Lng": -18.22887218412123
+        },
+        "Ratings": 2,
+        "Price": "815 EUR",
+        "Cancellationpolicy": "11.01.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "mollit Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.445439133269204,
+            "Lng": 41.87550141027391
+        },
+        "Ratings": 4,
+        "Price": "962 EUR",
+        "Cancellationpolicy": "28.11.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "incididunt Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.486296218476525,
+            "Lng": 0.45488570579244936
+        },
+        "Ratings": 0,
+        "Price": "767 EUR",
+        "Cancellationpolicy": "29.11.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "occaecat Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.929997516556774,
+            "Lng": 40.737079934787
+        },
+        "Ratings": 5,
+        "Price": "140 EUR",
+        "Cancellationpolicy": "29.07.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "voluptate Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.73237301559038,
+            "Lng": 1.2191766394918773
+        },
+        "Ratings": 0,
+        "Price": "630 EUR",
+        "Cancellationpolicy": "30.12.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "nostrud Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.16002553421913,
+            "Lng": 51.12823509926841
+        },
+        "Ratings": 2,
+        "Price": "235 EUR",
+        "Cancellationpolicy": "02.06.2018",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "ut Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.11800601859352,
+            "Lng": -5.849773263674464
+        },
+        "Ratings": 5,
+        "Price": "276 EUR",
+        "Cancellationpolicy": "29.03.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "consequat Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 60.35300783187198,
+            "Lng": -16.821358656003014
+        },
+        "Ratings": 1,
+        "Price": "430 EUR",
+        "Cancellationpolicy": "23.09.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "officia Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 57.927897125438584,
+            "Lng": 10.178767452532995
+        },
+        "Ratings": 3,
+        "Price": "921 EUR",
+        "Cancellationpolicy": "26.08.2015",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "ex Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.045003941891586,
+            "Lng": 11.728909363734516
+        },
+        "Ratings": 3,
+        "Price": "307 EUR",
+        "Cancellationpolicy": "10.03.2016",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "non Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 56.61590432901232,
+            "Lng": -22.604754678620978
+        },
+        "Ratings": 0,
+        "Price": "236 EUR",
+        "Cancellationpolicy": "04.12.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "nisi Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.40974288594635,
+            "Lng": -35.16138801556771
+        },
+        "Ratings": 0,
+        "Price": "209 EUR",
+        "Cancellationpolicy": "05.11.2014",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    },
+    {
+        "Hotelname": "do Hotel",
+        "Photo": "http://placehold.it/32x32",
+        "Address": {
+            "Lat": 58.0799411227913,
+            "Lng": 13.69899854199609
+        },
+        "Ratings": 5,
+        "Price": "646 EUR",
+        "Cancellationpolicy": "25.08.2017",
+        "Extras": "",
+        "MargineforTMCAgency": ""
+    }
+]

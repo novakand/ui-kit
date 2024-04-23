@@ -1,0 +1,13 @@
+<div class="c-hierarchy page_content-wrapper">
+
+  <ng-container *ngIf="inProgress">
+    <h21-table-loader></h21-table-loader>
+  </ng-container>
+
+  <ng-container *ngIf="!inProgress">
+    <h21-hierarchy-tree [dataSource]="hierarchyList"
+                        [maxLevel]="1"
+                        [showHeaderRow]="true"></h21-hierarchy-tree>
+  </ng-container>
+
+</div>

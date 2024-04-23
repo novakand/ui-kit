@@ -1,0 +1,41 @@
+<div class="c-h21-error-page c-h21-error-page-background">
+
+    <div class="c-h21-error-page_h-spacer">&nbsp;</div>
+
+    <div class="c-h21-error-page_content">
+      <div class="c-h21-error-page_error-code"> {{ errorCode }} </div>
+
+      <div class="c-h21-error-page_text">
+        <h1> {{ title }} </h1>
+        <p> {{ text }} </p>
+        <div class="h21-mb-2" *ngIf="showReLoginBtn">
+          <button mat-raised-button
+                  color="primary"
+                  (click)="logout()"
+          >Sign out and connect with another login</button>
+        </div>
+        <div class="h21-mb-2" *ngIf="showSupportBtn">
+          <button mat-raised-button
+                  color="primary"
+                  (click)="openSupportDialog()"
+                  [disabled]="disableSupportBtn"
+          >Send mail to support</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="c-h21-error-page_h-spacer">&nbsp;</div>
+
+    <div class="c-h21-error-page_footer">
+      <div class="c-h21-error-page_additional-details">
+        <span>Additional technical details:</span>
+        <p>
+          <ng-container *ngIf="activityId">
+            Activity ID: {{ activityId }}<br/>
+          </ng-container>
+          Date and Time: {{ currentDateTime | date: 'dd.MM.yyyy : HH:mm:ss  (UTC)' }}
+        </p>
+      </div>
+    </div>
+
+</div>

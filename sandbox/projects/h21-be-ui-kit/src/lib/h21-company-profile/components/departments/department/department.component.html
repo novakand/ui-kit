@@ -1,0 +1,78 @@
+<div class="c-add-department h21-dialog-panel"
+     #container
+     tabindex="0"
+     cdkTrapFocus
+     [@toggleSlide]="animationState"
+     (@toggleSlide.start)="animationAction($event)"
+     (@toggleSlide.done)="animationAction($event)">
+
+  <button mat-icon-button (click)="close()" class="h21-dialog-panel_close __size-l">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <div class="h21-dialog-panel_title">
+    <h2>Department</h2>
+  </div>
+
+  <div class="h21-dialog-panel_content">
+    <form [formGroup]="form">
+      <mat-form-field color="primary" class="__w-100 h21-mb-1">
+        <input type="text"
+               autocomplete="off"
+               matInput
+               placeholder="Department"
+               formControlName="name"/>
+        <mat-icon matSuffix *ngIf="form.get('name').valid" color="accent">check</mat-icon>
+        <mat-error *ngIf="form.get('name').hasError('required')">
+          You must enter a value
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Choose travellers -->
+      <div [class.view-select]="isView">
+        <ng-select [multiple]="true"
+                   #select
+                   [closeOnSelect]="false"
+                   [searchable]="false"
+                   bindValue="id"
+                   [clearOnBackspace]="false"
+                   [items]="travellers$ | async"
+                   placeholder="Choose travellers"
+                   formControlName="travelersId"
+                   class="h21-ng-select">
+          <ng-template ng-header-tmp>
+            <mat-form-field class="h21-ng-select_filter-field __w-100 h21-mb-1" floatLabel="never">
+              <input #travelerSearch matInput type="text" placeholder="Enter a traveller name" autocomplete="off" (keyup)="searchTravelers(travelerSearch.value)"/>
+              <mat-icon matSuffix (click)="searchTravelers(travelerSearch.value)">search</mat-icon>
+            </mat-form-field>
+
+            <ng-container *ngIf="travellers && travellers.length">
+              <button mat-button color="primary" class="__size-s mr-2" (click)="toggleAll(true, select)">
+                <span>select all</span>
+              </button>
+              <button mat-button color="primary" class="__size-s" (click)="toggleAll(false, select)">
+                <span>deselect all</span>
+              </button>
+            </ng-container>
+          </ng-template>
+
+          <ng-template ng-label-tmp let-item="item">{{ item.firstName + ' ' + item.lastName }}</ng-template>
+
+          <ng-template ng-option-tmp let-item="item" let-index="index" let-search="searchTerm">
+            <div matRipple class="h21-ng-select_ng-option-wrapper">
+              <mat-icon class="h21-ng-select_ng-option-check">check</mat-icon>
+              <mat-icon class="h21-ng-select_ng-option-no-check">check_box_outline_blank</mat-icon>
+              {{ item.firstName + ' ' + item.lastName }}
+            </div>
+          </ng-template>
+        </ng-select>
+      </div>
+
+    </form>
+  </div>
+  <div class="h21-dialog-panel_actions" *ngIf="!isView">
+    <button type="button" mat-button color="primary" (click)="cancel()">Cancel</button>
+    <button type="button" mat-raised-button color="primary" (click)="save()" [disabled]="form.invalid || sending">Save
+    </button>
+  </div>
+</div>

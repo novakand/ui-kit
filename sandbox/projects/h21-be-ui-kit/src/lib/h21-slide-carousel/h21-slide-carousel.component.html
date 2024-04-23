@@ -1,0 +1,28 @@
+<div class="c-h21-slide-carousel">
+  <div class="c-h21-slide-carousel_wrapper">
+    <div class="c-h21-slide-carousel_viewport" #H21SlideCarousel id="H21SC_view_port">
+      <div class="c-h21-slide-carousel_slides-set" id="H21SC_slides_set">
+        <div class="c-h21-slide-carousel_slide" *ngFor="let item of picturesCollection; trackBy: trackByFn">
+          <div class="c-h21-slide-carousel_img-container">
+            <img src="{{ item.medium }}" alt="{{ item.altText }}"/>
+            <span class="c-h21-slide-carousel_zoom-overlay" (click)="showLargeImg(item.large)">
+			  <mat-icon>zoom_in</mat-icon>
+			</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button mat-button class="c-h21-slide-carousel_nav-button c-h21-slide-carousel_nav-button__prev"
+          *ngIf="showNavButtons"
+          (click)="prevSlide()"
+          [disabled]="!prevPossibility()">
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+  <button mat-button class="c-h21-slide-carousel_nav-button c-h21-slide-carousel_nav-button__next"
+          *ngIf="showNavButtons"
+          (click)="nextSlide()"
+          [disabled]="!nextPossibility()">
+    <mat-icon>chevron_right</mat-icon>
+  </button>
+</div>

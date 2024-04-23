@@ -1,0 +1,36 @@
+<div class="c-users-import page_content-wrapper">
+  <h2>{{ title | h21Capitalize }}</h2>
+
+  <ng-container *ngIf="!hasImport">
+    <div class="c-users-import_content-wrapper">
+      <div class="c-users-import_content-picture">
+        <h21-picture-lib [pictureType]="pictureType"></h21-picture-lib>
+      </div>
+      <div class="c-users-import_content-actions">
+        <button mat-stroked-button color="primary" [matTooltip]="toolTipText" (click)="downloadTemplate()" [disabled]="downloading">
+          Download template .CSV
+        </button>
+        <button mat-flat-button color="primary" (click)="importFile.click()">
+          {{ downLoadButtonName }}
+        </button>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="title === 'travellers'">
+    <button mat-fab
+            class="h21-fixed-fab-button"
+            color="primary"
+            matTooltip="Create traveller"
+            matTooltipPosition="before"
+            (click)="openCreateTraveller()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </ng-container>
+</div>
+
+<input type="file"
+       #importFile
+       class="__display-none"
+       accept=".csv"
+       (change)="uploadImportFile($event.target, $event.target.files)"/>

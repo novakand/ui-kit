@@ -1,0 +1,46 @@
+<h1 class="table-heading">Agencies</h1>
+<table mat-table [dataSource]="dataSource" class="profile-table h21-table-agencies">
+  <ng-container matColumnDef="logo">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <img src="{{element.logo}}" alt="" class="logo">
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name</th>
+    <td mat-cell *matCellDef="let element">
+      <div class="title">{{ element.name }}</div>
+      <div class="adress">{{ element.adress }}</div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef> Type</th>
+    <td mat-cell *matCellDef="let element"> {{ element.type }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="create">
+    <th mat-header-cell *matHeaderCellDef> Create</th>
+    <td mat-cell *matCellDef="let element"> {{ element.create }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="change">
+    <th mat-header-cell *matHeaderCellDef> Change</th>
+    <td mat-cell *matCellDef="let element"> {{ element.change }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status</th>
+    <td mat-cell *matCellDef="let element"> {{ element.status }}</td>
+  </ng-container>
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element" class="action-cell">
+      <mat-icon>more_horiz</mat-icon>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

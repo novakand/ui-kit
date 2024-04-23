@@ -1,0 +1,10 @@
+import {Component} from "@angular/core";
+import {MatSlideToggleModule} from "@angular/material";
+
+@Component ({
+    selector: 'button-toggle-example',
+    templateUrl: './button-toggle-example.component.html',
+    styles: ['./button-toggle-example.component.css']
+})
+
+export class ButtonToggleExampleComponent { }

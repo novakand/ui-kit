@@ -1,0 +1,13 @@
+<section class="docs_section mat-typography">
+  <h1>{{ title }}</h1>
+  <h4>test</h4>
+  <span>toolbar here</span>
+  <br>
+  <h21-top-toolbar [showBreadcrumbs]="true" [breadcrumbsData]="breadcrumbs"></h21-top-toolbar>
+  <br>
+  <span>buttons here</span>
+  <h21-top-toolbar [showBreadcrumbs]="true"
+                   [breadcrumbsData]="breadcrumbs"
+                   (toolbarActionClicked)="actionBtnClick($event)">
+  </h21-top-toolbar>
+</section>

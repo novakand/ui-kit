@@ -1,0 +1,163 @@
+<div class="c-h21-history">
+  <ng-container *ngIf="inProgress || noProgress">
+    <h21-table-loader [showNoResult]="noProgress"></h21-table-loader>
+  </ng-container>
+
+  <ng-container *ngIf="!inProgress && !noProgress">
+    <table mat-table
+           class="h21-table"
+           [multiTemplateDataRows]="true"
+           [dataSource]="dataSource">
+
+      <!-- Expand button Column -->
+      <ng-container matColumnDef="expand">
+        <th mat-header-cell *matHeaderCellDef [width]="'4%'">&nbsp;</th>
+        <td mat-cell *matCellDef="let element" class="h21-table_no-padding">
+          <button class="h21-table_expand-button" mat-icon-button (click)="expand(element)"
+                  *ngIf="expandedElement != element" matTooltip="Show detail">
+            <mat-icon>chevron_right</mat-icon>
+          </button>
+          <button class="h21-table_expand-button" mat-icon-button (click)="expand(null)"
+                  *ngIf="expandedElement == element" matTooltip="Hide detail">
+            <mat-icon>expand_more</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Date Column -->
+      <ng-container matColumnDef="createDate">
+        <th mat-header-cell *matHeaderCellDef [width]="'32%'">Date and time</th>
+        <td mat-cell *matCellDef="let element"> {{ element.createDate | date: 'MM.dd.yyyy HH:mm' }}</td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef [width]="'32%'">Action</th>
+        <td mat-cell *matCellDef="let element"> {{ element.action }}</td>
+      </ng-container>
+
+      <!-- User Column -->
+      <ng-container matColumnDef="createUserName">
+        <th mat-header-cell *matHeaderCellDef [width]="'32%'">User</th>
+        <td mat-cell *matCellDef="let element"> {{ element.createUserName }}</td>
+      </ng-container>
+
+      <!-- Expanded Content-->
+      <ng-container matColumnDef="expandedDetail">
+        <td mat-cell
+            *matCellDef="let element"
+            [attr.colspan]="displayedColumns.length"
+            class="h21-table_no-padding">
+
+          <!-- Expand progress-->
+          <div class="expanded-progress"
+               *ngIf="element == expandedElement"
+               [@progressVisibility]>
+            <div class="expanded-progress_wrapper">
+              <mat-progress-bar *ngIf="expandInProgressDelayed"
+                                color="primary"
+                                mode="indeterminate"
+              ></mat-progress-bar>
+            </div>
+          </div>
+
+          <!-- Expanded data -->
+          <div class="expanded-detail"
+               [class.__is-active]="element === expandedElement && !expandInProgress">
+            <table mat-table
+                   [dataSource]="element.expandData"
+                   [multiTemplateDataRows]="true"
+                   class="h21-table h21-table__expanded-table">
+              <ng-container matColumnDef="expand">
+                <th mat-header-cell *matHeaderCellDef [width]="'4%'">&nbsp;</th>
+                <td mat-cell *matCellDef="let child" class="h21-table_no-padding">
+                  <div [hidden]="!child.childs">
+                    <button class="h21-table_expand-button" mat-icon-button (click)="expandedChildElement = child"
+                            *ngIf="expandedChildElement != child" matTooltip="Show detail">
+                      <mat-icon>chevron_right</mat-icon>
+                    </button>
+                    <button class="h21-table_expand-button" mat-icon-button (click)="expandedChildElement = null"
+                            *ngIf="expandedChildElement == child" matTooltip="Hide detail">
+                      <mat-icon>expand_more</mat-icon>
+                    </button>
+                  </div>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="blank">
+                <th mat-header-cell *matHeaderCellDef [width]="'4%'">&nbsp;</th>
+                <td mat-cell *matCellDef>&nbsp;</td>
+              </ng-container>
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef [width]="'32%'">Field name</th>
+                <td mat-cell *matCellDef="let expElement">{{ expElement.name }}</td>
+              </ng-container>
+              <ng-container matColumnDef="oldValue">
+                <th mat-header-cell *matHeaderCellDef [width]="'32%'">Previous value</th>
+                <td mat-cell *matCellDef="let expElement" class="__text-strike">{{ expElement.oldValue }}</td>
+              </ng-container>
+              <ng-container matColumnDef="newValue">
+                <th mat-header-cell *matHeaderCellDef [width]="'32%'">Current value</th>
+                <td mat-cell *matCellDef="let expElement">{{ expElement.newValue }}</td>
+              </ng-container>
+
+              <!-- Expanded Content-->
+              <ng-container matColumnDef="childs">
+                <td mat-cell *matCellDef="let expElement" [attr.colspan]="expandDisplayedColumns.length"
+                    class="h21-table_no-padding">
+                  <div *ngIf="!!expElement.childs" class="expanded-detail"
+                       [class.expanded-detail__active]="expandedChildElement === expElement">
+                    <table mat-table [dataSource]="expElement.childs" class="profile-table h21-table__expanded-table">
+                      <ng-container matColumnDef="blank">
+                        <th mat-header-cell *matHeaderCellDef [width]="'7%'">&nbsp;</th>
+                        <td mat-cell *matCellDef>&nbsp;</td>
+                      </ng-container>
+                      <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef [width]="'31%'">Field name</th>
+                        <td mat-cell *matCellDef="let expElement2">{{ expElement2.name }}</td>
+                      </ng-container>
+                      <ng-container matColumnDef="oldValue">
+                        <th mat-header-cell *matHeaderCellDef [width]="'31%'">Previous value</th>
+                        <td mat-cell *matCellDef="let expElement2" class="__text-strike">{{ expElement2.oldValue }}</td>
+                      </ng-container>
+                      <ng-container matColumnDef="newValue">
+                        <th mat-header-cell *matHeaderCellDef [width]="'31%'">Current value</th>
+                        <td mat-cell *matCellDef="let expElement2">{{ expElement2.newValue }}</td>
+                      </ng-container>
+
+                      <tr mat-header-row *matHeaderRowDef="expandChildDisplayedColumns"></tr>
+                      <tr mat-row *matRowDef="let expElement; columns: expandChildDisplayedColumns;"></tr>
+                    </table>
+                  </div>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="expandDisplayedColumns"></tr>
+              <tr mat-row *matRowDef="let expElement; columns: expandDisplayedColumns;"
+                  [class.h21-table_expanded-row]="expandedChildElement === expElement"></tr>
+              <tr mat-row *matRowDef="let expElement; columns: ['childs']"
+                  class="h21-table_expanded-row-detail"></tr>
+            </table>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row
+          *matRowDef="let element; columns: displayedColumns;"
+          [class.h21-table_expanded-row]="expandedElement === element"></tr>
+      <tr mat-row
+          *matRowDef="let element; columns: ['expandedDetail']"
+          class="h21-table_expanded-row-detail"></tr>
+    </table>
+
+    <!-- Paginator -->
+    <mat-paginator [pageSizeOptions]="[10, 20, 50, 100]"
+                   [length]="totalCount"
+                   (page)="pageChange($event)"
+                   showFirstLastButtons
+                   class="h21-paginator">
+    </mat-paginator>
+  </ng-container>
+
+</div>

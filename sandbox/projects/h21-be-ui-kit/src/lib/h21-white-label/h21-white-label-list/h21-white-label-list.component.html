@@ -1,0 +1,69 @@
+<mat-progress-bar *ngIf="inProgress"
+                  [@toggleVisibility]
+                  mode="indeterminate"
+                  class="h21-dialog-panel_progress"
+></mat-progress-bar>
+
+<div class="h21-dialog-panel_title h21-mt-3">
+  <h2>Select white label profile</h2>
+</div>
+
+<div class="h21-mb-2">
+  <mat-form-field class="__w-100" floatLabel="never">
+    <input matInput
+           #searchText
+           autocomplete="off"
+           placeholder="White label profile"
+           (keyup)='keyUp.next({ event: $event, text: searchText.value})'>
+    <mat-icon matSuffix>search</mat-icon>
+    <mat-hint *ngIf="showEnterHint">Press "Enter" to search</mat-hint>
+  </mat-form-field>
+</div>
+
+<div *ngIf="inProgress && !hasProgress" [@toggleVisibility]>
+  <table class="table-fake-view">
+    <tbody>
+    <tr class="table-fake-view_row" *ngFor="let i of fakeRows">
+      <td class="table-fake-view_cell" width="1%"><div class="table-fake-view_avatar">&nbsp;</div></td>
+      <td class="table-fake-view_cell" width="60%">
+        <div class="table-fake-view_text h21-mb-1">&nbsp;</div>
+        <div class="table-fake-view_text table-fake-view_text__small">&nbsp;</div>
+      </td>
+      <td class="table-fake-view_cell table-fake-view_cell__align-top __text-right" width="39%">
+        <div class="table-fake-view_text table-fake-view_text__small __display-inline-block">&nbsp;</div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="!inProgress && hasProgress" [@toggleVisibility]>
+  <mat-list class="h21-card-list" *ngIf="!!dataSource && dataSource.length > 0">
+    <mat-list-item *ngFor="let  item of dataSource; trackBy: trackByFn">
+      <mat-card class="h21-card-list_card" [class.__is-selected]="isSelected(item)">
+        <mat-card-header>
+          <h21-profile-image mat-card-avatar
+                             [firstName]="'Profile'"
+                             [lastName]="'WhiteLabel'"
+                             [fileHash]="item.themeLogoFileHash"
+                             size="medium"
+          ></h21-profile-image>
+          <mat-card-title>{{ item.name }}</mat-card-title>
+          <mat-card-subtitle>{{ getWhitelabelType(item.themeIsDefault) }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions>
+          <a mat-button class="__display-block" color="primary" routerLink="">Support Content</a>
+          <mat-slide-toggle
+            class="__display-block"
+            labelPosition="before"
+            [checked]="isSelected(item)"
+            [disabled]="!isAdmin()"
+            [disableRipple]="true"
+            (change)="toggleSelected(item, $event.checked)"
+          >Activate</mat-slide-toggle>
+        </mat-card-actions>
+      </mat-card>
+    </mat-list-item>
+  </mat-list>
+</div>
+

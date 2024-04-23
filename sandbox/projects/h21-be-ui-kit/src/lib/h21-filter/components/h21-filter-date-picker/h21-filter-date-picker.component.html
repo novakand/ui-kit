@@ -1,0 +1,12 @@
+<mat-form-field color="primary" class="__w-100">
+  <input matInput
+         autocomplete="off"
+         [placeholder]="control.label"
+         [matDatepicker]="datePicker"
+         [(ngModel)]="control.value"
+         (dateChange)="change($event.value)">
+  <mat-datepicker #datePicker></mat-datepicker>
+  <button mat-icon-button matSuffix (click)="datePicker.open()">
+    <mat-icon>date_range</mat-icon>
+  </button>
+</mat-form-field>

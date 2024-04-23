@@ -1,0 +1,87 @@
+<section class="docs_section mat-typography">
+  <h1>{{ title }}</h1>
+  <mat-tab-group class="docs_tabs">
+    <mat-tab label="Examples">
+      <div>
+        <h2>Custom SVG icons</h2>
+        <div class="row mb-5">
+          <div class="col-md-3 col-lg-2" *ngFor="let icon of h21Icons;trackBy: trackByFn">
+            <figure class="docs_icon-preview">
+              <div>
+                <button mat-icon-button class="__size-l" (click)="openDialog(icon, true);">
+                  <mat-icon svgIcon="{{icon}}"></mat-icon>
+                </button>
+              </div>
+              <figcaption>{{ icon }}</figcaption>
+            </figure>
+          </div>
+        </div>
+        <h2>Used material icons</h2>
+        <div class="row">
+          <div class="col-md-3 col-lg-2" *ngFor="let icon of matIcons;trackBy: trackByFn">
+            <figure class="docs_icon-preview">
+              <div>
+                <button mat-icon-button class="__size-l" (click)="openDialog(icon, false);">
+                  <mat-icon>{{ icon }}</mat-icon>
+                </button>
+              </div>
+              <figcaption>{{ icon }}</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Terms of use">
+      <div>
+        <h2>Use custom SVG icons</h2>
+        <p>To use your custom SVG icons, before you display them in the view, you need to map the icon name and path to
+          the svg file using <span class="docs_code">DomSanitizer</span>.</p>
+        <p>Example of a match in the class constructor:</p>
+        <pre class="docs_example-code">
+import &#123;Component&#125; from "@angular/core";
+import &#123;MatIconRegistry&#125; from '@angular/material';
+import &#123;DomSanitizer&#125; from "@angular/platform-browser";
+
+@Component(&#123;
+    selector: 'svg-icons-demo',
+    template: `&lt;mat-icon svgIcon="h21_baggage"&gt;&lt;/mat-icon&gt;`
+&#125;)
+
+export class SvgIconsDemoComponent &#123;
+
+    ...
+
+    constructor(iconReg: MatIconRegistry, sanitizer: DomSanitizer) &#123;
+        iconReg.addSvgIcon('h21_flight_land_blue',
+                    sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/h21-flight-land-blue-icon.svg'));
+        iconReg.addSvgIcon('h21_flight_land_green',
+                    sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/h21-flight-land-green-icon.svg'));
+        iconReg.addSvgIcon('h21_flight_land_red',
+                    sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/h21-flight-land-red-icon.svg'));
+        iconReg.addSvgIcon('h21_flight_takeoff_blue',
+                    sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/h21-flight-takeoff-blue-icon.svg'));
+        iconReg.addSvgIcon('h21_flight_takeoff_green',
+                    sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/h21-flight-takeoff-green-icon.svg'));
+        iconReg.addSvgIcon('h21_flight_takeoff_red',
+                    sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/h21-flight-takeoff-red-icon.svg'));
+        iconReg.addSvgIcon('h21_baggage',
+                    sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/h21-baggage-blue.svg'));
+        iconReg.addSvgIcon('h21_no_baggage',
+                    sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/h21-no-baggage-gray.svg'));
+        iconReg.addSvgIcon('h21_luggage',
+                    sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/h21-luggage-blue.svg'));
+        iconReg.addSvgIcon('h21_no_luggage',
+                    sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/h21-no-luggage-gray.svg'));
+        iconReg.addSvgIcon('h21_night',
+                    sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/h21-night-blue.svg'));
+        iconReg.addSvgIcon('h21_back_to_list',
+                    sanitizer.bypassSecurityTrustResourceUrl('./assets/icons/h21-back-to-list-gray.svg'));
+    &#125;
+
+    ...
+
+&#125;</pre>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</section>

@@ -1,0 +1,90 @@
+<div class="docs_page-box container-fluid" *ngIf="!isDemoHotel() && !isDemoAirBe()">
+	<div class="docs_sidebar-wrapper row no-gutters">
+		<div class="docs_sidebar" [class.is-opened]="sidebarOpened">
+			<div class="docs_logo-box">
+				<a href="" class="docs_logo">
+					<mat-icon svgIcon="logo"></mat-icon>
+					<span>Horse21.PRO</span>
+				</a>
+			</div>
+			<div class="docs_sidebar-open-close-btns">
+				<button mat-icon-button class="docs_sidebar-open-btn"
+						*ngIf="!sidebarOpened"
+						(click)="toggleSidebarOpened()">
+					<mat-icon>menu</mat-icon>
+				</button>
+				<button mat-icon-button class="docs_sidebar-close-btn"
+						*ngIf="sidebarOpened"
+						(click)="toggleSidebarOpened()">
+					<mat-icon>close</mat-icon>
+				</button>
+			</div>
+			<div class="docs_sidebar-navigation">
+				<h21-docs-navigation (changeComponent)="changeComponent($event)"></h21-docs-navigation>
+			</div>
+		</div>
+		<div class="docs_content-box col-12">
+			<div class="docs_content-box-inner">
+				<h21-docs></h21-docs>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Demo AirBe page -->
+<div class="container-fluid page_box mat-typography" *ngIf="isDemoAirBe()">
+	<div class="row no-gutters page_header-box">
+		<div class="col-12 no-gutters">
+			<h21-header [logotypeUrl]="'/assets/img/logo.svg'"></h21-header>
+			<h21-top-toolbar [showSidenavToggle]="true"
+							 [sidenavToggleDisabled]="false"
+							 [sidenavOpened]="sidenavOpened"
+							 [showCart]="false"
+							 [showLanguageControl]="true"
+							 [showCurrencyControl]="true"
+							 (sidenavToggled)="leftSidenavToggle()"></h21-top-toolbar>
+		</div>
+	</div>
+	<div class="row no-gutters page_content-box">
+		<div class="col-12 no-gutters __has-sidebar">
+			<h21-sidebar-nav [selected]="'start'"
+							 [disabled]="sidebarNavDisabled"
+							 [(tabs)]="sidebarNavTabs"
+							 (changed)="showSidebarPanel($event)"></h21-sidebar-nav>
+			<mat-sidenav-container [hasBackdrop]="contentSidenavHasBackdrop">
+
+				<mat-sidenav #leftSidenav
+							 position="start"
+							 [mode]="'side'"
+							 [opened]="leftSidenavOpened"
+							 class="page_left-sidenav">
+					<div class="page_left-sidenav-inner">
+						<div class="page_sidenav-search-actions">
+							<h21-air-search-panel *ngIf="activeLeftSidenavPanel == 'search'"
+												  (searched)="airbeSearch($event)"
+												  (clearedSearch)="airbeClearSearch()"></h21-air-search-panel>
+							<h21-air-filter-panel *ngIf="activeLeftSidenavPanel == 'filter'"
+												  [viewMode]="airbeSearchResultViewMode"
+												  (changedViewMode)="airbeChangeResultViewMode($event)"></h21-air-filter-panel>
+							<h21-search-history-panel *ngIf="activeLeftSidenavPanel == 'history'"
+													  [data]="this.searchHistoryData"
+							></h21-search-history-panel>
+						</div>
+					</div>
+				</mat-sidenav>
+
+				<mat-sidenav-content #contentSidenav>
+					<div class="page_content">
+						<router-outlet></router-outlet>
+					</div>
+					<div class="page_sidenav-search-result"
+						 [class.__is-active]="searchResultVisibility"
+						 [class.page_sidenav-search-result__map]="airbeSearchResultViewMode == 'MAP'">
+						<h21-air-search-result *ngIf="searchResultVisibility" #airbeSearchResult></h21-air-search-result>
+					</div>
+				</mat-sidenav-content>
+			</mat-sidenav-container>
+		</div>
+	</div>
+	<button mat-fab class="page_help-btn" (click)="openHelpSection()" color="warn">?</button>
+</div>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="42px" height="48px" viewBox="0 0 42 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>point to map up red</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-10.5%" y="-4.5%" width="121.1%" height="118.2%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="UI-kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-1082.000000, -116.000000)">
+        <g id="point-to-map-up-red" filter="url(#filter-1)" transform="translate(1084.000000, 116.000000)">
+            <path d="M25.4961636,37.8008229 L20.1155322,43.1814543 C19.3344836,43.9625029 18.0681537,43.9625029 17.2871051,43.1814543 L11.9064737,37.8008229 L5,37.8008229 C2.23857625,37.8008229 3.38176876e-16,35.5622466 0,32.8008229 L-8.8817842e-16,5 C-1.2263553e-15,2.23857625 2.23857625,3.17180057e-15 5,2.66453526e-15 L33,0 C35.7614237,-5.07265313e-16 38,2.23857625 38,5 L38,32.8008229 C38,35.5622466 35.7614237,37.8008229 33,37.8008229 L25.4961636,37.8008229 Z" id="mark_to_map" fill="#E26666"></path>
+            <path d="M9.66,26.43 L28.66,26.43 L28.66,28.43 L9.66,28.43 L9.66,26.43 Z M29.23,17.07 C29.02,16.27 28.19,15.79 27.39,16.01 L22.08,17.43 L15.18,11 L13.25,11.51 L17.39,18.68 L12.42,20.01 L10.45,18.47 L9,18.86 L10.82,22.02 L11.59,23.35 L13.19,22.92 L18.5,21.5 L22.85,20.34 L28.16,18.92 C28.97,18.69 29.44,17.87 29.23,17.07 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

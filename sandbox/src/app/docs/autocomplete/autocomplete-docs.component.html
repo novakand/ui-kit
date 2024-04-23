@@ -1,0 +1,195 @@
+<section class="docs_section mat-typography">
+  <h1>{{ title }}</h1>
+  <mat-tab-group class="docs_tabs">
+    <mat-tab label="Examples">
+      <div>
+        <div>
+          <label>PostQuery/PostSearch</label>&nbsp;
+          <h21-autocomplete #postComplete
+                            dataUrl="http://localhost:5001/api/Airports/PostQuery"
+                            [(value)]="valuePost"
+                            [dataFilter]="{ codeContains : ''}"
+                            valueField="code" placeholder="post"
+                            [dataProcess]="dataProcess"
+                            iconSuffix="location_on"
+                            valRequired="Please choose"
+                            color="primary">
+          </h21-autocomplete>&nbsp;
+          <label>Value: {{ valuePost }}</label>
+        </div>
+        <div>
+          <label>Get</label>&nbsp;
+          <h21-autocomplete #getComplete
+                            dataUrl="http://localhost:5001/api/CurrencyTravelport/GetAll"
+                            [isLoadDataByPostQuery]="false"
+                            [(value)]="valueGet"
+                            valueField="currencyCode"
+                            placeholder="get"
+                            valRequired="Please choose"
+                            color="primary">
+          </h21-autocomplete>&nbsp;
+          <label>Value: {{ valueGet }}</label>
+        </div>
+        <div>
+          <label>Array</label>&nbsp;
+          <h21-autocomplete #localComplete
+                            [dataSource]="list"
+                            placeholder="array"
+                            [(value)]="valueLocal"
+                            iconField="icon"
+                            descriptionField="detail"
+                            valRequired="Please choose"
+                            color="primary">
+          </h21-autocomplete>
+          <label>Value: {{ toStr(valueLocal) }}</label>
+        </div>
+        <div>
+          <input type="button" (click)="localComplete.clear();getComplete.clear();postComplete.clear();" value="Clear"/>
+          <input type="button" (click)="localComplete.validate();getComplete.validate();postComplete.validate();"
+                 value="Validate"/>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Properties & methods">
+      <div>
+        <div>Источником данных может выступать либо массив данных (<span class="docs_code">dataSource</span>),
+          либо url, с которого данные загружаются (<span class="docs_code">dataUrl</span>).
+          Если установлен <span class="docs_code">dataUrl</span>, то <span
+            class="docs_code">isLoadDataByPostQuery</span>
+          определяет каким образом загружать данные: методом post как PostQuery/PostSearch или get-запросом.
+          По-умолчанию, <span class="docs_code">isLoadDataByPostQuery</span> = true.
+        </div>
+        <br/>
+        <h2>Properties</h2>
+        <table class="docs_properties-table mb-5">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><span class="docs_code">@Input()<br>disabled: boolean</span></td>
+            <td>Доступность для редактирования: true - включить режим readonly</td>
+          </tr>
+          <tr>
+            <td><span class="docs_code">@Input()<br>placeholder: string</span></td>
+            <td>Placeholder</td>
+          </tr>
+          <tr>
+            <td><span class="docs_code">@Input()<br>value: any</span></td>
+            <td>Выбранное значение</td>
+          </tr>
+          <tr>
+            <td><span class="docs_code">@Input()<br>valueField: string</span></td>
+            <td>Свойство в элементе источника данных, которое будет использоваться как выбранное
+              значение <span class="docs_code">value</span></td>
+          </tr>
+          <tr>
+            <td><span class="docs_code">@Input()<br>displayField: string = 'name'</span></td>
+            <td>Свойство в элементе источника данных, которое будет использоваться для отображения</td>
+          </tr>
+          <tr>
+            <td><span class="docs_code">@Input()<br>dataSource: any[] = []</span></td>
+            <td>Массив, который используется как источник данных</td>
+          </tr>
+          <tr>
+            <td><span class="docs_code">@Input()<br>dataUrl: string</span></td>
+            <td>Url, который используется как источник данных</td>
+          </tr>
+          <tr>
+            <td><span class="docs_code">@Input()<br>isLoadDataByPostQuery = true</span></td>
+            <td>Как загружать данные с <span class="docs_code">dataUrl</span>. Если true, то данные
+              загружаются методом post как к PostQuery/PostSearch. Если false - выполняется get
+              запрос
+            </td>
+          </tr>
+          <tr>
+            <td><span class="docs_code">@Input()<br>dataFilter: any</span></td>
+            <td>Фильтр, передаваемый в <span class="docs_code">dataUrl</span>, когда <span class="docs_code">isLoadDataByPostQuery</span>
+              = true
+            </td>
+          </tr>
+          <tr>
+            <td><span class="docs_code">@Output()<br>filterField: string = 'nameContains'</span></td>
+            <td>По какому полю, вводимый пользователем текст, фильтрует данные</td>
+          </tr>
+          <tr>
+            <td><span class="docs_code">@Output()<br>valueChange</span></td>
+            <td>Событие, вызываемое при выборе значения</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </mat-tab>
+    <mat-tab label="Terms of use">
+      <div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</section>
+
+<style>
+  .counter-input {
+    display: inline-block;
+  }
+
+  .counter-input-inner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border-radius: 2px;
+    background-color: #eceef6;
+    padding: 6px;
+  }
+
+  .counter-input .control {
+    display: block;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .counter-input .minus:before {
+    width: 14px;
+    height: 2px;
+    background-color: #27334d;
+    position: absolute;
+    top: calc(50% - 1px);
+    left: calc(50% - 7px);
+    content: "";
+  }
+
+  .counter-input .plus:before {
+    width: 14px;
+    height: 2px;
+    background-color: #27334d;
+    position: absolute;
+    top: calc(50% - 1px);
+    left: calc(50% - 7px);
+    content: "";
+  }
+
+  .counter-input .plus:after {
+    width: 14px;
+    height: 2px;
+    background-color: #27334d;
+    position: absolute;
+    top: calc(50% - 1px);
+    left: calc(50% - 7px);
+    content: "";
+    transform: rotate(90deg);
+  }
+
+  .counter-input .display {
+    height: 24px;
+    line-height: 1.45;
+    padding: 0 14px;
+    font-size: 18px;
+    color: #27334d;
+  }
+</style>

@@ -1,0 +1,9 @@
+<h21-two-month-calendar [fromDateText]="startText"
+                        [toDateText]="finishText"
+                        [selectedFromDate]="startDate"
+                        [selectedToDate]="finishDate"
+						(selectedFromDateChange)="updateStartDate($event);"
+						(selectedToDateChange)="updateFinishDate($event);">
+</h21-two-month-calendar>
+<p>Selected start date - {{startDate}}</p>
+<p>Selected finish date - {{finishDate}}</p>

@@ -1,0 +1,289 @@
+<div class="c-company-bank-account-edit h21-dialog-panel"
+     #container
+     tabindex="0"
+     cdkTrapFocus
+     [@toggleSlide]="animationState"
+     (@toggleSlide.start)="onAnimation($event)"
+     (@toggleSlide.done)="onAnimation($event)">
+
+  <mat-progress-bar *ngIf="actionInProgress" mode="indeterminate" class="h21-dialog-panel_progress"></mat-progress-bar>
+
+  <button mat-icon-button (click)="close()" class="h21-dialog-panel_close __size-l">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <div class="h21-dialog-panel_title">
+    <h2>
+      <ng-container *ngIf="entity.id != 0; then titleEdit else titleAdd"></ng-container>
+    </h2>
+  </div>
+  <ng-template #titleEdit>Payment method</ng-template>
+  <ng-template #titleAdd>Add payment method</ng-template>
+
+  <div class="h21-dialog-panel_content">
+    <form [formGroup]="form">
+
+      <div class="row">
+        <div class="col-6">
+          <!-- Active -->
+          <mat-slide-toggle color="accent"
+                            class="h21-profile-card_slide-toggle"
+                            formControlName="isActive"
+                            labelPosition="before">
+            Active
+          </mat-slide-toggle>
+        </div>
+        <div class="col-6">
+          <!-- Default -->
+          <mat-slide-toggle color="accent"
+                            class="h21-profile-card_slide-toggle h21-mb-3"
+                            labelPosition="before"
+                            formControlName="isDefault">
+            Default
+          </mat-slide-toggle>
+        </div>
+      </div>
+
+      <!-- recipientBankName -->
+      <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+        <input type="text"
+               autocomplete="off"
+               matInput
+               placeholder="Bank name"
+               formControlName="recipientBankName"/>
+        <mat-error *ngIf="form.get('recipientBankName').hasError('required')">
+          You must enter a value
+        </mat-error>
+      </mat-form-field>
+
+      <!-- recipientBankAddress -->
+      <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+        <input type="text"
+               autocomplete="off"
+               matInput
+               placeholder="Address of the bank"
+               formControlName="recipientBankAddress">
+      </mat-form-field>
+
+      <div class="row h21-mb-1">
+        <div class="col-6">
+          <!-- recipientBic -->
+          <mat-form-field class="__w-100" [class.__is-readonly]="!editable">
+            <input type="text"
+                   autocomplete="off"
+                   matInput
+                   maxlength="20"
+                   placeholder="BIC"
+                   formControlName="recipientBic">
+            <mat-error *ngIf="form.get('recipientBic').hasError('pattern')">
+              Value must be correct
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <!-- recipientBankSwift -->
+          <mat-form-field class="__w-100" [class.__is-readonly]="!editable">
+            <input type="text"
+                   autocomplete="off"
+                   matInput
+                   placeholder="SWIFT code"
+                   formControlName="recipientBankSwift">
+            <mat-error *ngIf="form.get('recipientBankSwift').hasError('pattern')">
+              Must be 8 or 11 characters
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row h21-mb-1">
+        <div class="col-6">
+          <!-- recipientABA -->
+          <mat-form-field class="__w-100" [class.__is-readonly]="!editable">
+            <input type="text"
+                   autocomplete="off"
+                   matInput
+                   placeholder="ABA code"
+                   formControlName="recipientAbaCode">
+            <mat-error *ngIf="form.get('recipientAbaCode').hasError('pattern')">
+              Must be 9 digits
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <!-- recipientSortCode -->
+          <mat-form-field class="__w-100" [class.__is-readonly]="!editable">
+            <input type="text"
+                   autocomplete="off"
+                   matInput
+                   placeholder="Sort code"
+                   formControlName="recipientSortCode">
+            <mat-error *ngIf="form.get('recipientSortCode').hasError('pattern')">
+              Format XX-XX-XX or XXXXXX
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row h21-mb-2">
+        <div class="col-8">
+          <!-- accountNumber -->
+          <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+            <input type="text"
+                   autocomplete="off"
+                   matInput
+                   placeholder="Account number / IBAN number"
+                   formControlName="accountNumber"/>
+            <mat-error *ngIf="form.get('accountNumber').hasError('required')">
+              You must enter a value
+            </mat-error>
+            <mat-error *ngIf="form.get('accountNumber').hasError('pattern')">
+              Value must be correct
+            </mat-error>
+            <mat-error *ngIf="form.get('accountNumber').hasError('incorrect')">
+              The account number has already been added. Enter a different value
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <!-- currency -->
+          <h21-autocomplete [dataSource]="currencies"
+                            valueField="currencyCode"
+                            displayField="currencyCode"
+                            formControlName="accountCurrencyCurrencyCode"
+                            valRequired="You must enter a value"
+                            placeholder="Currency"
+                            fieldClass="__w-100">
+          </h21-autocomplete>
+        </div>
+      </div>
+
+      <h4 class="h21-dialog-panel_caption">Correspondent account</h4>
+
+      <!-- correspondentBankName -->
+      <mat-form-field class="h21-mb-1 __w-100" [class.__is-readonly]="!editable">
+        <input type="text"
+               autocomplete="off"
+               matInput
+               placeholder="Correspondent bank name"
+               formControlName="correspondentBankName">
+      </mat-form-field>
+
+      <div class="row h21-mb-1">
+        <div class="col-6">
+          <!-- correspondentBic -->
+          <mat-form-field class="__w-100" [class.__is-readonly]="!editable">
+            <input type="text"
+                   autocomplete="off"
+                   matInput
+                   maxlength="20"
+                   placeholder="BIC correspondent bank"
+                   formControlName="correspondentBic">
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <!-- correspondentBankSwift -->
+          <mat-form-field class="__w-100" [class.__is-readonly]="!editable">
+            <input type="text"
+                   autocomplete="off"
+                   matInput
+                   placeholder="SWIFT code correspondent bank"
+                   formControlName="correspondentBankSwift">
+            <mat-error *ngIf="form.get('correspondentBankSwift').hasError('pattern')">
+              Must be 8 or 11 characters
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row h21-mb-1">
+        <div class="col-6">
+          <!-- correspondentABA -->
+          <mat-form-field class="__w-100" [class.__is-readonly]="!editable">
+            <input type="text"
+                   autocomplete="off"
+                   matInput
+                   placeholder="ABA code correspondent bank"
+                   formControlName="correspondentAbaCode">
+            <mat-error *ngIf="form.get('correspondentAbaCode').hasError('pattern')">
+              Must be 9 digits
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <!-- correspondentSortCode -->
+          <mat-form-field class="__w-100" [class.__is-readonly]="!editable">
+            <input type="text"
+                   autocomplete="off"
+                   matInput
+                   placeholder="Sort code correspondent bank"
+                   formControlName="correspondentSortCode">
+            <mat-error *ngIf="form.get('correspondentSortCode').hasError('pattern')">
+              Format XX-XX-XX or XXXXXX
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8">
+          <!-- correspondentAccount -->
+          <mat-form-field class="__w-100" [class.__is-readonly]="!editable">
+            <input type="text"
+                   autocomplete="off"
+                   matInput
+                   placeholder="Correspondent account"
+                   formControlName="correspondentAccount">
+            <mat-error *ngIf="form.get('correspondentAccount').hasError('pattern')">
+              Value must be correct
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <!-- currency -->
+          <h21-autocomplete [dataSource]="currencies"
+                            valueField="currencyCode"
+                            displayField="currencyCode"
+                            formControlName="correspondentAccountCurrencyCurrencyCode"
+                            placeholder="Currency"
+                            fieldClass="__w-100">
+          </h21-autocomplete>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8">
+          <!-- Hide card details -->
+          <mat-slide-toggle color="accent"
+                            class="h21-profile-card_slide-toggle h21-mb-3"
+                            labelPosition="before"
+                            formControlName="isHideCardDetail">
+            Hide card details
+          </mat-slide-toggle>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="h21-dialog-panel_error-message">
+    <div class="h21-dialog-panel_error-message-wrapper" *ngIf="showErrorMessage" [@toggleYScale]>
+      <button type="button"
+              mat-icon-button
+              class="__size-s"
+              (click)="showErrorMessage = false">
+        <mat-icon>close</mat-icon>
+      </button>
+      <p>You must fill in at least on of the fields: SWIFT, BIC, ABA, Sort code.</p>
+    </div>
+  </div>
+
+  <div class="h21-dialog-panel_actions">
+    <button mat-button color="primary" (click)="close()">Cancel</button>
+    <button mat-raised-button
+            color="primary"
+            (click)="validateAndSave()"
+            *ngIf="editable"
+            [disabled]="actionInProgress">
+      <ng-container *ngIf="entity.id != 0; then labelSave else labelAdd"></ng-container>
+    </button>
+    <ng-template #labelSave>Save</ng-template>
+    <ng-template #labelAdd>Add</ng-template>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="c-company-bank-account-edit h21-dialog-panel"
+     tabindex="0"
+     cdkTrapFocus
+     [@toggleSlide]="animationState"
+     (@toggleSlide.start)="onAnimation($event)"
+     (@toggleSlide.done)="onAnimation($event)">
+
+  <mat-progress-bar *ngIf="actionInProgress" mode="indeterminate" class="h21-dialog-panel_progress"></mat-progress-bar>
+
+  <button mat-icon-button (click)="close()" class="h21-dialog-panel_close __size-l">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <div class="h21-dialog-panel_title">
+    <h2>
+      <ng-container *ngIf="dialogData.id; then titleEdit else titleAdd"></ng-container>
+    </h2>
+  </div>
+  <ng-template #titleEdit>Payment method</ng-template>
+  <ng-template #titleAdd>Add payment method</ng-template>
+
+  <div class="h21-dialog-panel_content">
+    <form [formGroup]="form">
+
+      <div class="row">
+        <div class="col-6">
+          <!-- Active -->
+          <mat-slide-toggle color="accent"
+                            class="h21-profile-card_slide-toggle"
+                            formControlName="isActive"
+                            labelPosition="before">
+            Active
+          </mat-slide-toggle>
+        </div>
+        <div class="col-6">
+          <!-- Default -->
+          <mat-slide-toggle color="accent"
+                            class="h21-profile-card_slide-toggle h21-mb-3"
+                            labelPosition="before"
+                            formControlName="isDefault">
+            Default
+          </mat-slide-toggle>
+        </div>
+      </div>
+
+      <!-- Credit card -->
+      <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+        <input type="text"
+               autocomplete="off"
+               matInput
+               placeholder="Card name"
+               formControlName="cardName"/>
+        <mat-error *ngIf="form.get('cardName').hasError('required')">
+          You must enter a value
+        </mat-error>
+      </mat-form-field>
+
+    </form>
+  </div>
+
+  <div class="h21-dialog-panel_actions">
+    <button mat-button color="primary" (click)="close()">Cancel</button>
+    <button mat-raised-button
+            color="primary"
+            *ngIf="dialogData.mode !== viewMode.View"
+            (click)="save()"
+            [disabled]="form.invalid || actionInProgress">
+      <ng-container *ngIf="dialogData.id; then labelSave else labelAdd"></ng-container>
+    </button>
+    <ng-template #labelSave>Save</ng-template>
+    <ng-template #labelAdd>Add</ng-template>
+  </div>
+</div>

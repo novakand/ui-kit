@@ -1,0 +1,33 @@
+<div class="inline">
+    <dx-date-box
+            [disabled]="readonly"
+            [adaptivityEnabled]="true"
+            [width]="'100%'"
+            [value]="currentDate"
+            [type]="type"
+            [displayFormat]="displayFormat"
+            (onValueChanged)="onValueChanged($event)"
+            [showClearButton]="true">
+        <dx-validator [validationGroup]="validationGroup">
+            <dxi-validation-rule *ngIf="isRequired" type="required"
+                                 message="{{ validationMessage }}"></dxi-validation-rule>
+        </dx-validator>
+    </dx-date-box>
+</div>
+<div class="inline" *ngIf="menus.length > 0">
+    <dx-button
+            icon="ion ion-md-more"
+            id="date-time-edit-{{ name }}"
+            [disabled]="readonly"></dx-button>
+    <dx-context-menu
+            [dataSource]="menus"
+            target="#date-time-edit-{{ name }}"
+            [position]="{at: 'left bottom'}"
+            showEvent="click"
+            (onItemClick)="contextMenuItemClick($event)">
+        <div *dxTemplate="let e of 'item'" class="dx-item-content dx-menu-item-content">
+            <i *ngIf="e.date" class="dx-icon icon ion ion-md-time"></i>
+            <span *ngIf="e.date" class="dx-icon-spinright">{{ e.date | h21DateTime }}</span>
+        </div>
+    </dx-context-menu>
+</div>

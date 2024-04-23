@@ -1,0 +1,52 @@
+<div class="c-company-filter h21-dialog-panel"
+     #container
+     tabindex="0"
+     cdkTrapFocus
+     [@toggleSlide]="animationState"
+     (@toggleSlide.start)="onAnimation($event)"
+     (@toggleSlide.done)="onAnimation($event)">
+
+  <button mat-icon-button (click)="close()" class="h21-dialog-panel_close __size-l">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <div class="h21-dialog-panel_title">
+    <h2>
+      <ng-container *ngIf="params.id; then titleEdit else titleAdd"></ng-container>
+    </h2>
+  </div>
+  <ng-template #titleEdit>Company note</ng-template>
+  <ng-template #titleAdd>Add note</ng-template>
+
+  <div class="h21-dialog-panel_content">
+    <form [formGroup]="form">
+      <!-- note -->
+      <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+        <textarea autocomplete="off"
+                  cdkTextareaAutosize
+                  #autosize="cdkTextareaAutosize"
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="15"
+                  matInput
+                  placeholder="Note"
+                  formControlName="note"
+                  class="area-resize"
+                  [readonly]="!editable"></textarea>
+        <mat-error *ngIf="form.controls['note'].hasError('required')">
+          You must enter a value
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div class="h21-dialog-panel_actions">
+    <button mat-button color="primary" (click)="close()">Cancel</button>
+    <button mat-raised-button *ngIf="!viewOnly"
+            color="primary"
+            (click)="save()">
+      <ng-container *ngIf="entity.id != 0; then labelSave else labelAdd"></ng-container>
+    </button>
+    <ng-template #labelSave>Save</ng-template>
+    <ng-template #labelAdd>Add</ng-template>
+  </div>
+</div>

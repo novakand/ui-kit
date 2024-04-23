@@ -1,0 +1,132 @@
+<div class="c-company-list page_content-wrapper">
+
+  <h2>Companies</h2>
+
+  <ng-container *ngIf="loadInProgress || noProgress">
+    <h21-table-loader [showNoResult]="noProgress"></h21-table-loader>
+  </ng-container>
+
+  <ng-container *ngIf="!loadInProgress && !noProgress">
+    <table mat-table [dataSource]="dataSource" class="h21-table">
+
+      <!-- Company name -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="h21-table_sort-header" (click)="sort('shortName')">Company name
+          <h21-sort-icon fieldName="shortName" [orderField]="order?.field" [desc]="order?.desc"></h21-sort-icon>
+        </th>
+        <td mat-cell *matCellDef="let el"> {{ el.shortName }}</td>
+      </ng-container>
+
+      <!-- Legal name -->
+      <ng-container matColumnDef="legalName">
+        <th mat-header-cell *matHeaderCellDef class="h21-table_sort-header" (click)="sort('name')">Legal name
+          <h21-sort-icon fieldName="name" [orderField]="order?.field" [desc]="order?.desc"></h21-sort-icon>
+        </th>
+        <td mat-cell *matCellDef="let el"> {{ el.name }}</td>
+      </ng-container>
+
+      <!-- Company type -->
+      <ng-container matColumnDef="typeName">
+        <th mat-header-cell *matHeaderCellDef class="h21-table_sort-header" (click)="sort('typeName')">Company type
+          <h21-sort-icon fieldName="typeName" [orderField]="order?.field" [desc]="order?.desc"></h21-sort-icon>
+        </th>
+        <td mat-cell *matCellDef="let el">
+          <mat-chip-list class="h21-chip-list" *ngIf="el.typeName != null">
+            <mat-chip class="h21-chip"
+                      [ngClass]="getCompanyTypeCssClassName(el.typeName)"
+                      [disableRipple]="true"
+                      [selectable]="false"
+                      [removable]="false"
+            > {{ el.typeName }}
+            </mat-chip>
+          </mat-chip-list>
+        </td>
+      </ng-container>
+
+      <!-- Country -->
+      <ng-container matColumnDef="countryName">
+        <th mat-header-cell *matHeaderCellDef class="h21-table_sort-header" (click)="sort('countryName')">Country
+          <h21-sort-icon fieldName="countryName" [orderField]="order?.field" [desc]="order?.desc"></h21-sort-icon>
+        </th>
+        <td mat-cell *matCellDef="let el"> {{ el.countryName }}</td>
+      </ng-container>
+
+      <!-- Reg Num | INN -->
+      <ng-container matColumnDef="regNum">
+        <th mat-header-cell *matHeaderCellDef>Registration number</th>
+        <td mat-cell *matCellDef="let el"> {{ el.regNum }}</td>
+      </ng-container>
+
+      <!-- Status -->
+      <ng-container matColumnDef="stateName">
+        <th mat-header-cell *matHeaderCellDef class="h21-table_sort-header" (click)="sort('stateName')"> Status
+          <h21-sort-icon fieldName="stateName" [orderField]="order?.field" [desc]="order?.desc"></h21-sort-icon>
+        </th>
+        <td mat-cell *matCellDef="let el"> {{ el.stateName }}</td>
+      </ng-container>
+
+      <!-- State -->
+      <ng-container matColumnDef="hasActualContract">
+        <th mat-header-cell *matHeaderCellDef class="h21-table_sort-header" (click)="sort('hasActualContract')"> State
+          <h21-sort-icon fieldName="hasActualContract" [orderField]="order?.field" [desc]="order?.desc"></h21-sort-icon>
+        </th>
+        <td mat-cell *matCellDef="let el"> {{ getActualContractStateName(el.hasActualContract) }}</td>
+      </ng-container>
+
+      <!-- Create user -->
+      <ng-container matColumnDef="createUserName">
+        <th mat-header-cell *matHeaderCellDef class="h21-table_sort-header" (click)="sort('createUserName')">Create user
+          <h21-sort-icon fieldName="createUserName" [orderField]="order?.field" [desc]="order?.desc"></h21-sort-icon>
+        </th>
+        <td mat-cell *matCellDef="let el"> {{ el.createUserName }}</td>
+      </ng-container>
+
+      <!-- Date of creation -->
+      <ng-container matColumnDef="createDate">
+        <th mat-header-cell *matHeaderCellDef class="h21-table_sort-header" (click)="sort('createDate')">Date of
+          creation
+          <h21-sort-icon fieldName="createDate" [orderField]="order?.field" [desc]="order?.desc"></h21-sort-icon>
+        </th>
+        <td *matCellDef="let el" mat-cell> {{ el.createDate | date:'MM.dd.yyyy' }}</td>
+      </ng-container>
+
+      <!-- Date of the last change -->
+      <ng-container matColumnDef=updateDate>
+        <th mat-header-cell *matHeaderCellDef class="h21-table_sort-header" (click)="sort('updateDate')">Date of the
+          last change
+          <h21-sort-icon fieldName="updateDate" [orderField]="order?.field" [desc]="order?.desc"></h21-sort-icon>
+        </th>
+        <td *matCellDef="let el" mat-cell> {{ el.updateDate | date:'MM.dd.yyyy' }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row
+          *matRowDef="let row; columns: displayedColumns;"
+          class="h21-table_row-hover"
+          (keydown.enter)="openCard(row.id)"
+          (click)="openCard(row.id)"
+          tabindex="0"
+      ></tr>
+    </table>
+
+    <!-- Paginator -->
+    <mat-paginator *ngIf="totalCount" [pageSizeOptions]="[10, 20, 50, 100]"
+                   [pageSize]="pageSize"
+                   [pageIndex]="pageIndex"
+                   [length]="totalCount"
+                   (page)="pageChange($event)"
+                   showFirstLastButtons
+                   class="h21-paginator">
+    </mat-paginator>
+  </ng-container>
+</div>
+
+<button mat-fab
+        color="primary"
+        *ngIf="isAdmin"
+        matTooltip="Add company"
+        matTooltipPosition="before"
+        class="h21-fixed-fab-button"
+        (click)="createCompany()">
+  <mat-icon>add</mat-icon>
+</button>

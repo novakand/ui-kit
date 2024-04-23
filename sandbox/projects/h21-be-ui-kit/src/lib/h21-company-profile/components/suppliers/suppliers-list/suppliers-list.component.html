@@ -1,0 +1,48 @@
+<div class="c-suppliers-list">
+  <button mat-button
+          color="primary"
+          class="button-with-icon __mb-1"
+          [disabled]="mode === viewMode.View"
+          (click)="openSuppliersDialog()">
+    <mat-icon color="primary">edit</mat-icon>
+    <span>Change logo and name</span>
+  </button>
+
+  <ng-container *ngIf="pending" [ngTemplateOutlet]="loader"></ng-container>
+
+  <div class="row large-gutters" *ngIf="!pending && dataSource">
+    <ng-container *ngFor="let item of dataSource; trackBy: trackByFn; let i = index;">
+      <div class="col-12 col-md-6 col-lg-4 col-xxxl-3">
+        <mat-slide-toggle [checked]="item.isEnable" (change)="onToggleChange(dataSource[i], $event.checked)"
+                          [disabled]="mode === viewMode.View"
+                          class="c-suppliers-list_item" color="accent">
+          <div class="__flex-row __align-items-center __line-height-normal __w-100">
+            <div class="__flex-fill __overflow-hidden">
+              <div class="c-suppliers-list_provider-name">
+                {{ item.newName && item.isCustomize ? item.newName : item.providerName }}
+                <ng-container *ngIf="item.abbreviation && item.isCustomize">
+                  ({{ item.abbreviation }})
+                </ng-container>
+              </div>
+              <div *ngIf="item.newName && item.isCustomize" class="__fs-xxxs __color-gray">{{ item.providerName }}</div>
+            </div>
+            <div class="__flex-none __ml-1" *ngIf="item.logoFileUrl">
+              <img [src]="item.logoFileUrl" class="c-suppliers-list_logo" alt="" />
+            </div>
+          </div>
+        </mat-slide-toggle>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #loader>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4 col-xxl-3" *ngFor="let i of loaderCount; trackBy: trackByFn;">
+      <div class="c-suppliers-list_loader-item">
+        <div class="c-suppliers-list_loader-checkbox"></div>
+        <div class="c-suppliers-list_loader-text"></div>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,90 @@
+<div class="c-h21-air-filter-panel h21-filter-panel">
+
+  <!-- View mode (List, Map) -->
+  <mat-button-toggle-group class="__primary __w-100 h21-mb-2"
+                           #viewModeGroup="matButtonToggleGroup"
+                           [value]="viewMode"
+                           (change)="changeViewMode(viewModeGroup.value)">
+    <mat-button-toggle [value]="'LIST'">List</mat-button-toggle>
+    <mat-button-toggle [value]="'MAP'">Map</mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <!-- Stops -->
+  <mat-expansion-panel class="first-child">
+    <mat-expansion-panel-header [collapsedHeight]="matExpansionPanelHeaderDefaultHeight"
+                                [expandedHeight]="matExpansionPanelHeaderDefaultHeight">
+      <mat-panel-title>Stops</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="h21-filter-panel_checkbox-group">
+      <mat-checkbox color="primary" [value]="">Any number of stops</mat-checkbox>
+      <mat-checkbox color="primary" [value]="">Nonstop only</mat-checkbox>
+      <mat-checkbox color="primary" [value]="">1 stop or fewer</mat-checkbox>
+      <mat-checkbox color="primary" [value]="">2 stop or fewer</mat-checkbox>
+    </div>
+  </mat-expansion-panel>
+
+  <!-- Price -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header [collapsedHeight]="matExpansionPanelHeaderDefaultHeight"
+                                [expandedHeight]="matExpansionPanelHeaderDefaultHeight">
+      <mat-panel-title>Price</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="h21-filter-panel_price-slider">
+      <div class="h21-filter-panel_price-slider-legend">
+        <span>From: {{ minPrice }} {{ currencyName }}</span>
+        <div class="w-spacer">&nbsp;</div>
+        <span>To: {{ maxPrice }} {{ currencyName }}</span>
+      </div>
+      <nouislider [config]="priceSliderConfig"></nouislider>
+    </div>
+  </mat-expansion-panel>
+
+
+  <!-- Departure times -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header [collapsedHeight]="matExpansionPanelHeaderDefaultHeight"
+                                [expandedHeight]="matExpansionPanelHeaderDefaultHeight">
+      <mat-panel-title>Departure times</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>The functional is in development</div>
+  </mat-expansion-panel>
+
+  <!-- Total duration -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header [collapsedHeight]="matExpansionPanelHeaderDefaultHeight"
+                                [expandedHeight]="matExpansionPanelHeaderDefaultHeight">
+      <mat-panel-title>Total duration</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>The functional is in development</div>
+  </mat-expansion-panel>
+
+  <!-- Airports -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header [collapsedHeight]="matExpansionPanelHeaderDefaultHeight"
+                                [expandedHeight]="matExpansionPanelHeaderDefaultHeight">
+      <mat-panel-title>Airports</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>The functional is in development</div>
+  </mat-expansion-panel>
+  <!-- Airlines -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header [collapsedHeight]="matExpansionPanelHeaderDefaultHeight"
+                                [expandedHeight]="matExpansionPanelHeaderDefaultHeight">
+      <mat-panel-title>Airlines</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>The functional is in development</div>
+  </mat-expansion-panel>
+
+  <!-- Options -->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header [collapsedHeight]="matExpansionPanelHeaderDefaultHeight"
+                                [expandedHeight]="matExpansionPanelHeaderDefaultHeight">
+      <mat-panel-title>Options</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>The functional is in development</div>
+  </mat-expansion-panel>
+
+  <div class="h21-filter-panel_bottom-attached-box __buttons-to-right">
+    <button mat-stroked-button color="primary">Clear filter</button>
+  </div>
+</div>

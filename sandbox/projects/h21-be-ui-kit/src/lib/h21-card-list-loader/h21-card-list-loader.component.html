@@ -1,0 +1,18 @@
+<div class="card-list-fake-view">
+  <ng-container *ngIf="!showNoResult">
+    <div class="card-list-fake-view_item" *ngFor="let i of counts$ | async; trackBy: trackByFn">
+      <div class="card-list-fake-view_avatar">&nbsp;</div>
+      <div class="card-list-fake-view_text">
+        <div class="card-list-fake-view_title">&nbsp;</div>
+        <div class="card-list-fake-view_subtitle">&nbsp;</div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="showNoResult">
+    <div class="card-list-fake-view_empty-label">
+      <mat-icon>not_interested</mat-icon>
+      <p>{{ noResultText }}</p>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,65 @@
+.c-h21-dashboard {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: -10px;
+    padding:10px;
+    font-family: 'Roboto';
+}
+.c-h21-dashboard .c-h21-dashboard-widget {
+    width: calc(25% - 20px);
+    min-height: 162px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: #F6F9FE;
+    border:1px solid #BDC5D4;
+    margin:10px;
+    min-width: 320px;
+    transition: box-shadow linear 300ms, outline ease 200ms;
+}
+.c-h21-dashboard-widget-title {
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 600;
+
+}
+.c-h21-dashboard .c-h21-dashboard-widget:hover {
+    box-shadow: 0 2px 10px rgba(13,73,203,0.24), 0 0 2px 2px #588BFB;
+}
+.c-h21-dashboard .c-h21-dashboard-widget.__huge {
+    width:100%;
+    min-height: 300px;
+}
+.c-h21-dashboard .c-h21-dashboard-widget.__large {
+    width: calc(50% - 20px);
+    min-height: 300px;
+}
+.c-h21-dashboard-widget-content {
+    padding:20px 0 0;
+}
+.text-right {
+    text-align: right;
+}
+.text-green {
+    color: green;
+}
+.widget-label {
+    font-size: 18px;
+    font-weight: 300;
+}
+.badge {
+    padding:.5em;
+    margin:-.5em;
+    display: inline-block;
+    border-radius:2em;
+}
+.badge.warning{
+    background: #b00;
+    color: white
+}

@@ -1,0 +1,82 @@
+<form class="c-company-reference-dialog h21-dialog-panel"
+      tabindex="0"
+      [formGroup]="form"
+      #container
+      cdkTrapFocus
+      [@toggleSlide]="animationState"
+      (@toggleSlide.start)="onAnimationStart($event)"
+      (@toggleSlide.done)="onAnimationDone($event)"
+      (submit)="onSubmit()">
+
+  <mat-progress-bar *ngIf="pending"
+                    [@toggleVisibility]
+                    mode="indeterminate"
+                    class="h21-dialog-panel_progress">
+  </mat-progress-bar>
+
+  <button type="button" mat-icon-button (click)="close()" class="h21-dialog-panel_close __size-l">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <div class="h21-dialog-panel_title">
+    <h2 [ngSwitch]="mode">
+      <ng-container *ngSwitchCase="modeTypes.Add">Add reference</ng-container>
+      <ng-container *ngSwitchCase="modeTypes.Edit">
+        Edit reference
+        <ng-container *ngIf="form.controls['name'].value as name">
+          "{{ name }}"
+        </ng-container>
+      </ng-container>
+    </h2>
+  </div>
+
+  <div class="h21-dialog-panel_content">
+    <mat-form-field class="__w-100">
+      <mat-label>Reference's name</mat-label>
+      <input type="text" matInput formControlName="name" />
+      <mat-error *ngIf="form.controls['name'].hasError('required')">You must enter a value</mat-error>
+    </mat-form-field>
+
+    <mat-slide-toggle color="accent" class="__fs-s __d-b __mv-3" formControlName="enable">Enable</mat-slide-toggle>
+
+    <mat-slide-toggle color="accent" class="__fs-s __d-b __mv-3" formControlName="mandatory">Mandatory</mat-slide-toggle>
+
+    <mat-slide-toggle color="accent" class="__fs-s __d-b __mv-3" formControlName="isIncludeForAnonymousTraveler">Include for anonymous traveller </mat-slide-toggle>
+
+    <h4 class="__fs-l __fw-bold __color-base __mt-5 __mb-0">Show in</h4>
+    <mat-slide-toggle color="accent" class="__fs-s __d-b __mv-3" formControlName="isShowInIndividualInvoice">Indiv. Invoice</mat-slide-toggle>
+
+    <mat-slide-toggle color="accent" class="__fs-s __d-b __mv-3" formControlName="isShowInMyBookings">My bookings</mat-slide-toggle>
+
+    <mat-form-field class="__w-100 __mb-2">
+      <mat-label>Value</mat-label>
+      <mat-chip-list #valuesList class="h21-chip-list __mb-1" formControlName="valuesActual">
+        <mat-chip *ngFor="let val of valuesActual.value; trackBy: trackByFn; let i = index;"
+                  class="h21-chip"
+                  [removable]="true"
+                  [selectable]="false"
+                  (keydown.backspace)="onBackSpace($event)"
+                  (removed)="removeValue(i)">
+          {{ val.value }}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <input type="text" matInput autocomplete="off" placeholder="Add value ..."
+               cdkTrapFocus
+               #chipInput
+               formControlName="editableTag"
+               [matChipInputFor]="valuesList"
+               [matChipInputAddOnBlur]="true"
+               (keydown.backspace)="onEdit()"
+               (matChipInputTokenEnd)="addValue($event)"/>
+      </mat-chip-list>
+      <mat-hint>Press enter to add a value. Press backspace to edit previous value.</mat-hint>
+    </mat-form-field>
+
+    <mat-checkbox color="primary" class="__fs-xs __color-gray" formControlName="editable">Editable</mat-checkbox>
+  </div>
+
+  <div class="h21-dialog-panel_actions">
+    <button type="button" mat-button color="primary" (click)="cancel()">Cancel</button>
+    <button type="submit" mat-raised-button color="primary" [disabled]="pending">Save</button>
+  </div>
+</form>

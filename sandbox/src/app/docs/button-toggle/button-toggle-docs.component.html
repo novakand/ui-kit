@@ -1,0 +1,204 @@
+<section class="docs_section mat-typography">
+  <h1>{{ title }}</h1>
+  <div class="mb-5">
+    <p>UI Kit использует стандартный компонент <a href="" matTooltip="Официальная документация по Button toggle">Button
+      toggle</a>
+      из бибилиотеки Angular Material, предлагая собственный набор CSS модификаторов для его стилизации.</p>
+    <p>При стилизации подразумевается что эелементы кнопок <span class="docs_code">&lt;mat-button-toggle&gt;</span>
+      всегда объедены в группу через <span class="docs_code">&lt;mat-button-toggle-group&gt;</span> и соответственно
+      модификаторы могут применятся только ко всей группе <span class="docs_code">&lt;mat-button-toggle-group&gt;</span>,
+      а не к отдельно взятой кнопке.
+    </p>
+  </div>
+  <div class="mb-5">
+    <h2>Тематизация</h2>
+    <p>Поскольку в стандартном компоненте поддержка свойства <span class="docs_code">color</span> пока не реализованна,
+      для тематизации компонента предлагается использовать CSS модификаторы - <span class="docs_code">__primary</span>,
+      <span class="docs_code">__accent</span> и <span class="docs_code">__warn</span>, играющие аналогичну роль.
+    </p>
+    <h21-docs-example-viewer [title]="'Button toggle colors theming'"
+                             [pathToHtml]="'./assets/code_examples/button-toggle/example-1.html'"
+                             [pathToTs]="'./assets/code_examples/button-toggle/example.txt'"
+                             [pathToCss]="'./assets/code_examples/button-toggle/example-1.css'">
+      <div class="button-toggle-wrapper">
+        <mat-button-toggle-group class="__primary">
+          <mat-button-toggle value="1" [checked]="true">Button 1</mat-button-toggle>
+          <mat-button-toggle value="2">Button 2</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div class="button-toggle-wrapper">
+        <mat-button-toggle-group class="__accent">
+          <mat-button-toggle value="1" [checked]="true">Button 1</mat-button-toggle>
+          <mat-button-toggle value="2">Button 2</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div class="button-toggle-wrapper">
+        <mat-button-toggle-group class="__warn">
+          <mat-button-toggle value="1" [checked]="true">Button 1</mat-button-toggle>
+          <mat-button-toggle value="2">Button 2</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+    </h21-docs-example-viewer>
+  </div>
+  <div class="mb-5">
+    <h2>Использование разделителей</h2>
+    <p>В качестве разделителей можно использовать <span class="docs_code">&lt;mat-divider&gt;</span>. Цвет разделетиля
+      наследуется из выбранной в <span class="docs_code">&lt;mat-button-toggle-group&gt;</span> цветовой темы.
+      Если <span class="docs_code">&lt;mat-button-toggle-group&gt;</span> имеет горизонтальную ориентацию (задается
+      по умолчанию), необходимо использовать вертикальный разделитель <span class="docs_code">&lt;mat-divider [vertical]="true"&gt;</span>.
+    </p>
+    <h21-docs-example-viewer [title]="'Button toggle with divider'"
+                             [pathToHtml]="'./assets/code_examples/button-toggle/example-2.html'"
+                             [pathToTs]="'./assets/code_examples/button-toggle/example.txt'"
+                             [pathToCss]="'./assets/code_examples/button-toggle/example-1.css'">
+      <div class="button-toggle-wrapper">
+        <mat-button-toggle-group class="__primary">
+          <mat-button-toggle value="1" [checked]="true">Button 1</mat-button-toggle>
+          <mat-divider [vertical]="true"></mat-divider>
+          <mat-button-toggle value="2">Button 2</mat-button-toggle>
+          <mat-divider [vertical]="true"></mat-divider>
+          <mat-button-toggle value="3">Button 3</mat-button-toggle>
+          <mat-divider [vertical]="true"></mat-divider>
+          <mat-button-toggle value="4">Button 4</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+    </h21-docs-example-viewer>
+  </div>
+  <div class="mb-5">
+    <h2>Размер</h2>
+    <p>Компонент может иметь один из трех предопределенных размеров - маленький, средний (соответствует базовому
+      размеру)
+      и большой, задаваемых соответствующими модификаторами: __size-s, __size-m, __size-l.</p>
+    <h21-docs-example-viewer [title]="'Button toggle sizes'"
+                             [pathToHtml]="'./assets/code_examples/button-toggle/example-3.html'"
+                             [pathToTs]="'./assets/code_examples/button-toggle/example.txt'"
+                             [pathToCss]="'./assets/code_examples/button-toggle/example-1.css'">
+      <div class="button-toggle-wrapper">
+        <mat-button-toggle-group class="__primary __size-s">
+          <mat-button-toggle value="1" [checked]="true">Button 1</mat-button-toggle>
+          <mat-button-toggle value="2">Button 2</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div class="button-toggle-wrapper">
+        <mat-button-toggle-group class="__primary __size-m">
+          <mat-button-toggle value="1" [checked]="true">Button 1</mat-button-toggle>
+          <mat-button-toggle value="2">Button 2</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div class="button-toggle-wrapper">
+        <mat-button-toggle-group class="__primary __size-l">
+          <mat-button-toggle value="1" [checked]="true">Button 1</mat-button-toggle>
+          <mat-button-toggle value="2">Button 2</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+    </h21-docs-example-viewer>
+  </div>
+  <div class="mb-5">
+    <h2>Ширина</h2>
+    <p>По умолчанию, компонент не имеет заданной ширины, она определяется автоматически исходя из размера содержимого.
+      Добовление CSS модификатора <span class="docs_code">__w-100</span> позволит растянуть его на всю ширину
+      родительского элемента.</p>
+    <h21-docs-example-viewer [title]="'Button toggle full width'"
+                             [pathToHtml]="'./assets/code_examples/button-toggle/example-4.html'"
+                             [pathToTs]="'./assets/code_examples/button-toggle/example.txt'"
+                             [pathToCss]="'./assets/code_examples/button-toggle/example-2.css'">
+      <div class="button-toggle-wrapper-box">
+        <mat-button-toggle-group class="__primary __w-100">
+          <mat-button-toggle value="1" [checked]="true">Button 1</mat-button-toggle>
+          <mat-divider [vertical]="true"></mat-divider>
+          <mat-button-toggle value="2">Button 2</mat-button-toggle>
+          <mat-divider [vertical]="true"></mat-divider>
+          <mat-button-toggle value="3">Button 3</mat-button-toggle>
+          <mat-divider [vertical]="true"></mat-divider>
+          <mat-button-toggle value="4">Button 4</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+    </h21-docs-example-viewer>
+  </div>
+  <h2>
+    Configurator
+    <mat-icon class="__size-s">settings</mat-icon>
+  </h2>
+  <mat-card class="conf_card">
+    <mat-card-content>
+      <div class="row">
+        <div class="col-12">
+          <h3>View example</h3>
+          <div class="conf_view-example">
+            <mat-button-toggle-group ngClass="{{confColor}} {{confSize}} {{confWidth}}" [disabled]="confDisable"
+                                     [vertical]="confVerticalOrientation">
+              <mat-button-toggle value="1" [checked]="true">Button 1</mat-button-toggle>
+              <mat-divider *ngIf="confShowDivider" [vertical]="!confVerticalOrientation"></mat-divider>
+              <mat-button-toggle value="2">Button 2</mat-button-toggle>
+              <mat-divider *ngIf="confShowDivider" [vertical]="!confVerticalOrientation"></mat-divider>
+              <mat-button-toggle value="3">Button 3</mat-button-toggle>
+              <mat-divider *ngIf="confShowDivider" [vertical]="!confVerticalOrientation"></mat-divider>
+              <mat-button-toggle value="4">Button 4</mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="conf_setting-options">
+        <h3>Setting options</h3>
+        <div class="row">
+          <div class="col-2">
+            <h4>Divider</h4>
+            <mat-radio-group [(ngModel)]="confShowDivider" (change)="updateCodeSample()">
+              <mat-radio-button class="__w-100" color="primary" [value]="true" [checked]="true">show divider
+              </mat-radio-button>
+              <mat-radio-button class="__w-100" color="primary" [value]="false">no divider</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="col-2">
+            <h4>Size</h4>
+            <mat-radio-group [(ngModel)]="confSize" (change)="updateCodeSample()">
+              <mat-radio-button class="__w-100" color="primary" [value]="''" [checked]="true">default</mat-radio-button>
+              <mat-radio-button class="__w-100" color="primary" [value]="'__size-s'">small</mat-radio-button>
+              <mat-radio-button class="__w-100" color="primary" [value]="'__size-m'">medium</mat-radio-button>
+              <mat-radio-button class="__w-100" color="primary" [value]="'__size-l'">large</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="col-2">
+            <h4>Color</h4>
+            <mat-radio-group [(ngModel)]="confColor" (change)="updateCodeSample()">
+              <mat-radio-button class="__w-100" color="primary" [value]="''" [checked]="true">default</mat-radio-button>
+              <mat-radio-button class="__w-100" color="primary" [value]="'__primary'">primary</mat-radio-button>
+              <mat-radio-button class="__w-100" color="primary" [value]="'__accent'">accent</mat-radio-button>
+              <mat-radio-button class="__w-100" color="primary" [value]="'__warn'">warn</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="col-2">
+            <h4>Width</h4>
+            <mat-radio-group [(ngModel)]="confWidth" (change)="updateCodeSample()">
+              <mat-radio-button class="__w-100" color="primary" [value]="''">Auto</mat-radio-button>
+              <mat-radio-button class="__w-100" color="primary" [value]="'__w-100'" [checked]="true">Width - 100%
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="col-2">
+            <h4>Orientation</h4>
+            <mat-radio-group [(ngModel)]="confVerticalOrientation" (change)="updateCodeSample()">
+              <mat-radio-button class="__w-100" color="primary" [value]="false" [checked]="true">horizontal
+              </mat-radio-button>
+              <mat-radio-button class="__w-100" color="primary" [value]="true">vertical</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="col-2">
+            <h4>Disabled</h4>
+            <mat-radio-group [(ngModel)]="confDisable" (change)="updateCodeSample()">
+              <mat-radio-button class="__w-100" color="primary" [value]="false" [checked]="true">false
+              </mat-radio-button>
+              <mat-radio-button class="__w-100" color="primary" [value]="true">true</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="conf_code-example">
+        <h3 class="m-0">HTML code</h3>
+        <code class="docs_example-code" [innerHtml]="confCodeSample"></code>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>

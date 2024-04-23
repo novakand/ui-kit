@@ -1,0 +1,26 @@
+<h21-table [showLoader]="inProgress"
+           [showNoData]="showNoData"
+           [noDataText]="'Nothing found'"
+           [dataSource]="dataSource"
+           [pageSize]="pageSize"
+           [columns]="columns"
+           [order]="order"
+           [mode]="mode"
+           [withCustomContent]="true"
+           [totalCount]="totalCount"
+           (sortEmit)="sort($event)"
+           (changePageEmit)="pageChange($event)">
+
+  <ng-template #customCell let-cell="cell" let-element="element">
+    <ng-container *ngIf="isActionCell(cell.name); else notAction">
+      <ng-container *ngFor="let control of cell.controls; trackBy: trackByFn">
+        <button mat-icon-button (click)="onAction(control, element)" [disabled]="mode === viewMode.View" *ngIf="isVisible(control, element)">
+          <mat-icon>{{ control }}</mat-icon>
+        </button>
+      </ng-container>
+    </ng-container>
+    <ng-template #notAction>
+      {{ element[cell.name] }}
+    </ng-template>
+  </ng-template>
+</h21-table>

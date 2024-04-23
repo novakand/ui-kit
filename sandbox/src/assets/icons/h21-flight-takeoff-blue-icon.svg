@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="42px" height="48px" viewBox="0 0 42 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>point to map down blue</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M25.4961636,37.8008229 L20.1155322,43.1814543 C19.3344836,43.9625029 18.0681537,43.9625029 17.2871051,43.1814543 L11.9064737,37.8008229 L5,37.8008229 C2.23857625,37.8008229 3.38176876e-16,35.5622466 0,32.8008229 L-8.8817842e-16,5 C-1.2263553e-15,2.23857625 2.23857625,3.17180057e-15 5,2.66453526e-15 L33,0 C35.7614237,-5.07265313e-16 38,2.23857625 38,5 L38,32.8008229 C38,35.5622466 35.7614237,37.8008229 33,37.8008229 L25.4961636,37.8008229 Z" id="path-1"></path>
+        <filter x="-10.5%" y="-4.6%" width="121.1%" height="118.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.247084466 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="UI-kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-875.000000, -116.000000)">
+        <g id="point-to-map-down-blue" transform="translate(877.000000, 116.000000)">
+            <g id="mark_to_map">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#0044D6" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+            <path d="M9.66,26.43 L28.66,26.43 L28.66,28.43 L9.66,28.43 L9.66,26.43 Z M27.7524445,22.4328482 C27.9982899,21.6431267 27.5487712,20.7962307 26.7537505,20.5588658 L21.4981297,18.9492228 L19.0539787,9.83983064 L17.1469871,9.24959099 L16.8583851,17.5239616 L11.9387934,16.0181668 L11.0842143,13.6682318 L9.64787607,13.2305876 L9.51677873,16.8748727 L9.46498315,18.4108145 L11.0497254,18.8940246 L16.3053461,20.5036676 L20.6090617,21.8250806 L25.8646824,23.4347236 C26.6734828,23.6689072 27.5065992,23.2225698 27.7524445,22.4328482 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

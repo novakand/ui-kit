@@ -1,0 +1,106 @@
+<div class="c-company-filter h21-dialog-panel"
+     #container
+     tabindex="0"
+     cdkTrapFocus
+     [@toggleSlide]="animationState"
+     (@toggleSlide.start)="onAnimationStart($event)"
+     (@toggleSlide.done)="onAnimationDone($event)">
+
+  <button mat-icon-button (click)="close()" class="h21-dialog-panel_close __size-l">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <div class="h21-dialog-panel_title">
+    <h2>
+      <ng-container *ngIf="params.id; then titleEdit else titleAdd"></ng-container>
+    </h2>
+  </div>
+  <ng-template #titleEdit>Company address</ng-template>
+  <ng-template #titleAdd>Add address</ng-template>
+
+  <div class="h21-dialog-panel_content">
+    <form [formGroup]="entityForm">
+      <!-- Address type -->
+      <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+        <mat-select placeholder="Address type"
+                    panelClass="h21-select-panel"
+                    formControlName="typeId"
+                    [disabled]="!editable">
+          <mat-option *ngFor="let type of vocabulary.companyAddressType; trackBy: trackByFn" [value]="type.id">
+           {{ type.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="entityForm.controls['typeId'].hasError('required')">
+          You must choose a type
+        </mat-error>
+      </mat-form-field>
+
+      <!-- ZIP code -->
+      <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+        <input type="text"
+               autocomplete="off"
+               matInput
+               placeholder="ZIP code"
+               [readonly]="!editable"
+               formControlName="zip">
+        <mat-error *ngIf="entityForm.controls['zip'].hasError('required')">
+          You must enter a value
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Country -->
+      <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+        <mat-select placeholder="Country"
+                    panelClass="h21-select-panel"
+                    (selectionChange)="countrySelected()"
+                    formControlName="countryCode"
+                    [disabled]="!editable">
+          <mat-option *ngFor="let country of countries; trackBy: trackByFn" [value]="country.code">
+           {{ country.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="entityForm.controls['countryCode'].hasError('required')">
+          You must choose a country
+        </mat-error>
+      </mat-form-field>
+
+      <!-- City -->
+      <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+        <mat-select placeholder="City"
+                    panelClass="h21-select-panel"
+                    formControlName="cityCode"
+                    [disabled]="!editable">
+          <mat-option *ngFor="let city of cities; trackBy: trackByFn" [value]="city.code">
+           {{ city.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="entityForm.controls['cityCode'].hasError('required')">
+          Please choose a city
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Address -->
+      <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+        <textarea matInput
+                  placeholder="Address"
+                  [readonly]="!editable"
+                  formControlName="address"></textarea>
+        <mat-error *ngIf="entityForm.controls['address'].hasError('required')">
+          You must enter a value
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div class="h21-dialog-panel_actions">
+    <button mat-button color="primary" (click)="close()">Cancel</button>
+    <button mat-raised-button
+            color="primary"
+            (click)="save()"
+            *ngIf="editable">
+      <ng-container *ngIf="entity.id != 0; then labelSave else labelAdd"></ng-container>
+    </button>
+    <ng-template #labelSave>Save</ng-template>
+    <ng-template #labelAdd>Add</ng-template>
+  </div>
+</div>

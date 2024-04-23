@@ -1,0 +1,50 @@
+<div class="c-contract-scan-list">
+
+  <ng-container *ngIf="loadInProgress || noProgress">
+    <h21-table-loader [showNoResult]="noProgress"></h21-table-loader>
+  </ng-container>
+
+  <ng-container *ngIf="!loadInProgress && !noProgress">
+    <table mat-table
+           class="h21-table h21-mb-2"
+           [dataSource]="dataSource">
+
+      <ng-container matColumnDef="companyName">
+        <th mat-header-cell *matHeaderCellDef>Name company</th>
+        <td mat-cell *matCellDef="let element"> {{ element.companyProfileShortName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="regNumber">
+        <th mat-header-cell *matHeaderCellDef width="20%">Registration number</th>
+        <td mat-cell *matCellDef="let element"> {{ element.companyProfileRegistrationNumber || '-' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="jobTitle">
+        <th mat-header-cell *matHeaderCellDef width="20%">Job title</th>
+        <td mat-cell *matCellDef="let element"> {{ element.jobTitle || '-' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="roleNames">
+        <th mat-header-cell *matHeaderCellDef width="20%">Role</th>
+        <td mat-cell *matCellDef="let element"> {{ element.roleNames }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef width="4%">&nbsp;</th>
+        <td mat-cell *matCellDef="let element" class="__text-right __nowrap">
+          <button mat-icon-button
+                  matTooltip="Edit"
+                  class="button-hover-warn"
+                  [disabled]="!editable"
+                  (click)="showRoleDialog(element.id, element.companyProfileId)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </ng-container>
+
+</div>

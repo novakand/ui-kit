@@ -1,0 +1,75 @@
+<div class="c-h21-account-select mat-typography"
+     [@toggleVisibility]="animationState"
+     (@toggleVisibility.start)="onAnimationStart($event)"
+     (@toggleVisibility.done)="onAnimationDone($event)">
+
+  <button mat-icon-button class="c-h21-account-select_close-button __size-l" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <h3 class="subheading-2 __text-weight-light __text-color-secondary mb-4">Payment</h3>
+
+  <div class="row">
+    <div class="col-4 c-h21-account-select_row-header">Account</div>
+    <div class="col-8">
+      <mat-form-field class="__w-100">
+        <mat-select #accountsList
+                    [value]="selectedAccount.id"
+                    (selectionChange)="changeSelectionAccount(accountsList.value);">
+          <mat-option *ngFor="let item of accounts;trackBy: trackByFn" [value]="item.id">{{ item.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4 c-h21-account-select_row-header">Account name</div>
+    <div class="col-8">
+      <mat-form-field class="__w-100">
+        <input matInput [value]="selectedAccount.name">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4 c-h21-account-select_row-header">Account number</div>
+    <div class="col-8">
+      <mat-form-field class="__w-100">
+        <input matInput [value]="selectedAccount.number">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4 c-h21-account-select_row-header">Expire date</div>
+    <div class="col-4">
+      <mat-form-field class="__w-100">
+        <mat-select [value]="selectedAccount.expireDate.month">
+          <mat-option value="02 February">02 February</mat-option>
+          <mat-option value="03 March">03 March</mat-option>
+          <mat-option value="04 April">04 April</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <mat-form-field class="__w-100">
+        <mat-select [value]="selectedAccount.expireDate.year">
+          <mat-option value="2020">2020</mat-option>
+          <mat-option value="2021">2021</mat-option>
+          <mat-option value="2022">2022</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row" *ngFor="let item of selectedAccount.dbi">
+    <div class="col-4 c-h21-account-select_row-header">{{ item.name }}</div>
+    <div class="col-8">
+      <mat-form-field class="__w-100">
+        <input matInput [value]="item.value">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="__text-right mt-3">
+    <button mat-raised-button color="primary" (click)="returnDialog()">Execute</button>
+  </div>
+</div>

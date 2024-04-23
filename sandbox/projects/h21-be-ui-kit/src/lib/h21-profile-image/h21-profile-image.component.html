@@ -1,0 +1,39 @@
+<div class="c-h21-profile-image"
+	 [class.c-h21-profile-image__size-small]="size == 'small'"
+	 [class.c-h21-profile-image__size-medium]="size == 'medium'"
+	 [class.c-h21-profile-image__size-large]="size == 'large'"
+     [class.c-h21-profile-image__size-elastic]="size == 'elastic'"
+	 [class.c-h21-profile-image__with-border]="withBorder">
+
+	<button mat-icon-button *ngIf="!readonly && hasImage()"
+			matTooltip="Remove"
+			class="c-h21-profile-image_delete"
+			(click)="removeImage()">
+		<mat-icon>clear</mat-icon>
+	</button>
+
+	<div class="c-h21-profile-image_wrapper">
+		<button *ngIf="!inProgress && showUploadButton()"
+				class="c-h21-profile-image_upload-button"
+				(click)="fileInput.click()">
+			<span>Add photo</span>
+		</button>
+
+		<img *ngIf="!inProgress && showPicture()"
+			 class="c-h21-profile-image_picture"
+			 [src]="src | safeResourceUrl"
+			 alt="" />
+
+		<span class="c-h21-profile-image_alt-text" *ngIf="!inProgress && showLabel()">{{ nameIcon }}</span>
+
+		<mat-progress-spinner
+			*ngIf="inProgress"
+			class="c-h21-profile-image_preloader"
+			color="primary"
+			mode="indeterminate"
+			[strokeWidth]="progressStrokeWidth"
+			[diameter]="progressDiameter"></mat-progress-spinner>
+
+		<input #fileInput type="file" name="pic" accept="image/*" style="display: none;" (change)="fileChanged($event)"/>
+	</div>
+</div>

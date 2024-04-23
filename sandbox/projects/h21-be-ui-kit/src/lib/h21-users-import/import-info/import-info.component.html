@@ -1,0 +1,66 @@
+<ng-container>
+  <div class="c-import-processing page_content-wrapper">
+    <div class="c-import-processing_toolbar">
+      <div class="c-import-processing_toolbar-item">
+        <ng-container [ngTemplateOutlet]="statisticItem"
+                      [ngTemplateOutletContext]="{ name: 'Total', value: uploadResponse.total }"
+        ></ng-container>
+        <ng-container [ngTemplateOutlet]="statisticItem"
+                      [ngTemplateOutletContext]="{ name: 'Error', value: uploadResponse.error }"
+        ></ng-container>
+        <ng-container [ngTemplateOutlet]="statisticItem"
+                      [ngTemplateOutletContext]="{ name: 'Success', value: uploadResponse.success }"
+        ></ng-container>
+      </div>
+
+      <div class="w-spacer"></div>
+
+      <button mat-flat-button color="primary" (click)="startImport()" [disabled]="!uploadResponse.success || importStarted">
+        {{ buttonName }} ({{ uploadResponse.success }})
+      </button>
+    </div>
+
+    <div *ngIf="uploadResponse.error" class="c-import-processing_toolbar c-import-processing_toolbar__error">
+      <div class="c-import-processing_error-message">
+        <b>Error:</b>
+        <p>{{ uploadResponse.message }}</p>
+      </div>
+      <div class="w-spacer"></div>
+      <div *ngIf="showDownloadFileButton()" class="c-import-processing_toolbar-item">
+        <button mat-flat-button color="warn" (click)="downloadErrors()">
+          Download file with error messages
+        </button>
+      </div>
+    </div>
+
+    <mat-table [dataSource]="uploadResponse.records" class="h21-table h21-import-table">
+      <ng-container [matColumnDef]="column.name" *ngFor="let column of displayedCols; trackBy: trackByFn">
+        <mat-header-cell
+          *matHeaderCellDef
+          [class.h21-table_missing-column]="isMissingCol(column)"
+          [class.h21-table_unnecessary-column]="isUnnecessaryCol(column)"
+          [matTooltip]="getTooltip(column)"
+        >{{ column.title }}</mat-header-cell>
+        <mat-cell
+          *matCellDef="let element"
+          [class.h21-table_missing-column]="isMissingCol(column)"
+          [class.h21-table_unnecessary-column]="isUnnecessaryCol(column)"
+          [matTooltip]="getTooltip(column)"
+        >{{ element[column.name] }}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+      <mat-row tabindex="0" *matRowDef="let row; columns: columns"></mat-row>
+    </mat-table>
+  </div>
+
+  <ng-template #statisticItem let-name="name" let-value="value">
+    <span class="c-import-processing_statistics-item">
+      <b>{{ name }}:</b> {{ value }}
+    </span>
+  </ng-template>
+
+</ng-container>
+
+
+

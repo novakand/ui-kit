@@ -1,0 +1,17 @@
+$h21-fg-ashen-blue: #4f5a7c;
+$h21-gray-57: #757575;
+.h21-table-agents {
+    table {
+        width: 100%;
+    }
+    .action-cell {
+        padding-right: 10px !important;
+        text-align: right;
+    }
+}
+.table-heading {
+    font-size: 30px;
+    margin: 1em 0;
+    font-weight: 300;
+    font-family: 'Roboto', serif;
+}

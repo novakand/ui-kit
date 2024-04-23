@@ -1,0 +1,24 @@
+<button mat-button
+        *ngIf="isAdmin"
+        color="primary"
+        [disabled]="mode === viewMode.View"
+        class="button-with-icon h21-mb-1"
+        (click)="openCardForm(viewMode.Add)">
+  <mat-icon color="primary">add_circle</mat-icon>
+  <span>Create department</span>
+</button>
+
+<h21-table [showLoader]="inProgress"
+           [showNoData]="showNoData"
+           [noDataText]="'Nothing found'"
+           [dataSource]="dataSource"
+           [pageSize]="pageSize"
+           [columns]="columns$ | async"
+           [order]="order"
+           [withCustomContent]="false"
+           [totalCount]="totalCount"
+           (sortEmit)="sort($event)"
+           [mode]="mode"
+           (changePageEmit)="pageChange($event)"
+           (actionEmit)="onRowAction($event)">
+</h21-table>

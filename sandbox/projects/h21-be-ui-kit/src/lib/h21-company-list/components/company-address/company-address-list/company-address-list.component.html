@@ -1,0 +1,83 @@
+<div class="c-profile-address-list">
+
+  <button mat-button
+          *ngIf="isAdmin && id"
+          color="primary"
+          class="button-with-icon h21-mb-1"
+          (click)="showAddressDialog()"
+          [disabled]="readonly">
+    <mat-icon color="primary">add_circle</mat-icon>
+    <span>Add address</span>
+  </button>
+
+  <ng-container *ngIf="inProgress || noProgress">
+    <h21-table-loader [showNoResult]="noProgress"></h21-table-loader>
+  </ng-container>
+
+  <ng-container *ngIf="!inProgress && !noProgress">
+    <div class="__overflow-auto">
+      <table mat-table
+             class="h21-table"
+             [dataSource]="dataSource">
+
+        <!-- Address type -->
+        <ng-container matColumnDef="typeId">
+          <th mat-header-cell *matHeaderCellDef>Address type</th>
+          <td mat-cell *matCellDef="let el"> {{ el.typeName }} </td>
+        </ng-container>
+
+        <!-- ZIP code -->
+        <ng-container matColumnDef="zip">
+          <th mat-header-cell *matHeaderCellDef>ZIP code</th>
+          <td mat-cell *matCellDef="let el"> {{ el.zip }} </td>
+        </ng-container>
+
+        <!-- Country -->
+        <ng-container matColumnDef="countryName">
+          <th mat-header-cell *matHeaderCellDef>Country</th>
+          <td mat-cell *matCellDef="let el"> {{ el.countryName }} </td>
+        </ng-container>
+
+        <!-- City -->
+        <ng-container matColumnDef="cityName">
+          <th mat-header-cell *matHeaderCellDef>City</th>
+          <td mat-cell *matCellDef="let el"> {{ el.cityName }} </td>
+        </ng-container>
+
+        <!-- Address -->
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef>Address</th>
+          <td mat-cell *matCellDef="let el"> {{ el.address }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef width="4%">&nbsp;</th>
+          <td mat-cell *matCellDef="let element" class="__text-right __nowrap">
+            <button mat-icon-button
+                    matTooltip="View"
+                    (click)="showAddressDialog(element, true)">
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button mat-icon-button
+                    matTooltip="Edit"
+                    [disabled]="!isAdmin || readonly"
+                    (click)="showAddressDialog(element, false)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button
+                    matTooltip="Delete"
+                    class="button-hover-warn"
+                    [disabled]="!isAdmin || readonly"
+                    (click)="remove(element)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </ng-container>
+
+</div>

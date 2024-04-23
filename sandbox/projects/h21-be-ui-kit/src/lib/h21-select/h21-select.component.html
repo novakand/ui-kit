@@ -1,0 +1,13 @@
+<mat-form-field color="{{ color }}" [ngClass]="fieldClass">
+  <mat-select [placeholder]="placeholder"
+              panelClass="{{ panelClass }}"
+              [(value)]="value"
+              [required]="!!valRequired"
+              [formControl]="inputControl"
+              (selectionChange)="optionSelected($event)">
+    <mat-option *ngFor="let option of dataSource; trackBy: trackByFn" [value]="getValue(option)">
+      {{ getLabel(option) }}
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="inputControl.hasError('required')">{{ valRequired }}</mat-error>
+</mat-form-field>

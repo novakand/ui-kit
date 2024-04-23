@@ -1,0 +1,86 @@
+<nav class="sidebar_nav">
+  <button mat-button (click)="activeTab='tab-search'" [class.is-active]="activeTab == 'tab-search'"
+          [disabled]="!activeTab">
+    <mat-icon>search</mat-icon>
+    <span>Search</span>
+  </button>
+  <button mat-button (click)="activeTab='tab-filter'" [class.is-active]="activeTab == 'tab-filter'"
+          [disabled]="!activeTab">
+    <mat-icon>filter_list</mat-icon>
+    <span>Filter</span>
+  </button>
+  <button mat-button (click)="activeTab='tab-history'" [class.is-active]="activeTab == 'tab-history'"
+          [disabled]="!activeTab">
+    <mat-icon>history</mat-icon>
+    <span>History</span>
+  </button>
+</nav>
+
+<div class="c-h21-sidebar_tabs-box" [class.is-active]="visibility">
+  <div class="c-h21-sidebar_tab" [class.is-active]="activeTab == 'tab-search'">
+    <!--<router-outlet name="searchPanel"></router-outlet>-->
+    <!--<h21-air-search-panel #searchPanel></h21-air-search-panel>-->
+  </div>
+  <div class="c-h21-sidebar_tab" [class.is-active]="activeTab == 'tab-filter'">
+    <!--<router-outlet name="filterPanel"></router-outlet>-->
+    <!--<h21-air-filter-panel [searchOptions]="searchPanel.searchOptions"></h21-air-filter-panel>-->
+  </div>
+  <div class="c-h21-sidebar_tab" [class.is-active]="activeTab == 'tab-history'">
+    <!--<router-outlet name="historyPanel"></router-outlet>-->
+    <!--<h21-history-panel></h21-history-panel>-->
+  </div>
+</div>
+
+<div class="c-h21-sidebar_search-result-box" [class.is-active]="searchResultVisibility"
+     [class.is-deployed]="!visibility && searchResultVisibility">
+  <!--<router-outlet name="searchResult"></router-outlet>-->
+  <!--<mat-progress-bar *ngIf="actionInProcess" [@toggleVisibility] mode="indeterminate"></mat-progress-bar>-->
+  <!--<div class="c-h21-sidebar_search-result-box_inner">-->
+  <!--<div *ngIf="actionInProcess" [@toggleVisibility] class="search-result-fake-view" >-->
+  <!--<div class="fake_line">-->
+  <!--<span class="fake_element fake_element__w-m"></span>-->
+  <!--</div>-->
+  <!--<div class="fake_line">-->
+  <!--<span class="fake_element fake_element__w-s"></span>-->
+  <!--</div>-->
+  <!--<div class="fake_line"></div>-->
+  <!--<div class="row">-->
+  <!--<div class="col-sm-3">-->
+  <!--<span class="fake_element fake_element__w-xl"></span>-->
+  <!--</div>-->
+  <!--<div class="col-sm-3">-->
+  <!--<span class="fake_element fake_element__w-xl"></span>-->
+  <!--</div>-->
+  <!--<div class="col-sm-3">-->
+  <!--<span class="fake_element fake_element__w-xl"></span>-->
+  <!--</div>-->
+  <!--<div class="col-sm-3"></div>-->
+  <!--</div>-->
+  <!--<div class="fake_box" *ngFor="let i of [1,2]">-->
+  <!--<div class="row">-->
+  <!--<div class="col-sm-2" *ngFor="let j of [1,2,3,4,5,6]">-->
+  <!--<span class="fake_element"></span>-->
+  <!--<span class="fake_element"></span>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--<div class="fake_divider fake_divider__with-indent"></div>-->
+  <!--<div class="row">-->
+  <!--<div class="col-sm-2" *ngFor="let j of [1,2,3,4,5,6]">-->
+  <!--<span class="fake_element"></span>-->
+  <!--<span class="fake_element"></span>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--<div class="fake_divider fake_divider__with-indent"></div>-->
+  <!--<div class="row">-->
+  <!--<div class="col-sm-2">-->
+  <!--<span class="fake_element fake_element__w-m"></span>-->
+  <!--</div>-->
+  <!--<div class="col-sm-10"></div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--<div *ngIf="resultVisibility" [@toggleVisibility]>-->
+  <!--<h21-air-search-result></h21-air-search-result>-->
+  <!--</div>-->
+  <!--</div>-->
+</div>

@@ -1,0 +1,14 @@
+<div class="h21-alert-dialog"
+     [class.h21-alert-dialog__warning]="alertType == alertTypeType.Warning"
+     [class.h21-alert-dialog__success]="alertType == alertTypeType.Success">
+
+  <mat-dialog-content>
+    <p [innerHtml]="content"></p>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-flat-button
+            [color]="color"
+            (click)="close()">{{ closeText }}</button>
+  </mat-dialog-actions>
+</div>

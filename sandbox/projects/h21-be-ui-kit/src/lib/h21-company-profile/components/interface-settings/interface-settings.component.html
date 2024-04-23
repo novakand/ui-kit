@@ -1,0 +1,74 @@
+<div class="c-interface-settings">
+  <mat-accordion class="c-interface-settings_accordion" [multi]="true">
+
+    <!--  Global settings -->
+    <mat-expansion-panel [expanded]="false" [disabled]="pending">
+      <mat-expansion-panel-header [collapsedHeight]="headerHeight" [expandedHeight]="headerHeight">
+        <mat-panel-title>Global settings</mat-panel-title>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+        <p class="__fs-s __mb-0">Default page after authorisation</p>
+        <div class="row __mb-2">
+          <div class="col-4">
+            <mat-form-field color="primary" class="__w-100">
+              <mat-select [disabled]="mode === viewMode.View" [formControl]="defaultPageCtrl" (selectionChange)="onDefaultPageChanged($event.value)">
+                <mat-option *ngFor="let item of defaultPages | async; trackBy: trackByFn" [value]="item">
+                  {{ item.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+       <div class="row">
+          <div class="col-4 __mb-1" *ngFor="let item of globalSettingsGroup; trackBy: trackByFn;">
+            <ng-container [ngTemplateOutlet]="toggle"
+                          [ngTemplateOutletContext]="{ id: item.id, disabled: false, checked: item.isShow, name: item.serviceName, method: 'UpdateServiceShow' }"></ng-container>
+          </div>
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+
+    <!-- Search & Book -->
+    <mat-expansion-panel [expanded]="false" [disabled]="pending">
+      <mat-expansion-panel-header [collapsedHeight]="headerHeight" [expandedHeight]="headerHeight">
+        <mat-panel-title>Search & Book</mat-panel-title>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+        <p class="__fs-s __color-accent">Select the sections that will be show in the Search&Book service</p>
+        <div class="row">
+          <div class="col-4 __mb-1" *ngFor="let item of searchAndBookSettingsGroup; trackBy: trackByFn;">
+            <ng-container [ngTemplateOutlet]="toggle"
+                          [ngTemplateOutletContext]="{ id: item.id, disabled: item.settingIsReadonly, checked: item.isShow, name: item.settingName }"></ng-container>
+          </div>
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+
+    <!--  Dashboard -->
+    <mat-expansion-panel [expanded]="false" [disabled]="pending">
+      <mat-expansion-panel-header [collapsedHeight]="headerHeight" [expandedHeight]="headerHeight">
+        <mat-panel-title>Dashboard</mat-panel-title>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+        <p class="__fs-s __color-accent">Select the sections that will be show in the Dashboard service</p>
+        <div class="row">
+          <div class="col-4 __mb-1" *ngFor="let item of dashboardSettingsGroup; trackBy: trackByFn;">
+            <ng-container [ngTemplateOutlet]="toggle"
+                          [ngTemplateOutletContext]="{ id: item.id, disabled: item.settingIsReadonly, checked: item.isShow, name: item.settingName }"></ng-container>
+          </div>
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+<ng-template #toggle let-id="id" let-disabled="disabled" let-checked="checked" let-name="name" let-method="method">
+  <mat-slide-toggle class="c-interface-settings_toggle"
+                    color="accent"
+                    labelPosition="before"
+                    [disabled]="disabled || mode === viewMode.View"
+                    [checked]="checked"
+                    (change)="onToggleChange(id, $event.checked, method)">
+    {{ name }}
+  </mat-slide-toggle>
+</ng-template>

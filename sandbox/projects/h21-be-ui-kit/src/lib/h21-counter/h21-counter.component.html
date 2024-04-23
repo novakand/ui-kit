@@ -1,0 +1,19 @@
+<div class="c-h21-counter">
+  <div class="c-h21-counter-flex">
+    <button type="button"
+            mat-icon-button
+            class="c-h21-counter_button"
+            [disabled]="value == min || disabled"
+            (click)="reduce()">
+      <mat-icon>remove</mat-icon>
+    </button>
+    <span class="c-h21-counter_value-label">{{ value }}</span>
+    <button type="button"
+            mat-icon-button
+            class="c-h21-counter_button"
+            [disabled]="value == max || disabled"
+            (click)="increase()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<h3>Direct billing</h3>
+
+<p>Send billing details to user email address directly:</p>
+
+<div class="row large-gutters">
+  <div class="col-12 col-md-6 col-xxl-4" *ngFor="let item of invoicing$ | async; trackBy: trackByFn">
+    <mat-slide-toggle
+      class="h21-profile-card_slide-toggle"
+      color="accent"
+      [class.__is-readonly]="mode === viewMode.View"
+      [labelPosition]="'before'"
+      [checked]="companyData[item.field]"
+      [(ngModel)]="companyData[item.field]"
+      [disabled]="mode === viewMode.View"
+    >{{ item.label }}
+    </mat-slide-toggle>
+  </div>
+</div>

@@ -1,0 +1,88 @@
+//----------------------------------------------------------------------------------------------------------------------
+// Company profile - Interface settings component style
+
+.c-interface-settings { }
+
+::ng-deep .c-interface-settings_accordion.mat-accordion .mat-expansion-panel {
+  background: var(--background-hex);
+  color: var(--text-hex);
+  border-radius: 0 !important;
+
+  &:not([class*="mat-elevation-z"]) {
+    box-shadow: none;
+  }
+
+  .mat-expansion-panel-header {
+    padding: 0 16px;
+    position: relative;
+    border-bottom: 1px solid rgba(var(--foregraund-rgb), 0.14);
+    transition: background-color 120ms ease-in-out;
+
+    &[aria-disabled="true"] {
+      opacity: 0.5;
+    }
+
+    .mat-expansion-panel-header-title {
+      color: var(--textAccent-hex);
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    .mat-expansion-indicator::after {
+      color: var(--textAccent-hex);
+    }
+  }
+
+  &:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled="true"]):hover {
+    background-color: rgba(var(--foregraund-rgb), 0.04);
+  }
+
+  .mat-expansion-panel-body {
+    padding: 16px;
+    font-size: 16px;
+    background: var(--background-hex);
+    box-sizing: border-box;
+  }
+
+  &.mat-expanded {
+    box-shadow: 0 2px 8px rgba(var(--textAccent-rgb), 0.2);
+
+    .mat-expansion-panel-header {
+      background-color: rgba(var(--foregraund-rgb), 0.15);
+      border-bottom: none;
+    }
+
+    .mat-expansion-panel-content {
+      padding: 0;
+      position: relative;
+    }
+  }
+}
+
+::ng-deep .c-interface-settings_toggle.mat-slide-toggle {
+  height: 52px;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  line-height: 52px;
+  padding: 0 16px;
+  border-radius: 4px;
+  background-color: transparent;
+  color: rgba(var(--foregraund-rgb), 0.54);
+
+  &.mat-checked {
+    color: var(--text-hex);
+  }
+
+  &.mat-disabled {
+    opacity: 1;
+    background-color: rgba(var(--foregraund-rgb), 0.04);
+  }
+
+  .mat-slide-toggle-content {
+    flex: 1 1 auto;
+    font-weight: 500;
+    font-size: 13px;
+  }
+
+}

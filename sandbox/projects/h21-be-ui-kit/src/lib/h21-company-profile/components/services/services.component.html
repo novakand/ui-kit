@@ -1,0 +1,81 @@
+<div class="c-contract-services">
+  <div class="row large-gutters">
+    <div class="col-12 col-md-6 col-xxl-4" *ngFor="let type of types$ | async; trackBy: trackByFn">
+      <mat-slide-toggle class="h21-profile-card_slide-toggle"
+                        [class.__is-readonly]="mode === viewMode.View || isReadOnlyServices"
+                        color="accent"
+                        [labelPosition]="'before'"
+                        [checked]="type.isDefault"
+                        [disabled]="mode === viewMode.View || isReadOnlyServices"
+                        (change)="change($event, type)">
+        {{ type.name }}
+      </mat-slide-toggle>
+    </div>
+  </div>
+
+
+  <ng-container *ngIf="showAdditionalSettings">
+    <h4 class="__mt-3 __mb-0">Other settings</h4>
+    <div class="row large-gutters">
+      <div class="col-12 col-md-6 col-xxl-4">
+        <form [formGroup]="form">
+
+            <!-- Post payment -->
+            <div>
+              <mat-slide-toggle class="h21-profile-card_slide-toggle"
+                                [class.__is-readonly]="mode === viewMode.View"
+                                color="accent"
+                                [labelPosition]="'before'"
+                                formControlName="isPostPayment">
+                Post payment
+              </mat-slide-toggle>
+            </div>
+
+            <!-- Book non-refundable -->
+            <div>
+              <mat-slide-toggle class="h21-profile-card_slide-toggle"
+                                [class.__is-readonly]="mode === viewMode.View"
+                                color="accent"
+                                [labelPosition]="'before'"
+                                formControlName="isBookNonRefundable">
+                Book non-refundable
+              </mat-slide-toggle>
+            </div>
+
+            <!-- Booking fee radio -->
+            <div class="__mt-2 __mb-1 __ml-1 __fw-light">
+              <span class="__va-m __mr-2" [class.__is-readonly]="mode === viewMode.View">
+                Booking fee:
+              </span>
+              <mat-radio-group formControlName="isBookingFeePercent"
+                               [class.__is-readonly]="mode === viewMode.View"
+                               (change)="onBookingFeeTypeChange($event.value)">
+                <mat-radio-button color="primary" class="__mr-2" [value]="false">Amount, EUR</mat-radio-button>
+                <mat-radio-button color="primary" [value]="true">Percent</mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+            <!-- Booking fee text -->
+            <div>
+              <mat-form-field color="primary" class="__w-100" [class.__is-readonly]="mode === viewMode.View">
+                <input type="text" autocomplete="off" placeholder="Booking fee"
+                       matInput
+                       mask="separator.2"
+                       thousandSeparator=" "
+                       formControlName="bookingFee"/>
+                <mat-error *ngIf="form.get('bookingFee').hasError('required')">
+                  You must enter a value
+                </mat-error>
+                <mat-error *ngIf="form.get('bookingFee').hasError('pattern')
+                              || form.get('bookingFee').hasError('min')
+                              || form.get('bookingFee').hasError('max')">
+                  Incorrect value
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+        </form>
+      </div>
+    </div>
+  </ng-container>
+</div>

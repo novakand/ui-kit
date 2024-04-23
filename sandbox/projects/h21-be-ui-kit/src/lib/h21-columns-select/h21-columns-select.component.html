@@ -1,0 +1,34 @@
+<div class="h21-dialog-panel"
+     #container
+     tabindex="0"
+     cdkTrapFocus
+     [@toggleSlide]="animationState"
+     (@toggleSlide.start)="onAnimationStart($event)"
+     (@toggleSlide.done)="onAnimationDone($event)">
+
+  <button mat-icon-button (click)="close()" class="h21-dialog-panel_close">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <div class="h21-dialog-panel_title">
+    <h2>Displayed columns</h2>
+  </div>
+
+  <div class="h21-dialog-panel_content">
+    <ng-container *ngFor="let item of columns; trackBy: trackByFn">
+      <div *ngIf="!item.isSystem" class="h21-mb-3">
+        <mat-checkbox color="primary"
+                      [value]="item.name"
+                      [(ngModel)]="item.displayed"
+                      [disabled]="item.required">
+          {{ item.caption }}
+        </mat-checkbox>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="h21-dialog-panel_actions">
+    <button mat-button color="primary" (click)="setDefault()">Set default</button>
+    <button mat-raised-button color="primary" (click)="apply()">Apply</button>
+  </div>
+</div>

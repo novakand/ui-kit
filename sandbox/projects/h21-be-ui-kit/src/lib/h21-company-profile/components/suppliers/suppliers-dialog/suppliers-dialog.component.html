@@ -1,0 +1,90 @@
+<form class="c-suppliers-dialog h21-dialog-panel"
+      tabindex="0"
+      [formGroup]="form"
+      #container
+      cdkTrapFocus
+      [@toggleSlide]="animationState"
+      (@toggleSlide.start)="onAnimationStart($event)"
+      (@toggleSlide.done)="onAnimationDone($event)"
+      (submit)="onSubmit()">
+
+  <mat-progress-bar *ngIf="pending"
+                    [@toggleVisibility]
+                    mode="indeterminate"
+                    class="h21-dialog-panel_progress">
+  </mat-progress-bar>
+
+  <button mat-icon-button (click)="close()" class="h21-dialog-panel_close __size-l">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <div class="h21-dialog-panel_title">
+    <h2>Change brand suppliers</h2>
+  </div>
+
+  <div class="h21-dialog-panel_content">
+    <div class="row __mb-1">
+      <div class="col-6">
+        <mat-form-field class="__w-100">
+          <mat-label>New name</mat-label>
+          <input type="text" matInput autocomplete="off" formControlName="name" />
+          <mat-error *ngIf="form.controls['name'].hasError('required')">You must enter a value</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field class="__w-100">
+          <mat-label>Abbreviation</mat-label>
+          <input type="text" matInput autocomplete="off" formControlName="abbreviation" />
+          <mat-error *ngIf="form.controls['abbreviation'].hasError('required')">You must enter a value</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row __mb-2">
+      <div class="col-6">
+        <mat-form-field class="__w-100 c-suppliers-dialog_input-file"
+                        [class.__cursor-pointer]="!form.controls['logoName'].value"
+                        (click)="!form.controls['logoName'].value && fileInput.click();">
+          <mat-label>Add logo</mat-label>
+          <input type="text" matInput [readonly]="true" formControlName="logoName" />
+          <button type="button" mat-icon-button matSuffix
+                  *ngIf="form.controls['logoName'].value"
+                  (click)="removeLogo($event)">
+            <mat-icon>close</mat-icon>
+          </button>
+          <button type="button" mat-icon-button matSuffix
+                  *ngIf="!form.controls['logoName'].value">
+            <mat-icon>add_photo_alternate</mat-icon>
+          </button>
+          <mat-error *ngIf="form.controls['logoName'].hasError('maxFileSizeError')">The file size should not be more than 200KB</mat-error>
+          <mat-error *ngIf="form.controls['logoName'].hasError('imageFormatError')">Valid formats are PNG and JPG</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-6 __align-self-center">
+        <img [src]="form.controls['logo'].value?.fileUrl | safeResourceUrl"
+             *ngIf="form.controls['logo'].value"
+             class="c-suppliers-dialog_logo-picture" alt="" />
+      </div>
+    </div>
+
+    <ng-container formArrayName="companyProfileProviders">
+      <ng-container *ngFor="let item of form.controls['companyProfileProviders']['controls']; trackBy: trackByFn; let i = index;">
+        <ng-container [formGroupName]="i">
+          <mat-checkbox formControlName="isCustomize"
+                        class="__fs-xs __d-b __mb-2"
+                        color="primary">
+            {{ item.get('providerName').value }}
+          </mat-checkbox>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </div>
+
+  <div class="h21-dialog-panel_actions">
+    <button mat-button type="button" color="primary" (click)="reset()">Reset</button>
+    <button mat-button type="button" color="primary" (click)="cancel()">Cancel</button>
+    <button mat-raised-button type="submit" color="primary" [disabled]="pending || form.invalid">Save</button>
+  </div>
+
+  <input #fileInput type="file" accept="image/jpeg,image/png" style="display: none;" (change)="uploadLogo($event);" />
+</form>

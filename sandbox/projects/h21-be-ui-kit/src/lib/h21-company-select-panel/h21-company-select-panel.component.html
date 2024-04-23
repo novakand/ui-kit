@@ -1,0 +1,60 @@
+<div class="h21-company-select-panel h21-dialog-panel"
+     #container
+     tabindex="0"
+     cdkTrapFocus
+     [@toggleSlide]="animationState"
+     (@toggleSlide.start)="onAnimation($event)"
+     (@toggleSlide.done)="onAnimation($event)">
+
+  <button mat-icon-button
+          class="h21-dialog-panel_close __text-color-white __size-l"
+          (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <div class="h21-dialog-panel_header h21-dialog-panel_header__primary">
+    <h2 class="__text-weight-light __text-color-white h21-mb-1">Select company</h2>
+  </div>
+
+  <div class="h21-dialog-panel_content">
+
+    <div class="h21-dialog-panel_full-width" *ngIf="inProgress">
+      <mat-progress-bar color="primary"
+                        mode="indeterminate"
+                        class="h21-dialog-panel_progress"></mat-progress-bar>
+      <h21-card-list-loader></h21-card-list-loader>
+    </div>
+
+    <div *ngIf="!inProgress">
+      <mat-list class="h21-card-list" *ngIf="!!profiles && profiles.length > 0">
+        <mat-list-item *ngFor="let profile of profiles; trackBy: trackByFn">
+          <mat-card class="h21-card-list_card h21-card-list_card__clickable"
+                    [tabindex]="isSelected(profile)? -1 : 0"
+                    [class.__is-selected]="isSelected(profile)"
+                    (keydown.enter)="select(profile)"
+                    (click)="select(profile)">
+            <mat-card-header>
+              <h21-profile-image mat-card-avatar
+                                 [firstName]="profile.shortName"
+                                 [fileHash]="profile.logoFileHash"
+                                 size="medium"
+              ></h21-profile-image>
+              <mat-card-title>{{ profile.shortName }}</mat-card-title>
+              <mat-card-subtitle>{{ profile.registrationNumber }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-chip-list class="h21-chip-list" *ngIf="profile.typeId">
+              <mat-chip class="h21-chip"
+                        [ngClass]="getCompanyTypeCssClassName(profile.typeId)"
+                        [disableRipple]="true"
+                        [selectable]="false"
+                        [removable]="false">
+                {{ vocabulary.nameById(vocabulary.companyType, profile.typeId) }}
+              </mat-chip>
+            </mat-chip-list>
+          </mat-card>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+
+</div>

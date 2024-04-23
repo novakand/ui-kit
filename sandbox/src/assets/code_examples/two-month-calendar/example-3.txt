@@ -1,0 +1,32 @@
+import {Component} from "@angular/core";
+import {DateAdapter} from "@angular/material";
+import {H21TwoMonthCalendarComponent} from "/h21-two-month-calendar.component";
+
+@Component ({
+    selector: 'example',
+    templateUrl: './tmc-example.component.html',
+    styles: ['./tmc-example.component.css']
+})
+
+export class TmcExampleComponent {
+
+    startDate: Date;
+    finishDate: Date;
+    startText: string;
+    finishText: string;
+
+    constructor(private _dateAdapter: DateAdapter<Date>) {
+        this.startText = "Start";
+        this.finishText = "Finish";
+        this.startDate = this._dateAdapter.addCalendarDays(new Date(), 1);
+        this.finishDate = this._dateAdapter.addCalendarMonths(this.startDate, 1);
+    }
+
+    updateStartDate($event) {
+        this.startDate = $event;
+    }
+
+    updateFinishDate($event) {
+        this.finishDate = $event;
+    }
+}

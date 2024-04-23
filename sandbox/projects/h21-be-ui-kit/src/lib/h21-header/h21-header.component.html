@@ -1,0 +1,71 @@
+<div class="c-h21-header">
+  <mat-toolbar class="c-h21-header_toolbar">
+    <!-- Logothype -->
+    <a class="c-h21-header_logo" href="./" *ngIf="logotypeUrl">
+      <img [src]="logotypeUrl | safeResourceUrl" [alt]="title"/>
+    </a>
+
+    <!-- Title label -->
+    <a mat-button class="c-h21-header_title" href="./" *ngIf="title">{{ title }}</a>
+
+    <!-- Spacer -->
+    <div class="w-spacer">&nbsp;</div>
+
+    <!-- Controls -->
+    <nav>
+      <button mat-icon-button
+              (click)="redirectToDashboard()"
+              *ngIf="showDashboardLink">
+        <mat-icon>apps</mat-icon>
+      </button>
+      <button mat-icon-button
+              matBadgeColor="warn"
+              [matBadge]="notificationCount"
+              [matBadgeHidden]="notificationCount == 0"
+              (click)="openNotificationsDialog()"
+              *ngIf="showNotifications">
+        <mat-icon>notifications</mat-icon>
+      </button>
+      <button mat-icon-button [matMenuTriggerFor]="servicesMenu" *ngIf="showServicesMenuBtn">
+        <mat-icon>apps</mat-icon>
+      </button>
+      <ng-container *ngIf="userName; then userActions else anotherActions"></ng-container>
+    </nav>
+  </mat-toolbar>
+</div>
+
+<ng-template #userActions>
+  <button mat-button (click)="openUserProfilePanel()" [disabled]="inProcess">
+    <mat-icon>person</mat-icon>
+    <span>{{ userName }}</span>
+  </button>
+</ng-template>
+
+<ng-template #anotherActions>
+  <button mat-button (click)="onLogout()" [disabled]="inProcess">
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Exit</span>
+  </button>
+</ng-template>
+
+<!-- Projects menu -->
+<mat-menu #servicesMenu="matMenu" yPosition="below" [overlapTrigger]="false" class="h21-header-services-menu">
+  <ng-template matMenuContent>
+    <button mat-menu-item>
+      <mat-icon>work</mat-icon>
+      <span>First project</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>watch_later</mat-icon>
+      <span>Second project</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>videocam</mat-icon>
+      <span>The third project</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>flag</mat-icon>
+      <span>Fourth, last project</span>
+    </button>
+  </ng-template>
+</mat-menu>

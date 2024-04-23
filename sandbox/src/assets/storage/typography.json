@@ -1,0 +1,69 @@
+{
+  "modifiers": [
+	{
+	  "name": "__text-center",
+	  "character": "alignment",
+	  "exampleText": "center"
+	},
+	{
+	  "name": "__text-left",
+	  "character": "alignment",
+	  "exampleText": "left"
+	},
+	{
+	  "name": "__text-right",
+	  "character": "alignment",
+	  "exampleText": "right"
+	},
+	{
+	  "name": "__text-size-xs",
+	  "character": "size",
+	  "exampleText": "x small"
+	},
+	{
+	  "name": "__text-size-s",
+	  "character": "size",
+	  "exampleText": "small"
+	},
+	{
+	  "name": "__text-size-m",
+	  "character": "size",
+	  "exampleText": "medium"
+	},
+	{
+	  "name": "__text-size-l",
+	  "character": "size",
+	  "exampleText": "large"
+	},
+	{
+	  "name": "__text-size-xl",
+	  "character": "size",
+	  "exampleText": "x large"
+	},
+	{
+	  "name": "__text-size-xxl",
+	  "character": "size",
+	  "exampleText": "xx large"
+	},
+	{
+	  "name": "__text-color-primary",
+	  "character": "color",
+	  "exampleText": "primary"
+	},
+	{
+	  "name": "__text-color-secondary",
+	  "character": "color",
+	  "exampleText": "secondary"
+	},
+	{
+	  "name": "__text-color-tetriary",
+	  "character": "color",
+	  "exampleText": "tetriary"
+	},
+	{
+	  "name": "__text-color-gray",
+	  "character": "color",
+	  "exampleText": "gray"
+	}
+  ]
+}

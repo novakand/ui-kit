@@ -1,0 +1,15 @@
+<div class="h21-message-dialog">
+  <!-- Title -->
+  <h2 *ngIf="title != null" mat-dialog-title>{{ title }}</h2>
+
+  <!-- Content -->
+  <mat-dialog-content>
+    <mat-icon class="h21-message-dialog_icon-error">error</mat-icon>
+    <div [innerHtml]="content"></div>
+  </mat-dialog-content>
+
+  <!-- Actions -->
+  <mat-dialog-actions>
+    <button mat-flat-button color="primary" (click)="close()">Close</button>
+  </mat-dialog-actions>
+</div>

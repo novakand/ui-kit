@@ -1,0 +1,18 @@
+//----------------------------------------------------------------------------------------------------------------------
+// Suppliers dialog component style
+
+.c-suppliers-dialog {
+  width: 550px;
+}
+
+.c-suppliers-dialog_input-file {
+  .mat-icon {
+    color: var(--textAccent-hex);
+    opacity: 0.5;
+  }
+}
+
+.c-suppliers-dialog_logo-picture {
+  max-width: 80px;
+  max-height: 40px;
+}

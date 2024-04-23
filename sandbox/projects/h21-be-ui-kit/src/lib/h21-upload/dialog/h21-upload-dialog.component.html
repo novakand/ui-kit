@@ -1,0 +1,30 @@
+<input type="file" #file class="__display-none" (change)="onFilesAdded()" multiple/>
+<div mat-dialog-title>
+	<h2>Upload Files</h2>
+	<div class="w-spacer">&nbsp;</div>
+	<button mat-raised-button color="primary"
+			[disabled]="uploading || uploadSuccessful"
+			(click)="addFiles()">
+		Add Files
+	</button>
+</div>
+
+<mat-dialog-content>
+	<mat-list class="c-upload-dialog_files">
+		<mat-list-item *ngFor="let file of files; trackBy: trackByFn">
+			<mat-icon mat-list-icon>attach_file</mat-icon>
+			<span mat-line>{{ file.name }}</span>
+			<div class="w-spacer">&nbsp;</div>
+			<mat-icon color="accent">done</mat-icon>  <!-- todo: show when progress is successful -->
+			<mat-progress-bar *ngIf="dictionary" mode="determinate"
+							  [value]="dictionary[file.name].progress | async"></mat-progress-bar>
+		</mat-list-item>
+	</mat-list>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+	<button *ngIf="showCancelButton" mat-button color="primary" mat-dialog-close>Cancel</button>
+	<button mat-raised-button color="primary" [disabled]="!canBeClosed" (click)="closeDialog()">
+		{{ primaryButtonText }}
+	</button>
+</mat-dialog-actions>

@@ -1,0 +1,106 @@
+<div class="c-company-filter h21-dialog-panel"
+     #container
+     tabindex="0"
+     cdkTrapFocus
+     [@toggleSlide]="animationState"
+     (@toggleSlide.start)="onAnimationStart($event)"
+     (@toggleSlide.done)="onAnimationDone($event)">
+
+  <button mat-icon-button (click)="close()" class="h21-dialog-panel_close __size-l">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <div class="h21-dialog-panel_title">
+    <h2>
+      <ng-container *ngIf="params.id; then titleEdit else titleAdd"></ng-container>
+    </h2>
+  </div>
+  <ng-template #titleEdit>Company contact</ng-template>
+  <ng-template #titleAdd>Add contact</ng-template>
+
+  <div class="h21-dialog-panel_content">
+    <form [formGroup]="entityForm">
+      <!-- First Name -->
+      <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+        <input type="text"
+               autocomplete="off"
+               matInput
+               placeholder="First Name"
+               formControlName="firstName"
+               [readonly]="!editable" />
+        <mat-error *ngIf="entityForm.controls['firstName'].hasError('required')">
+          You must enter a value
+        </mat-error>
+        <mat-error *ngIf="entityForm.controls['firstName'].hasError('pattern')">
+          You must enter a value
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Last Name -->
+      <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+        <input type="text"
+               autocomplete="off"
+               matInput
+               placeholder="Last Name"
+               formControlName="lastName"
+               [readonly]="!editable" />
+        <mat-error *ngIf="entityForm.controls['lastName'].hasError('required')">
+          You must enter a value
+        </mat-error>
+        <mat-error *ngIf="entityForm.controls['lastName'].hasError('pattern')">
+          You must enter a value
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Email -->
+      <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+        <input type="email"
+               autocomplete="off"
+               matInput
+               placeholder="Email"
+               formControlName="email"
+               [readonly]="!editable"/>
+        <mat-error *ngIf="entityForm.controls['email'].hasError('pattern')">
+          Not a valid email
+        </mat-error>
+        <mat-error *ngIf="entityForm.controls['email'].hasError('required')">
+          You must enter a value
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Phone -->
+      <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+        <input type="tel"
+               autocomplete="off"
+               matInput
+               placeholder="Phone"
+               formControlName="phone"
+               [readonly]="!editable">
+        <mat-error *ngIf="entityForm.controls['phone'].hasError('required')">You must enter a
+          value
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Position -->
+      <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+        <input type="tel"
+               autocomplete="off"
+               matInput
+               placeholder="Job title"
+               formControlName="position"
+               [readonly]="!editable">
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div class="h21-dialog-panel_actions">
+    <button mat-button color="primary" (click)="close()">Cancel</button>
+    <button mat-raised-button
+            color="primary"
+            (click)="save()">
+      <ng-container *ngIf="entity.id != 0; then labelSave else labelAdd"></ng-container>
+    </button>
+    <ng-template #labelSave>Save</ng-template>
+    <ng-template #labelAdd>Add</ng-template>
+  </div>
+</div>

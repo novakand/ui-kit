@@ -1,0 +1,32 @@
+{
+    "build": {
+        "content": [
+            {
+                "cwd": "../",
+                "files": [
+									"**.yml"
+                ],
+                "src": "../yml",
+                "dest": "api"
+            }
+        ],
+        "dest": "_site",
+        "globalMetadataFiles": [],
+        "fileMetadataFiles": [],
+        "template": [
+            "default"
+        ],
+		"globalMetadata":{
+			"_appTitle": "BE.UIKit Sandbox",
+			"_enableSearch": "true",
+			"_appFooter": "Copyright &copy; 2018 Horse 21 Pro",
+			"_enableNewTab": true
+		},
+		"postProcessors": [],
+		"markdownEngineName": "markdig",
+		"noLangKeyword": false,
+		"keepFileLink": false,
+		"cleanupCacheHistory": false,
+		"disableGitFeatures": false
+    }
+}

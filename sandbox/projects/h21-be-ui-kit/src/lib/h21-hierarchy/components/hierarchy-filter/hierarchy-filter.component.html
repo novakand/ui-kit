@@ -1,0 +1,37 @@
+<div class="c-hierarchy-filter h21-dialog-panel"
+     (keyup.enter)="submit()"
+     #container
+     tabindex="0"
+     cdkTrapFocus
+     [@toggleSlide]="animationState"
+     (@toggleSlide.start)="onAnimation($event)"
+     (@toggleSlide.done)="onAnimation($event)">
+
+  <button mat-icon-button (click)="close()" class="h21-dialog-panel_close __size-l">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <div class="h21-dialog-panel_title">
+    <h2>Filter</h2>
+  </div>
+
+  <div class="h21-dialog-panel_content">
+    <h21-filter #filterComponent [controls]="controls" (emitSubmit)="onEmitSubmit($event)"></h21-filter>
+  </div>
+
+  <div class="h21-dialog-panel_actions">
+    <button type="button"
+            mat-button
+            color="primary"
+            (click)="reset()">
+      Clear filter
+    </button>
+    <button type="button"
+            mat-raised-button
+            color="primary"
+            (click)="submit()">
+      Filter
+    </button>
+  </div>
+
+</div>

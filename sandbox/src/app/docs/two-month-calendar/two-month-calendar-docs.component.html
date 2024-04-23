@@ -1,0 +1,142 @@
+<section class="docs_section mat-typography">
+  <h1>{{ title }}</h1>
+  <mat-tab-group class="docs_tabs">
+    <mat-tab label="Examples">
+      <p>Two month calendar позволяет пользователям выбирать дату или интервал дат, путем выбора даты из календаря.</p>
+      <p>Отображение календаря состоит из двух частей, стандартного поля ввода постоянно отображаемого на странице и
+        всплывающего окна календаря, появляющегося при нажатии на него.</p>
+      <p>Календарь имеет два режима работы, задаваемых при помощи свойства <span
+        class="docs_code">rangeSelectMode</span>:<br>
+        <span class="docs_code">false</span> - режим выбора одной даты;</p>
+      <h21-docs-example-viewer [title]="'For single date'"
+                               [pathToHtml]="'./assets/code_examples/two-month-calendar/example-1.html'"
+                               [pathToTs]="'./assets/code_examples/two-month-calendar/example.txt'"
+                               [pathToCss]="'./assets/code_examples/two-month-calendar/example.css'">
+        <h21-two-month-calendar [rangeSelectMode]="false"></h21-two-month-calendar>
+      </h21-docs-example-viewer>
+      <p><span class="docs_code">true</span> - режим выбора диапазона дат, выбирается дата начала и дата конца диапазона
+        (значение по умолчанию).</p>
+      <h21-docs-example-viewer [title]="'For date range'"
+                               [pathToHtml]="'./assets/code_examples/two-month-calendar/example-2.html'"
+                               [pathToTs]="'./assets/code_examples/two-month-calendar/example.txt'"
+                               [pathToCss]="'./assets/code_examples/two-month-calendar/example.css'">
+        <h21-two-month-calendar [rangeSelectMode]="true"></h21-two-month-calendar>
+      </h21-docs-example-viewer>
+
+      <h2>Входные и выходные параметры</h2>
+      <p>Получить выбранные в календаре значения дат можно подписавшись на события
+        <span class="docs_code">selectedFromDateChange()</span> и <span class="docs_code">selectedToDateChange()</span>
+        возвращающих даты начала и конца диапазона соответственно. Two month calendar поддерживает также различные
+        входные параметры с полным списокм которых можно ознакомиться на вкладке "PROPERTIES & METHODS".</p>
+      <h21-docs-example-viewer [title]="'Use with input and output parameters'"
+                               [pathToHtml]="'./assets/code_examples/two-month-calendar/example-3.html'"
+                               [pathToTs]="'./assets/code_examples/two-month-calendar/example-3.txt'"
+                               [pathToCss]="'./assets/code_examples/two-month-calendar/example.css'">
+        <h21-two-month-calendar [fromLabel]="startText"
+                                [toLabel]="finishText"
+                                [selectedFromDate]="startDate"
+                                [selectedToDate]="finishDate"
+                                (selectedFromDateChange)="updateStartDate($event);"
+                                (selectedToDateChange)="updateFinishDate($event);">
+        </h21-two-month-calendar>
+        <p>Selected start date - {{ startDate }}</p>
+        <p>Selected finish date - {{ finishDate }}</p>
+      </h21-docs-example-viewer>
+      <h21-docs-example-viewer [title]="'Use with input and output parameters'"
+                               [pathToHtml]="'./assets/code_examples/two-month-calendar/example-3.html'"
+                               [pathToTs]="'./assets/code_examples/two-month-calendar/example-3.txt'"
+                               [pathToCss]="'./assets/code_examples/two-month-calendar/example.css'">
+        <h21-two-month-calendar [fromLabel]="'Check-in'"
+                                [toLabel]="'Check-out'"
+                                [required]="true"
+                                [showWeekdayHint]="true"
+                                [rangeViewMode]="'DIVIDED'"
+                                [rangeSelectMode]="true"
+                                [(selectedFromDate)]="withNights.fromDate"
+                                [(selectedToDate)]="withNights.toDate"
+                                (nightQuantityChange)="withNights.nights = $event">
+        </h21-two-month-calendar>
+        <p>from date - {{ withNights.fromDate }}</p>
+        <p>to date - {{ withNights.toDate }}</p>
+        <p>nights - {{ withNights.nights }}</p>
+      </h21-docs-example-viewer>
+    </mat-tab>
+    <mat-tab label="Properties & methods">
+      <div>
+        <h2>Properties</h2>
+        <table class="docs_properties-table mb-5">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><span class="docs_code">@Input()<br>rangeSelectMode: boolean</span></td>
+            <td>Режим выбора: true - выбор диапазона дат с указанием начальной и конечной даты; false - выбор одной
+              даты.
+            </td>
+            <!--<td>Selection mode: true - select the date range with the start and end date; false - select one date.</td>-->
+          </tr>
+          <tr>
+            <td><span class="docs_code">@Input()<br>startDate: Date</span></td>
+            <td>Начальная дата отображаемого в календаре диапазона, по умолчанию равна текущей дате.</td>
+            <!--<td>The start date of the range displayed in the calendar is, by default, the current date.</td>-->
+          </tr>
+          <tr>
+            <td><span class="docs_code">@Input()<br>finishDate: Date</span></td>
+            <td>Конечная дата отображаемого в календаре диапазона, по умолчанию равна одному году от <span
+              class="docs_code">startDate</span>.
+            </td>
+            <!--<td>The end date of the range displayed in the calendar is, by default, one year from <span class="docs_code">startDate</span>.</td>-->
+          </tr>
+          <tr>
+            <td><span class="docs_code">@Input()<br>fromDate: Date</span></td>
+            <td>Начальная дата доступного для выбора в календаре диапазона, по умолчанию равна <span class="docs_code">startDate</span>.
+            </td>
+            <!--<td>The start date of the range, which is available for selection in the calendar is, by default, equal to <span class="docs_code">startDate</span>.</td>-->
+          </tr>
+          <tr>
+            <td><span class="docs_code">@Input()<br>toDate: Date</span></td>
+            <td>Конечная дата доступного для выбора в календаре диапазона, по умолчанию равна <span class="docs_code">finishDate</span>.
+            </td>
+            <!--<td>The end date of the range available for selection in the calendar range, by default is equal to <span class="docs_code">finishDate</span>. </td>-->
+          </tr>
+          <tr>
+            <td><span class="docs_code">@Input()<br>fromDateText: String</span></td>
+            <td>Название начальной даты диапазона, по умолчанию "Departure date".</td>
+            <!--<td>The name of the initial date range, the default "Departure date".</td>-->
+          </tr>
+          <tr>
+            <td><span class="docs_code">@Input()<br>toDateText: String</span></td>
+            <td>Название конечной даты диапазона, по умолчанию "Return date".</td>
+            <!--<td>The name of the end date of the range, the default is "Return date".</td>-->
+          </tr>
+          <tr>
+            <td><span class="docs_code">@Input()<br>selectedFromDate: Date</span></td>
+            <td>Выбранная начальная дата</td>
+          </tr>
+          <tr>
+            <td><span class="docs_code">@Input()<br>selectedToDate: Date</span></td>
+            <td>Выбранная конечная дата</td>
+          </tr>
+          <tr>
+            <td><span class="docs_code">@Output()<br>selectedFromDateChange: EventEmitter&lt;Date&gt;</span></td>
+            <td>Передает выбранную начальную дату</td>
+          </tr>
+          <tr>
+            <td><span class="docs_code">@Output()<br>selectedToDateChange: EventEmitter&lt;Date&gt;</span></td>
+            <td>Передает выбранную конечную дату</td>
+          </tr>
+          </tbody>
+        </table>
+        <h2>Methods</h2>
+        <p>&nbsp;</p>
+      </div>
+    </mat-tab>
+    <mat-tab label="Terms of use">
+      <div></div>
+    </mat-tab>
+  </mat-tab-group>
+</section>

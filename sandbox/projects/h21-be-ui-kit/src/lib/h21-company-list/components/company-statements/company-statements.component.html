@@ -1,0 +1,79 @@
+<div class="c-statements">
+
+  <div class="__flex-row __align-items-center __mb-4">
+    <mat-checkbox class="__fs-xs __mr-3" color="primary">To generate the statement automatically</mat-checkbox>
+    <mat-checkbox class="__fs-xs" color="primary">Send a statement automatically</mat-checkbox>
+  </div>
+
+  <mat-accordion class="c-statements_accordion" [multi]="true">
+
+    <!-- Statement -->
+    <mat-expansion-panel [expanded]="!pending" [disabled]="pending">
+      <mat-expansion-panel-header [collapsedHeight]="headerHeight" [expandedHeight]="headerHeight">
+        <mat-panel-title>Statement</mat-panel-title>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+        <ng-container [ngTemplateOutlet]="formTemplate"
+                      [ngTemplateOutletContext]="{ form: statementForm, label: 'Email for Statements' }">
+        </ng-container>
+      </ng-template>
+    </mat-expansion-panel>
+
+    <!-- Invoice -->
+    <mat-expansion-panel [expanded]="!pending" [disabled]="pending">
+      <mat-expansion-panel-header [collapsedHeight]="headerHeight" [expandedHeight]="headerHeight">
+        <mat-panel-title>Invoice</mat-panel-title>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+        <ng-container [ngTemplateOutlet]="formTemplate"
+                      [ngTemplateOutletContext]="{ form: invoiceForm, label: 'Email for Invoices' }">
+        </ng-container>
+      </ng-template>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+
+<ng-template #formTemplate let-form="form" let-label="label">
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-12 col-lg-6">
+        <div class="c-statements_label">Email for Statements</div>
+        <div formArrayName="emails">
+          <ng-container *ngFor="let email of form.controls['emails'].controls; trackBy: trackByIndexFn; let i = index; let last = last;">
+            <div class="c-statements_fieldset" [formGroupName]="i">
+              <mat-form-field class="c-statements_fieldset-input" floatLabel="never">
+                <input type="text" matInput formControlName="value" placeholder="Enter a email address" autocomplete="off" />
+                <mat-icon matSuffix>mail</mat-icon>
+                <mat-error *ngIf="email.controls['value'].hasError('email')">Not a valid email</mat-error>
+              </mat-form-field>
+              <div class="c-statements_fieldset-actions">
+                <button type="button" mat-icon-button class="c-statements_fieldset-remove-btn"
+                        *ngIf="form.controls['emails'].controls.length > 1"
+                        (click)="removeEmailField(form, email.controls['index'].value)">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+                <button type="button" mat-icon-button color="primary"
+                        *ngIf="last"
+                        (click)="addEmailField(form)">
+                  <mat-icon>add_circle</mat-icon>
+                </button>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6">
+        <span class="c-statements_label __mr-2">Download in:</span>
+        <mat-radio-group class="c-statements_download-type-radio-group" formControlName="downloadType">
+          <mat-radio-button [value]="statementDownloadTypes.excel" color="primary">
+            {{ statementDownloadTypes.excel }}
+          </mat-radio-button>
+          <mat-radio-button [value]="statementDownloadTypes.pdf" color="primary">
+            {{ statementDownloadTypes.pdf }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+  </form>
+</ng-template>

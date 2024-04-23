@@ -1,0 +1,425 @@
+<ng-container *ngIf="loadInProgress">
+  <h21-card-loader></h21-card-loader>
+</ng-container>
+
+<ng-container *ngIf="!loadInProgress">
+  <mat-card class="c-user-profile-card h21-profile-card">
+    <div class="h21-profile-card_header">
+
+      <div class="h21-profile-card_title-box" *ngIf="mode != 'ADD'">
+        <h2>{{ entity.shortName }}</h2>
+        <ng-container *ngIf="application.AGENT_OFFICE !== core.application">
+          <h21-company-version
+            [companyId]="entityId"
+            (selectedVersion)="onChangeVersion($event)"
+            (oneVersion)="onCheckOneVersion($event)">
+          </h21-company-version>
+          <mat-chip-list class="h21-chip-list">
+            <mat-chip class="h21-chip"
+                      [disableRipple]="true"
+                      [selectable]="false"
+                      [removable]="false">
+              {{ getHasActualCompanyValue() }}
+            </mat-chip>
+          </mat-chip-list>
+        </ng-container>
+      </div>
+      <mat-card-title class="h21-profile-card_title" *ngIf="mode == 'ADD'">
+        Add company
+      </mat-card-title>
+
+      <button mat-mini-fab
+              color="primary"
+              class="h21-profile-card_header-collapse-toggle"
+              (click)="toggleCardHeaderVisibility()">
+        <ng-container *ngIf="animationState === 'down'; then expandMoreIcon; else expandLessIcon;"></ng-container>
+      </button>
+      <ng-template #expandMoreIcon>
+        <mat-icon>expand_more</mat-icon>
+      </ng-template>
+      <ng-template #expandLessIcon>
+        <mat-icon>expand_less</mat-icon>
+      </ng-template>
+
+      <div [@slideUpDown]="animationState">
+        <mat-card-header>
+          <h21-profile-image
+            mat-card-avatar
+            [withBorder]="true"
+            [firstName]="entity.name"
+            [(file)]="entity.avatar"
+            size="large"
+            [readonly]="!editable"
+          ></h21-profile-image>
+          <div class="h21-profile-card_meta-data-box">
+            <div class="row">
+              <div class="col-12 col-xxl-6">
+                <div class="row no-gutters h21-profile-card_meta-data-item">
+                  <div class="col-6 col-xl-5 col-xxl-6">Registration number</div>
+                  <div class="col-6 col-xl-7 col-xxl-6">
+                    <b>{{ getRegisterNumber() }}</b>
+                  </div>
+                </div>
+                <div class="row no-gutters h21-profile-card_meta-data-item">
+                  <div class="col-6 col-xl-5 col-xxl-6">Company type</div>
+                  <div class="col-6 col-xl-7 col-xxl-6">
+                    <mat-chip-list class="h21-chip-list" *ngIf="entity.typeId != null">
+                      <mat-chip class="h21-chip"
+                                [ngClass]="getCompanyTypeCssClassName(entity.typeId)"
+                                [disableRipple]="true"
+                                [selectable]="false"
+                                [removable]="false">
+                        {{ vocabulary.nameById(vocabulary.companyType, entity.typeId) }}
+                      </mat-chip>
+                    </mat-chip-list>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-xxl-6">
+                <div class="row no-gutters h21-profile-card_meta-data-item">
+                  <div class="col-6 col-xl-5 col-xxl-6">Date and time of creation</div>
+                  <div class="col-6 col-xl-7 col-xxl-6">
+                    <b>{{ utils.getFormattedDate(entity.createDate, true) }}</b>
+                  </div>
+                </div>
+                <div class="row no-gutters h21-profile-card_meta-data-item">
+                  <div class="col-6 col-xl-5 col-xxl-6">Date and time of change</div>
+                  <div class="col-6 col-xl-7 col-xxl-6">
+                    <b>{{ utils.getFormattedDate(entity.updateDate, true) }}</b>
+                  </div>
+                </div>
+                <div class="row no-gutters h21-profile-card_meta-data-item">
+                  <div class="col-6 col-xl-5 col-xxl-6">Status</div>
+                  <div class="col-6 col-xl-7 col-xxl-6">
+                    <b>{{ vocabulary.nameById(companyStates, entity.stateId) }}</b>
+                  </div>
+                </div>
+                <div class="row no-gutters h21-profile-card_meta-data-item" *ngIf="entity?.profileId != null">
+                  <div class="col-6 col-xl-5 col-xxl-6">Profile id</div>
+                  <div class="col-6 col-xl-7 col-xxl-6">
+                    <b>{{ entity.profileId }}</b>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card-header>
+      </div>
+    </div>
+    <mat-card-content>
+      <mat-tab-group [selectedIndex]="selectedTab" (selectedIndexChange)="setCurrentTab($event)">
+        <!-- General info tab -->
+        <mat-tab label="General info">
+          <form [formGroup]="entityForm">
+            <div class="row">
+              <div class="col-6">
+
+                <!-- Legal name -->
+                <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+                  <input type="text"
+                         autocomplete="off"
+                         matInput
+                         placeholder="Legal name"
+                         formControlName="name"
+                         [readonly]="!editable" />
+                  <mat-error *ngIf="entityForm.controls['name'].hasError('required')">
+                    You must enter a value
+                  </mat-error>
+                </mat-form-field>
+
+                <!-- Company name -->
+                <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+                  <input type="text"
+                         autocomplete="off"
+                         matInput
+                         placeholder="Company name"
+                         formControlName="shortName"
+                         [readonly]="!editable" />
+                  <mat-error *ngIf="entityForm.controls['shortName'].hasError('required')">
+                    You must enter a value
+                  </mat-error>
+                </mat-form-field>
+
+                <!-- Type -->
+                <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+                  <mat-select placeholder="Type"
+                              panelClass="h21-select-panel"
+                              (selectionChange)="typeChanged($event)"
+                              formControlName="typeId">
+                    <mat-option *ngFor="let type of companyTypes; trackBy: trackByFn" [value]="type.id">
+                      {{ type.name }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="entityForm.controls['typeId'].hasError('required')">You must choose a type</mat-error>
+                </mat-form-field>
+
+                <!-- Parent company -->
+                <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable" *ngIf="isParentAvailable">
+                  <mat-select placeholder="Parent company"
+                              panelClass="h21-select-panel"
+                              [compareWith]="compareCompanies"
+                              formControlName="parent">
+                    <mat-option *ngFor="let company of companies$ | async; trackBy: trackByFn" [value]="company">
+                      {{ company.name }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <!-- Country -->
+                <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+                  <mat-select placeholder="Country"
+                              panelClass="h21-select-panel"
+                              (selectionChange)="countryChanged()"
+                              formControlName="countryCode" >
+                    <mat-option *ngFor="let country of countries; trackBy: trackByFn"
+                                [value]="country.code">
+                      {{ country.name }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="entityForm.controls['countryCode'].hasError('required')">
+                    You must choose a country
+                  </mat-error>
+                </mat-form-field>
+
+                <div *ngIf="isOtherCountry()">
+
+                  <!-- Registration number -->
+                  <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+                    <input type="text"
+                           autocomplete="off"
+                           matInput
+                           placeholder="Registration number"
+                           [readonly]="!editable"
+                           formControlName="registerNumber"/>
+                    <mat-error *ngIf="entityForm.controls['registerNumber'].hasError('required')">
+                      You must enter a value
+                    </mat-error>
+                    <mat-error *ngIf="entityForm.controls['registerNumber'].hasError('pattern')">
+                      Incorrect value
+                    </mat-error>
+                  </mat-form-field>
+
+                  <!-- VAT -->
+                  <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+                    <input type="text"
+                           autocomplete="off"
+                           matInput
+                           placeholder="VAT"
+                           [readonly]="!editable"
+                           formControlName="vatNumber" />
+                    <mat-error *ngIf="entityForm.controls['vatNumber'].hasError('required')">
+                      You must enter a value
+                    </mat-error>
+                    <mat-error *ngIf="entityForm.controls['vatNumber'].hasError('pattern')">
+                      Incorrect value
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div *ngIf="isRussia()">
+
+                  <!-- Inn -->
+                  <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+                    <input type="text"
+                           autocomplete="off"
+                           matInput
+                           placeholder="INN (RU)"
+                           [readonly]="!editable"
+                           formControlName="inn" />
+                    <mat-error *ngIf="entityForm.controls['inn'].hasError('required')">
+                      You must enter a value
+                    </mat-error>
+                    <mat-error *ngIf="entityForm.controls['inn'].hasError('pattern')">
+                      Must be 10 digits
+                    </mat-error>
+                  </mat-form-field>
+
+                  <!-- Kpp -->
+                  <mat-form-field class="__w-100 h21-mb-1"
+                                  [class.__is-readonly]="!editable">
+                    <input type="text"
+                           autocomplete="off"
+                           matInput
+                           placeholder="KPP (RU)"
+                           [readonly]="!editable"
+                           formControlName="kpp" />
+                    <mat-error *ngIf="entityForm.controls['kpp'].hasError('required')">
+                      You must enter a value
+                    </mat-error>
+                    <mat-error *ngIf="entityForm.controls['kpp'].hasError('pattern')">
+                      Must be 9 digits
+                    </mat-error>
+                  </mat-form-field>
+                  <!-- OGRN -->
+                  <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+                    <input type="text"
+                           autocomplete="off"
+                           matInput
+                           placeholder="OGRN (RU)"
+                           [readonly]="!editable"
+                           formControlName="ogrn" />
+                    <mat-error *ngIf="entityForm.controls['ogrn'].hasError('required')">
+                      You must enter a value
+                    </mat-error>
+                    <mat-error *ngIf="entityForm.controls['ogrn'].hasError('pattern')">
+                      Must be 13 or 15 digits
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div *ngIf="isChina()">
+
+                  <!-- licenseNumber -->
+                  <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+                    <input type="text"
+                           autocomplete="off"
+                           matInput
+                           placeholder="License number"
+                           [readonly]="!editable"
+                           formControlName="licenseNumber" />
+                  </mat-form-field>
+                </div>
+
+                <!-- VAT -->
+                <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+                  <input type="text"
+                         autocomplete="off"
+                         matInput
+                         placeholder="IATA/TIDS"
+                         [readonly]="!editable"
+                         formControlName="iataTids" />
+                </mat-form-field>
+              </div>
+              <div class="col-6">
+                <!-- Description -->
+                <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+                  <input type="text"
+                         autocomplete="off"
+                         matInput
+                         placeholder="Description"
+                         [readonly]="!editable"
+                         formControlName="description"/>
+                </mat-form-field>
+
+                <!-- Email -->
+                <ng-container *ngTemplateOutlet="emailControl; context: { placeholder: 'Email', name: 'email' }"></ng-container>
+
+                <!-- Send invoice on email -->
+                <ng-container *ngTemplateOutlet="emailControl; context: { placeholder: 'Send invoice on email', name: 'invoiceEmail' }"></ng-container>
+
+                <!-- Send voucher on email -->
+                <ng-container *ngTemplateOutlet="emailControl; context: { placeholder: 'Send voucher on email', name: 'voucherEmail' }"></ng-container>
+
+                <!-- Phone -->
+                <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+                  <input type="tel"
+                         autocomplete="off"
+                         matInput
+                         placeholder="Phone"
+                         [readonly]="!editable"
+                         formControlName="phone" />
+                  <mat-error *ngIf="entityForm.controls['phone'].hasError('pattern')">
+                    Invalid value
+                  </mat-error>
+                </mat-form-field>
+
+                <!-- Fax -->
+                <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+                  <input type="tel"
+                         autocomplete="off"
+                         matInput
+                         placeholder="Fax"
+                         [readonly]="!editable"
+                         formControlName="fax" />
+                </mat-form-field>
+
+                <!-- Website -->
+                <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+                  <input type="text"
+                         autocomplete="off"
+                         matInput
+                         placeholder="Website"
+                         [readonly]="!editable"
+                         formControlName="homePage" />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <ng-template #emailControl let-placeholder="placeholder" let-name="name">
+              <mat-form-field class="__w-100 h21-mb-1" [class.__is-readonly]="!editable">
+                <input type="email"
+                       autocomplete="off"
+                       matInput
+                       [placeholder]="placeholder"
+                       [formControlName]="name"
+                       [readonly]="!editable" />
+                <mat-error *ngIf="entityForm.controls[name].hasError('pattern')">
+                  Not a valid email
+                </mat-error>
+                <mat-error *ngIf="entityForm.controls[name].hasError('required')">
+                  You must enter a value
+                </mat-error>
+              </mat-form-field>
+            </ng-template>
+
+          </form>
+        </mat-tab>
+
+        <!-- Address -->
+        <mat-tab label="Address" [disabled]="mode == 'ADD'">
+          <h21-company-address-list
+            [id]="entity.id"
+            [readonly]="!editable"
+          ></h21-company-address-list>
+        </mat-tab>
+
+        <!-- Contact -->
+        <mat-tab label="Contacts" [disabled]="mode == 'ADD'">
+          <h21-company-contact-list
+            [id]="entity.id"
+            [readonly]="!editable"
+          ></h21-company-contact-list>
+        </mat-tab>
+
+        <!-- Payments -->
+        <mat-tab label="Payments" [disabled]="mode == 'ADD'">
+          <h21-company-payment-list
+            [id]="entity.id"
+            [typeId]="entity.typeId"
+            [readonly]="!editable"
+          ></h21-company-payment-list>
+        </mat-tab>
+
+        <!-- Statements -->
+        <mat-tab label="Statements" [disabled]="mode == 'ADD'">
+          <h21-company-statements></h21-company-statements>
+        </mat-tab>
+
+        <!-- Notes -->
+        <mat-tab label="Notes" [disabled]="mode == 'ADD'">
+          <h21-company-note-list
+            [id]="entity.id"
+            [readonly]="!editable"
+          ></h21-company-note-list>
+        </mat-tab>
+
+        <!-- History tab -->
+        <mat-tab label="History" [disabled]="mode == 'ADD'">
+          <h21-history [entityRefId]="entity.entityRefId"></h21-history>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+
+  <button mat-fab
+          *ngIf="isAdmin && editable"
+          type="submit"
+          color="primary"
+          class="h21-fixed-fab-button"
+          matTooltip="Save changes"
+          matTooltipPosition="before"
+          (click)="save()">
+    <mat-icon>save</mat-icon>
+  </button>
+
+</ng-container>

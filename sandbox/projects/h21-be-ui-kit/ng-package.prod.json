@@ -1,0 +1,24 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/h21-be-ui-kit",
+  "lib": {
+	"entryFile": "src/public-api.ts",
+	"cssUrl": "inline",
+    "umdModuleIds": {
+      "ng2-nouislider": "ng2-nouislider",
+      "@aspnet/signalr": "@aspnet/signalr",
+      "devextreme-angular/ui/color-box": "devextreme-angular/ui/color-box",
+      "devextreme-angular/ui/context-menu": "devextreme-angular/ui/context-menu",
+      "devextreme-angular/ui/validator": "devextreme-angular/ui/validator",
+      "devextreme-angular/ui/date-box": "devextreme-angular/ui/date-box",
+      "devextreme-angular/ui/button": "devextreme-angular/ui/button",
+      "angular-oauth2-oidc": "angular-oauth2-oidc",
+      "@ng-select/ng-select": "@ng-select/ng-select",
+      "file-saver": "file-saver",
+      "@markpieszak/ng-application-insights": "@markpieszak/ng-application-insights",
+      "css-vars-ponyfill": "css-vars-ponyfill",
+      "ngx-mask": "ngx-mask"
+    }
+  },
+  "whitelistedNonPeerDependencies": ["."]
+}

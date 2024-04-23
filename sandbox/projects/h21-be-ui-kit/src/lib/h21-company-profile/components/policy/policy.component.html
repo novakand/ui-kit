@@ -1,0 +1,42 @@
+<div class="c-policy">
+  <mat-accordion class="c-policy_accordion" [multi]="true">
+
+    <!--  Options -->
+    <mat-expansion-panel [expanded]="true" [disabled]="pending">
+      <mat-expansion-panel-header [collapsedHeight]="headerHeight" [expandedHeight]="headerHeight">
+        <mat-panel-title>Options</mat-panel-title>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+        <h2 class="__fs-l __fw-medium __mb-2 __color-accent">Booking non-refundable rates</h2>
+        <div class="row __mb-1 c-policy_options-row">
+          <div class="col-12 col-md-6 col-xl-4 __pt-05">
+            <mat-slide-toggle class="c-policy_toggle" color="accent" labelPosition="before"
+                              [disabled]="!refundableOnlyEnabled"
+                              [checked]="refundableOnly"
+                              (change)="refundableOnly = $event.checked">
+              Refundable only
+            </mat-slide-toggle>
+          </div>
+          <div class="col-12 col-md-6 col-xl-4 " [hidden]="!refundableOnly">
+            <div class="__ph-2">
+              <div class="row">
+                <div class="col-7 __pt-05">
+                <span class="c-policy_non-ref-buffer-label">
+                  Non-ref buffer days settings
+                </span>
+                </div>
+                <div class="col-5">
+                  <mat-form-field class="__w-100">
+                    <input type="text" matInput [formControl]="nonRefBufferDaysCtrl" />
+                    <span matSuffix class="__fs-xs __color-gray">Days</span>
+                    <mat-error *ngIf="nonRefBufferDaysCtrl.hasError('pattern')">Invalid value</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

@@ -1,0 +1,31 @@
+<mat-card class="c-h21-user-card">
+  <mat-card-header>
+    <h21-profile-image mat-card-avatar
+                       size="medium"
+                       [firstName]="data.user.firstName"
+                       [lastName]="data.user.lastName"
+                       [fileHash]="data.user.picture"
+    ></h21-profile-image>
+    <mat-card-title> {{ data.user.firstName }} {{ data.user.lastName }} </mat-card-title>
+    <mat-card-subtitle> {{ data.user.email }} </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-actions>
+    <mat-nav-list>
+      <mat-list-item *ngFor="let action of data.actions; trackBy: trackByFn">
+        <mat-icon mat-list-icon> {{ action.icon }} </mat-icon>
+        <a matLine
+           *ngIf="action.type == 'link'"
+           [routerLink]="[action.route]"> {{ action.label }} </a>
+        <a matLine
+           *ngIf="action.type == 'button'"
+           (click)="onAction(action.name)"> {{ action.label }} </a>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+      <mat-list-item class="logout-item" *ngIf="hasValidToken">
+        <button mat-button class="logout-btn" (click)="onLogout()">
+          <mat-icon>exit_to_app</mat-icon>Exit
+        </button>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-card-actions>
+</mat-card>

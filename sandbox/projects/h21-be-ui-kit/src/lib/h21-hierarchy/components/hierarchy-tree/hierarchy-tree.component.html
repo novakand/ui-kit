@@ -1,0 +1,96 @@
+<table mat-table
+       class="h21-table"
+       [multiTemplateDataRows]="true"
+       [dataSource]="dataSource">
+
+  <!-- Name -->
+  <ng-container matColumnDef="shortName">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let element" class="h21-table_no-padding" [style.padding-left]="getLevelPadding(element)">
+      <ng-container *ngIf="!maxLevel">
+        <ng-container [ngTemplateOutlet]="collapseControls" [ngTemplateOutletContext]="{element: element}"></ng-container>
+      </ng-container>
+      <ng-container *ngIf="maxLevel && level < maxLevel">
+        <ng-container [ngTemplateOutlet]="collapseControls" [ngTemplateOutletContext]="{element: element}"></ng-container>
+      </ng-container>
+
+      <a [routerLink]="['/subsidiary/']" [queryParams]="{id: element.profileId }">{{ element.shortName || '-' }}</a>
+    </td>
+  </ng-container>
+
+  <!-- Registration number / INN -->
+  <ng-container matColumnDef="registerNumber">
+    <th mat-header-cell *matHeaderCellDef>Registration number / INN</th>
+    <td mat-cell *matCellDef="let element" width="180px">{{ element.registrationNumber || '-' }}</td>
+  </ng-container>
+
+  <!-- Country -->
+  <ng-container matColumnDef="countryName">
+    <th mat-header-cell *matHeaderCellDef>Country</th>
+    <td mat-cell *matCellDef="let element" width="150px">
+      {{ element.countryName }}
+    </td>
+  </ng-container>
+
+  <!-- Contact information -->
+  <ng-container matColumnDef="phone">
+    <th mat-header-cell *matHeaderCellDef>Contact information</th>
+    <td mat-cell *matCellDef="let element" width="300px">
+      <div class="hierarchy-word-break">
+        <ng-container *ngIf="element.phone">Phone: {{ element.phone }}<br /></ng-container>
+        <ng-container *ngIf="element.email">Email: {{ element.email }}</ng-container>
+      </div>
+      <ng-container *ngIf="!element.phone && !element.email">
+        {{ '-' }}
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <!-- Type -->
+  <ng-container matColumnDef="typeCode">
+    <th mat-header-cell *matHeaderCellDef>Type</th>
+    <td mat-cell *matCellDef="let element" width="150px">
+      <mat-chip-list class="h21-chip-list" *ngIf="element.typeId">
+        <mat-chip class="h21-chip"
+                  [ngClass]="getCompanyTypeCssClassName(companyType(element.typeId))"
+                  [disableRipple]="true"
+                  [selectable]="false"
+                  [removable]="false">{{ companyType(element.typeId) }}</mat-chip>
+      </mat-chip-list>
+    </td>
+  </ng-container>
+
+  <!-- Total incl -->
+  <ng-container matColumnDef="totalChildren" *ngIf="isShowTotalChildren()">
+    <th mat-header-cell *matHeaderCellDef>Total incl</th>
+    <td mat-cell *matCellDef="let element" class="__text-center" width="80px">{{ element.totalChildren }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length" class="h21-table_no-padding">
+      <div class="h21-table_expanded-progress" *ngIf="element == expandedElement" [@progressVisibility]>
+        <div class="h21-table_expanded-progress-wrapper">
+          <mat-progress-bar *ngIf="expandInProgressDelayed" color="primary" mode="indeterminate"></mat-progress-bar>
+        </div>
+      </div>
+      <div *ngIf="element.hasChildren" class="h21-table_expanded-detail h21-table_expanded-detail__inline" [class.__is-active]="isExpanded(element)">
+        <h21-hierarchy-tree [dataSource]="element?.children" [maxLevel]="maxLevel" [level]="(level + 1)" [showHeaderRow]="false"></h21-hierarchy-tree>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns" [hidden]="!showHeaderRow"></tr>
+  <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
+  <tr mat-row *matRowDef="let element; columns: ['expandedDetail']" class="h21-table_expanded-row-detail"></tr>
+</table>
+
+<ng-template #collapseControls let-element="element">
+  <ng-container *ngIf="element.hasChildren">
+    <button class="h21-table_expand-button" mat-icon-button (click)="expand(element)" *ngIf="!isExpanded(element)" matTooltip="Show detail">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+    <button class="h21-table_expand-button" mat-icon-button (click)="collapse(element)" *ngIf="isExpanded(element)" matTooltip="Hide detail">
+      <mat-icon>expand_more</mat-icon>
+    </button>
+  </ng-container>
+</ng-template>

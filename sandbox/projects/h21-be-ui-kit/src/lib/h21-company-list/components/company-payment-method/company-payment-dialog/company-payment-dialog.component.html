@@ -1,0 +1,235 @@
+<form [formGroup]="form"
+      class="c-company-payment-dialog h21-dialog-panel"
+      #container
+      tabindex="0"
+      cdkTrapFocus
+      [@toggleSlide]="animationState"
+      (@toggleSlide.start)="onAnimation($event)"
+      (@toggleSlide.done)="onAnimation($event)"
+      (submit)="save()">
+
+  <mat-progress-bar *ngIf="actionInProgress" [@toggleVisibility] mode="indeterminate"
+                    class="h21-dialog-panel_progress"></mat-progress-bar>
+
+  <button type="button" mat-icon-button (click)="close()" class="h21-dialog-panel_close __size-l">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <div class="h21-dialog-panel_title">
+    <h2>
+      <ng-container *ngIf="entity.id != 0; then titleEdit else titleAdd"></ng-container>
+    </h2>
+  </div>
+  <ng-template #titleEdit>Payment method {{ dialogData.paymentTypeName }}</ng-template>
+  <ng-template #titleAdd>Add payment method</ng-template>
+
+  <div class="h21-dialog-panel_content">
+    <div class="row __mb-2">
+      <div class="col-6">
+        <!-- Active -->
+        <mat-slide-toggle color="accent"
+                          class="h21-profile-card_slide-toggle"
+                          formControlName="isActive"
+                          labelPosition="before">
+          Active
+        </mat-slide-toggle>
+      </div>
+      <div class="col-6">
+        <!-- Default -->
+        <mat-slide-toggle color="accent"
+                          class="h21-profile-card_slide-toggle __mb-1"
+                          formGroupName="isDefault"
+                          labelPosition="before"
+                          formControlName="isDefault">
+          Default payment method
+        </mat-slide-toggle>
+      </div>
+    </div>
+
+
+    <div class="row __mb-1">
+      <div class="col-6">
+        <!-- Card name -->
+        <mat-form-field class="__w-100" [class.__is-readonly]="!editable">
+          <input type="text"
+                 autocomplete="off"
+                 matInput
+                 placeholder="Card name"
+                 formControlName="cardName"/>
+          <mat-error *ngIf="form.get('cardName').hasError('required')">
+            You must enter a value
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <!-- Card number -->
+        <mat-form-field class="__w-100" [class.__is-readonly]="!editable">
+          <input type="text"
+                 autocomplete="off"
+                 matInput
+                 placeholder="Card number"
+                 formControlName="cardNumber">
+          <mat-error *ngIf="form.get('cardNumber').hasError('required')">
+            You must enter a value
+          </mat-error>
+          <mat-error *ngIf="form.get('cardNumber').hasError('pattern')">
+            Incorrect value
+          </mat-error>
+          <mat-error *ngIf="form.get('cardNumber').hasError('minlength') || form.get('cardNumber').hasError('maxlength')">
+            Must be from 10 to {{ maxLength }} digits
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <h4 class="h21-dialog-panel_caption">Expiry date</h4>
+    <div class="row __mb-3">
+      <div class="col-6">
+        <div class="row">
+          <div class="col-6">
+            <!-- Month -->
+            <mat-form-field color="primary" class="__w-100 __mb-1">
+              <mat-select placeholder="Month"
+                          formControlName="expiryMonth"
+                          panelClass="h21-select-panel">
+                <mat-option *ngFor="let item of monthList$ | async; trackBy: trackByFn" [value]="item">
+                  {{ item | number: '2.0' }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="form.controls['expiryMonth'].hasError('required')">
+                Please choose a month
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <!-- Year -->
+            <mat-form-field color="primary" class="__w-100 __mb-1">
+              <mat-select placeholder="Year"
+                          formControlName="expiryYear"
+                          panelClass="h21-select-panel">
+                <mat-option *ngFor="let item of yearList$ | async; trackBy: trackByFn" [value]="item">
+                  {{ item }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="form.controls['expiryYear'].hasError('required')">
+                Please choose an year
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <!-- Cost mode -->
+        <mat-form-field color="primary" class="__w-100 __mb-1">
+          <mat-select placeholder="Cost mode"
+                      formControlName="costModeId"
+                      panelClass="h21-select-panel">
+            <mat-option *ngFor="let item of costModeList$ | async; trackBy: trackByFn" [value]="item.id">
+              {{ item.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.controls['costModeId'].hasError('required')">
+            Please choose a cost mode
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="__mb-5">
+      <mat-checkbox color="primary" class="__fs-xs __mr-4" formControlName="isHideCardExpiryDate">Hide expiry date
+      </mat-checkbox>
+      <mat-checkbox color="primary" class="__fs-xs" formControlName="isHideCardDetail">Hide number</mat-checkbox>
+    </div>
+
+    <button type="button" mat-button
+            color="primary"
+            class="button-with-icon __mb-1"
+            [disabled]="!editable"
+            (click)="addReferenceFields()">
+      <mat-icon color="primary">add_circle</mat-icon>
+      <span class="__fs-s __fw-normal">Add reference fields</span>
+    </button>
+
+    <ng-container *ngFor="let item of form.get('referencesActual')['controls']; trackBy: trackByFnFg; let i = index;">
+      <div formArrayName="referencesActual">
+        <div class="c-company-payment-dialog_fieldset" [formGroupName]="i">
+          <div class="__text-right">
+            <button type="button" mat-icon-button
+                    class="c-company-payment-dialog_fieldset-remove-button __size-s"
+                    (click)="removeReferenceField(item.get('index').value)">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+          <div class="__flex-row">
+            <div class="__flex-fill">
+              <div class="row small-gutters">
+                <div class="col-2">
+                  <mat-form-field color="primary" class="__w-100" floatLabel="always">
+                    <mat-label>Reference</mat-label>
+                    <mat-select formControlName="cardReferenceId"
+                                (selectionChange)="onReferenceChange(item, $event.value)">
+                      <mat-option *ngFor="let ref of references$ | async; trackBy: trackByFn;"
+                                  [matTooltip]="ref.description"
+                                  matTooltipPosition="left"
+                                  [disabled]="selectedRefIds.includes(ref.id)"
+                                  [value]="ref.id">
+                        {{ ref.name }}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="item.get('cardReferenceId').hasError('required')">Enter a value</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-3">
+                  <mat-form-field color="primary" class="__w-100" floatLabel="always">
+                    <mat-label>Name</mat-label>
+                    <input type="text" matInput autocomplete="off" formControlName="name"/>
+                    <mat-error *ngIf="item.get('name').hasError('required')">Enter a value</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-3">
+                  <mat-form-field color="primary" class="__w-100" floatLabel="always">
+                    <mat-label>Value</mat-label>
+                    <input type="text" matInput autocomplete="off" formControlName="value"/>
+                    <mat-error *ngIf="item.get('value').hasError('required')">Enter a value</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-4">
+                  <mat-form-field color="primary" class="__w-100" floatLabel="always">
+                    <mat-label>Substitute parameter</mat-label>
+                    <mat-select placeholder="Select options"
+                                formControlName="substituteParameterId"
+                                (selectionChange)="onSubstituteParameterChange(item, $event.value)">
+                      <mat-option [value]="null">None</mat-option>
+                      <mat-option *ngFor="let item of substituteParameters$ | async; trackBy: trackByFn"
+                                  [value]="item.id">
+                        {{ item.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="__flex-none">
+              <mat-slide-toggle color="accent"
+                                formControlName="isOptional"
+                                class="c-company-payment-dialog_optional-slide-toggle" labelPosition="before">Optional
+              </mat-slide-toggle>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="h21-dialog-panel_actions">
+    <button type="button" mat-button color="primary" (click)="close()">Cancel</button>
+    <button type="submit" mat-raised-button
+            color="primary"
+            *ngIf="editable"
+            [disabled]="actionInProgress">
+      <ng-container *ngIf="entity.id != 0; then labelSave else labelAdd"></ng-container>
+    </button>
+    <ng-template #labelSave>Save</ng-template>
+    <ng-template #labelAdd>Add</ng-template>
+  </div>
+</form>

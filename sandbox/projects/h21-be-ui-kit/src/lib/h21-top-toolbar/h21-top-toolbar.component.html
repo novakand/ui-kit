@@ -1,0 +1,69 @@
+<mat-toolbar class="c-h21-top-toolbar">
+
+  <!-- Breadcrumbs -->
+  <ng-container *ngIf="showBreadcrumbs">
+    <h21-breadcrumbs [breadcrumbsData]="breadcrumbsData" [linkMode]="'ROUTER_LINK'"></h21-breadcrumbs>
+  </ng-container>
+
+  <!--  -->
+  <ng-container *ngIf="showSidenavToggle">
+    <button mat-icon-button
+            class="c-h21-top-toolbar-menu-btn"
+            (click)="sidenavToggle()"
+            [class.is-opened]="sidenavOpened"
+            [disabled]="sidenavToggleDisabled">
+      <mat-icon class="c-h21-top-toolbar-menu-btn_open" aria-label="Open">menu</mat-icon>
+      <mat-icon class="c-h21-top-toolbar-menu-btn_close" aria-label="Close">close</mat-icon>
+    </button>
+  </ng-container>
+
+  <div class="w-spacer">&nbsp;</div>
+
+  <!-- Providers data loading indicator -->
+  <div class="h21-providers-data-loading" *ngIf="showProviderDataLoading && providerDataLoadingStatistic">
+    <div class="h21-providers-data-loading_activity-indicator"
+         [class.__is-active]="providerDataLoadingStatistic.loaded < providerDataLoadingStatistic.total"></div>
+    <div class="h21-providers-data-loading_state">
+      <div class="h21-providers-data-loading_state-label">Providers:</div>
+      <div class="h21-providers-data-loading_state-statistic">
+        <b class="__text-color-ui-primary">{{ providerDataLoadingStatistic.loaded }}</b> | {{ providerDataLoadingStatistic.total }}
+      </div>
+    </div>
+    <button mat-stroked-button color="primary"
+            [disabled]="providerDataLoadingStatistic.loaded == 0"
+            (click)="updateSearchResult()">Update result
+    </button>
+  </div>
+
+  <!-- Cart -->
+  <ng-container *ngIf="showCart">
+    <h21-cart-combobox></h21-cart-combobox>
+  </ng-container>
+
+  <!-- Select language combobox -->
+  <ng-container *ngIf="showLanguageControl">
+    <h21-combobox [options]="languageOptions"
+                  [tooltipText]="languageOptionsTooltipText"
+                  [value]="selectedLanguage"></h21-combobox>
+  </ng-container>
+
+  <!-- Select currency combobox -->
+  <ng-container *ngIf="showCurrencyControl">
+    <h21-combobox [options]="currencyOptions"
+                  [tooltipText]="currencyOptionsTooltipText"
+                  [value]="selectedCurrency"></h21-combobox>
+  </ng-container>
+
+  <!-- Profile user card actions -->
+  <nav class="c-h21-top-toolbar_actions" *ngIf="toolbarService.actions?.length > 0">
+    <button mat-icon-button
+            *ngFor="let btn of toolbarService.actions; trackBy: trackByFn"
+            [ngClass]="btn.cssClass"
+            [matTooltip]="btn.tooltipText"
+            [disabled]="btn.disabled"
+            (click)="toolbarActionClick(btn)">
+      <mat-icon>{{ btn.icon }}</mat-icon>
+    </button>
+  </nav>
+
+</mat-toolbar>

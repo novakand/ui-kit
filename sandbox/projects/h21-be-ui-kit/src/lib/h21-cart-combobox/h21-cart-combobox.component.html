@@ -1,0 +1,30 @@
+<button mat-button
+        *ngIf="data.length > 0"
+        [matMenuTriggerFor]="cartDropBox"
+        ngClass="h21-cart-combobox_button">
+  Selected {{ data.length }} Room
+  <mat-icon *ngIf="true">arrow_drop_down</mat-icon>
+  <mat-icon *ngIf="false">arrow_drop_up</mat-icon>
+</button>
+
+<mat-menu #cartDropBox="matMenu"
+          xPosition="before"
+          yPosition="below"
+          overlapTrigger="false"
+          class="h21-cart-combobox_drop-box">
+  <ng-template matMenuContent>
+    <mat-list>
+      <mat-list-item *ngFor="let item of data; trackBy: trackByFn">
+        <div>
+          <span class="h21-cart-combobox_name">{{ item.name }}</span>
+          <span class="h21-cart-combobox_deacription">{{ item.description }}</span>
+        </div>
+        <div class="w-spacer"></div>
+        <div>
+          <span class="h21-cart-combobox_provider">{{ item.provider }}</span>
+          <span class="h21-cart-combobox_price">{{ item.price | number:'2.1-2' }} {{ currencyCode }}</span>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </ng-template>
+</mat-menu>

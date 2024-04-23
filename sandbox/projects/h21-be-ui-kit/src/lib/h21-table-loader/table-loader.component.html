@@ -1,0 +1,27 @@
+<table class="table-fake-view">
+  <thead>
+    <tr class="table-fake-view_header-row">
+      <td class="table-fake-view_header-cell">&nbsp;</td>
+    </tr>
+  </thead>
+  <tbody>
+
+    <ng-container *ngIf="!showNoResult">
+      <tr class="table-fake-view_body-row" *ngFor="let i of counts$ | async; trackBy: trackByFn">
+        <td class="table-fake-view_body-cell">&nbsp;</td>
+      </tr>
+    </ng-container>
+
+    <ng-container *ngIf="showNoResult">
+      <tr class="table-fake-view_body-row">
+        <td class="table-fake-view_body-cell">
+          <div class="table-fake-view_empty-label">
+            <mat-icon>not_interested</mat-icon>
+            <p>{{ noResultText }}</p>
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+
+  </tbody>
+</table>

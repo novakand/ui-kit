@@ -1,0 +1,105 @@
+<div class="c-h21-air-search-result h21-search-result">
+
+  <mat-progress-bar *ngIf="searchInProgress" [@toggleVisibility] mode="indeterminate"></mat-progress-bar>
+
+  <div *ngIf="searchInProgress" [@toggleVisibility] class="search-result-fake-view">
+    <div class="fake_line">
+      <span class="fake_element fake_element__w-m"></span>
+    </div>
+    <div class="fake_line">
+      <span class="fake_element fake_element__w-s"></span>
+    </div>
+    <div class="fake_line"></div>
+    <div class="row">
+      <div class="col-sm-3">
+        <span class="fake_element fake_element__w-xl"></span>
+      </div>
+      <div class="col-sm-3">
+        <span class="fake_element fake_element__w-xl"></span>
+      </div>
+      <div class="col-sm-3">
+        <span class="fake_element fake_element__w-xl"></span>
+      </div>
+      <div class="col-sm-3"></div>
+    </div>
+    <div class="fake_box" *ngFor="let i of [1,2]; trackBy: trackByFn">
+      <div class="row">
+        <div class="col-sm-2" *ngFor="let j of [1,2,3,4,5,6]; trackBy: trackByFn">
+          <span class="fake_element"></span>
+          <span class="fake_element"></span>
+        </div>
+      </div>
+      <div class="fake_divider fake_divider__with-indent"></div>
+      <div class="row">
+        <div class="col-sm-2" *ngFor="let j of [1,2,3,4,5,6]; trackBy: trackByFn">
+          <span class="fake_element"></span>
+          <span class="fake_element"></span>
+        </div>
+      </div>
+      <div class="fake_divider fake_divider__with-indent"></div>
+      <div class="row">
+        <div class="col-sm-2">
+          <span class="fake_element fake_element__w-m"></span>
+        </div>
+        <div class="col-sm-10"></div>
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="searchResultReady">
+    <!-- Search result title -->
+    <div class="c-h21-air-search-result_title-box">
+      <span class="c-h21-air-search-result_title">{{ titleText }}</span>
+      <span class="c-h21-air-search-result_subtitle">{{ subTitleText }}</span>
+    </div>
+
+    <!-- Search result data -->
+    <mat-tab-group class="mat-tab-group__h21-style-2">
+      <mat-tab label="Recommended">
+        <ng-template mat-tab-label>
+          <div class="mat-tab-group_label-wrapper">
+            <div class="mat-tab-group_label">
+              <span class="mat-tab-group_label-name">Recommended</span>
+              <span class="mat-tab-group_label-price">{{ getPriceString(resultRecommended) }} &euro;</span>
+              <span class="mat-tab-group_label-time">{{ getTimeString(resultRecommended) }}</span>
+            </div>
+            <div class="mat-tab-group_label-icon">
+              <mat-icon>thumb_up_alt</mat-icon>
+            </div>
+          </div>
+        </ng-template>
+        <h21-air-search-result-card *ngFor="let item of resultRecommended; trackBy: trackByFn" [data]="item"></h21-air-search-result-card>
+      </mat-tab>
+      <mat-tab label="Cheapest">
+        <ng-template mat-tab-label>
+          <div class="mat-tab-group_label-wrapper">
+            <div class="mat-tab-group_label">
+              <span class="mat-tab-group_label-name">Cheapest</span>
+              <span class="mat-tab-group_label-price">{{ getPriceString(resultCheapest) }} &euro;</span>
+              <span class="mat-tab-group_label-time">{{ getTimeString(resultCheapest) }}</span>
+            </div>
+            <div class="mat-tab-group_label-icon">
+              <mat-icon>euro_symbol</mat-icon>
+            </div>
+          </div>
+        </ng-template>
+        <h21-air-search-result-card *ngFor="let item of resultCheapest; trackBy: trackByFn" [data]="item"></h21-air-search-result-card>
+      </mat-tab>
+      <mat-tab label="Shortest">
+        <ng-template mat-tab-label>
+          <div class="mat-tab-group_label-wrapper">
+            <div class="mat-tab-group_label">
+              <span class="mat-tab-group_label-name">Shortest</span>
+              <span class="mat-tab-group_label-price">{{ getPriceString(resultShortest) }} &euro;</span>
+              <span class="mat-tab-group_label-time">{{ getTimeString(resultShortest) }}</span>
+            </div>
+            <div class="mat-tab-group_label-icon">
+              <mat-icon>access_time</mat-icon>
+            </div>
+          </div>
+        </ng-template>
+        <h21-air-search-result-card *ngFor="let item of resultShortest; trackBy: trackByFn" [data]="item"></h21-air-search-result-card>
+      </mat-tab>
+    </mat-tab-group>
+  </ng-container>
+</div>

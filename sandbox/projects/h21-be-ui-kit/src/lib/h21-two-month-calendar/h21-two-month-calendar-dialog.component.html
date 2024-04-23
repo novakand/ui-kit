@@ -1,0 +1,68 @@
+<div class="c-h21-two-month-calendar">
+	<div class="c-h21-two-month-calendar_header">
+		<form [formGroup]="calendarForm">
+			<div class="row">
+				<div class="col-md-12 col-lg-6">
+					<div class="c-h21-two-month-calendar_date-box">
+						<span>{{ data.fromDateText }}</span>
+						<mat-icon>date_range</mat-icon>
+						<input formControlName="dateStart" type="text" matInput placeholder="{{data.fromDateText}}" value="{{data.selectedFromDate | date: datePattern}}" />
+						<div class="w-spacer"></div>
+						<button mat-icon-button (click)="prevDay(data.selectedFromDate);" [disabled]="!data.selectedFromDate">
+							<mat-icon>navigate_before</mat-icon>
+						</button>
+						<button mat-icon-button (click)="nextDay(data.selectedFromDate);" [disabled]="!data.selectedFromDate">
+							<mat-icon>navigate_next</mat-icon>
+						</button>
+					</div>
+				</div>
+				<div class="col-md-12 d-md-block d-lg-none" *ngIf="data.rangeSelectMode">&nbsp;</div>
+				<div class="col-md-12 col-lg-6">
+					<div class="c-h21-two-month-calendar_date-box" *ngIf="data.rangeSelectMode">
+						<span>{{ data.toDateText }}</span>
+						<mat-icon>date_range</mat-icon>
+						<input formControlName="dateEnd" type="text" matInput placeholder="{{data.toDateText}}" value="{{data.selectedToDate | date: datePattern}}" />
+						<div class="w-spacer"></div>
+						<button mat-icon-button (click)="prevDay(data.selectedToDate);" [disabled]="!data.selectedToDate">
+							<mat-icon>navigate_before</mat-icon>
+						</button>
+						<button mat-icon-button (click)="nextDay(data.selectedToDate);" [disabled]="!data.selectedToDate">
+							<mat-icon>navigate_next</mat-icon>
+						</button>
+					</div>
+				</div>
+			</div>
+		</form>
+
+	</div>
+	<div class="c-h21-two-month-calendar_body">
+		<div class="c-h21-two-month-calendar_slider">
+			<button mat-mini-fab color="primary" class="tmc-slider_button-prev" (click)="prevSlide()" [disabled]="sliderCurrentIndex == 0">
+				<mat-icon>navigate_before</mat-icon>
+			</button>
+			<button mat-mini-fab color="primary" class="tmc-slider_button-next" (click)="nextSlide()" [disabled]="sliderCurrentIndex == (sliderItemsCount - 2)">
+				<mat-icon>navigate_next</mat-icon>
+			</button>
+			<div class="tmc-slider_view-port">
+				<!--(scroll)="activateShowAllCells($event);"-->
+				<div class="tmc-slider_view-port-items-box" #tmcSliderItemsBox id="calendar-dialog-body">
+					<div class="tmc-slider_item" *ngFor="let item of monthList; let n = index; trackBy: trackByFn">
+						<div class="tmc-slider_month-label">{{ getMonthName(item.month) }} {{ data.startDate.getFullYear() == item.year ? '' : item.year }}</div>
+						<ng-container *ngIf="n == sliderCurrentIndex || n == (sliderCurrentIndex + 1)">
+							<mat-calendar [startAt]="getMonthFirstDay(item.month, item.year)"
+                                          [minDate]="data.fromDate"
+                                          [maxDate]="data.toDate"
+							              [selected]="data.selectedFromDate"
+                                          (selectedChange)="selectedDateChange($event)">
+                            </mat-calendar>
+						</ng-container>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="c-h21-two-month-calendar_footer">
+		<button mat-button color="primary" (click)="clearSelection()">Clear selection</button>
+		<button mat-raised-button color="primary" (click)="closeDialog()" [disabled]="!checkCompletePossibility()">Ready</button>
+	</div>
+</div>

@@ -1,0 +1,76 @@
+<mat-card-content>
+  <form [formGroup]="form">
+    <div class="row large-gutters h21-mb-1">
+      <div class="col">
+        <ng-container [ngTemplateOutlet]="control"
+                      [ngTemplateOutletContext]="{ placeholder: 'Legal name', name: 'name' }"></ng-container>
+        <ng-container [ngTemplateOutlet]="control"
+                      [ngTemplateOutletContext]="{ placeholder: 'Company name', name: 'shortName' }"></ng-container>
+        <ng-container [ngTemplateOutlet]="select"
+                      [ngTemplateOutletContext]="{ placeholder: 'Country', name: 'countryCode', value: 'code', list: countries$ }"></ng-container>
+        <ng-container [ngSwitch]="countryType">
+          <ng-container *ngSwitchCase="countryTypes.Ru">
+            <ng-container [ngTemplateOutlet]="control"
+                          [ngTemplateOutletContext]="{ placeholder: 'Inn (RU)', name: 'inn' }"></ng-container>
+            <ng-container [ngTemplateOutlet]="control"
+                          [ngTemplateOutletContext]="{ placeholder: 'Kpp (RU)', name: 'kpp' }"></ng-container>
+            <ng-container [ngTemplateOutlet]="control"
+                          [ngTemplateOutletContext]="{ placeholder: 'Ogrn (RU)', name: 'ogrn' }"></ng-container>
+          </ng-container>
+          <ng-container *ngSwitchCase="countryTypes.Cn">
+            <ng-container [ngTemplateOutlet]="control"
+                          [ngTemplateOutletContext]="{ placeholder: 'License number', name: 'licenseNumber' }"></ng-container>
+          </ng-container>
+          <ng-container *ngSwitchDefault>
+            <ng-container [ngTemplateOutlet]="control"
+                          [ngTemplateOutletContext]="{ placeholder: 'VAT', name: 'vatNumber' }"></ng-container>
+            <ng-container [ngTemplateOutlet]="control"
+                          [ngTemplateOutletContext]="{ placeholder: 'Registration number', name: 'registerNumber' }"></ng-container>
+          </ng-container>
+        </ng-container>
+      </div>
+      <div class="col">
+        <ng-container [ngTemplateOutlet]="control"
+                      [ngTemplateOutletContext]="{ placeholder: 'Description', name: 'description', patternError: 'Invalid value' }"></ng-container>
+        <ng-container [ngTemplateOutlet]="control"
+                      [ngTemplateOutletContext]="{ placeholder: 'Email', name: 'email', patternError: 'Not a valid email' }"></ng-container>
+        <ng-container [ngTemplateOutlet]="control"
+                      [ngTemplateOutletContext]="{ placeholder: 'Send invoice on email', name: 'invoiceEmail', patternError: 'Not a valid email' }"></ng-container>
+        <ng-container [ngTemplateOutlet]="control"
+                      [ngTemplateOutletContext]="{ placeholder: 'Send voucher on email', name: 'voucherEmail', patternError: 'Not a valid email' }"></ng-container>
+        <ng-container [ngTemplateOutlet]="control"
+                      [ngTemplateOutletContext]="{ placeholder: 'Phone', name: 'phone', patternError: 'Invalid value' }"></ng-container>
+        <ng-container [ngTemplateOutlet]="control"
+                      [ngTemplateOutletContext]="{ placeholder: 'Fax', name: 'fax', patternError: 'Invalid value' }"></ng-container>
+        <ng-container [ngTemplateOutlet]="control"
+                      [ngTemplateOutletContext]="{ placeholder: 'Website', name: 'homePage', patternError: 'Invalid value' }"></ng-container>
+      </div>
+    </div>
+
+    <ng-template #control let-placeholder="placeholder" let-name="name" let-patternError="patternError">
+      <mat-form-field class="__w-100" [class.__is-readonly]="mode === modeType.View || !isEditableField(name)">
+        <input matInput [placeholder]="placeholder" [formControlName]="name"/>
+        <mat-error *ngIf="form.controls[name].hasError('pattern')">
+            {{ patternError }}
+        </mat-error>
+        <mat-error *ngIf="form.controls[name].hasError('required')">
+          You must enter a value
+        </mat-error>
+      </mat-form-field>
+    </ng-template>
+
+    <ng-template #select let-list="list" let-value="value" let-placeholder="placeholder" let-name="name">
+      <mat-form-field color="primary"
+                      class="__w-100 h21-mb-1"
+                      [class.__is-readonly]="mode === modeType.View  || !isEditableField(name)">
+        <mat-select [placeholder]="placeholder"
+                    panelClass="h21-select-panel"
+                    [formControlName]="name">
+          <mat-option *ngFor="let item of list | async; trackBy: trackByFn" [value]="item[value]">
+            {{ item.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </ng-template>
+  </form>
+</mat-card-content>

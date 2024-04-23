@@ -1,0 +1,80 @@
+<div class="c-h21-air-search-panel h21-search-panel">
+  <div class="row h21-mb-2">
+    <!-- Select passangers -->
+    <div class="col-12 col-md-6">
+      <h21-passengers-select></h21-passengers-select>
+    </div>
+
+    <!-- Preferred class -->
+    <div class="col-12 col-md-6">
+      <mat-form-field color="primary" appearance="fill" class="h21-search-panel_preferred-class-combobox">
+        <mat-icon matPrefix>attach_money</mat-icon>
+        <mat-select placeholder="Preferred class" panelClass="h21-search-panel_preferred-class-combobox-panel"
+                    [(value)]="searchOptions.preferredClass">
+          <mat-optgroup [label]="'Preferred class'">
+            <mat-option value="economy">Economy</mat-option>
+            <mat-option value="premium_economy">Premium economy</mat-option>
+            <mat-option value="business">Business</mat-option>
+            <mat-option value="first_class">First class</mat-option>
+          </mat-optgroup>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- Fly route mode -->
+  <div class="h21-mb-2">
+    <mat-button-toggle-group class="__primary __w-100"
+                             [(ngModel)]="searchOptions.searchMode"
+                             (change)="changeMode()">
+      <mat-button-toggle value="round_trip">Round trip</mat-button-toggle>
+      <mat-divider [vertical]="true"></mat-divider>
+      <mat-button-toggle value="one_way">One way</mat-button-toggle>
+      <mat-divider [vertical]="true"></mat-divider>
+      <mat-button-toggle value="multi_city" [checked]="true">Multi-city</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <!-- Fly route -->
+  <div class="h21-mt-2 h21-mb-2" *ngFor="let flyRoute of searchOptions.flyRoutes; index as i; trackBy: trackByFn">
+    <h21-fly-route-selection [routeNumber]="i+1"
+                             [canAdd]="canAdd(i)"
+                             [canRemove]="canRemove(i)"
+                             [hidden]="searchOptions.searchMode != 'multi_city' && i > 0"
+                             [rangeDateMode]="flyRoute.rangeDateMode"
+                             [minDate]="flyRoute.minDate"
+                             (add)="addFlyRoute()"
+                             (remove)="removeFlyRoute()"
+                             [cityFrom]="flyRoute.cityFrom"
+                             [cityTo]="flyRoute.cityTo"
+                             [departureDate]="flyRoute.departureDate"
+                             [returnDate]="flyRoute.returnDate"
+                             (cityFromChange)="searchOptions.flyRoutes[i].cityFrom = $event"
+                             (cityToChange)="searchOptions.flyRoutes[i].cityTo = $event"
+                             (departureDateChange)="searchOptions.flyRoutes[i].departureDate = $event"
+                             (returnDateChange)="searchOptions.flyRoutes[i].returnDate = $event">
+    </h21-fly-route-selection>
+  </div>
+
+  <!-- Additional options -->
+  <div class="row h21-mt-3">
+    <div class="col-12 col-md-6">
+      <mat-checkbox color="primary" [(ngModel)]="searchOptions.directFlight">Direct flight</mat-checkbox>
+    </div>
+    <div class="col-12 col-md-6">
+      <mat-checkbox color="primary" [(ngModel)]="searchOptions.refundableFlights">Refundable flights</mat-checkbox>
+    </div>
+    <div class="col-12">&nbsp;</div>
+    <div class="col-12 col-md-6">
+      <mat-checkbox color="primary" [(ngModel)]="searchOptions.showTransfers">Show transfers</mat-checkbox>
+    </div>
+    <div class="col-12 col-md-6">
+      <mat-checkbox color="primary" [(ngModel)]="searchOptions.showHotels">Show hotels</mat-checkbox>
+    </div>
+  </div>
+
+  <div class="h21-search-panel_bottom-attached-box">
+    <button mat-button class="__size-l h21-mr-2" (click)="clearSearch()">Clear search</button>
+    <button mat-raised-button class="__size-l" color="primary" (click)="search()">Search</button>
+  </div>
+</div>

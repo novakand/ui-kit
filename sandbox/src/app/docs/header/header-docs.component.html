@@ -1,0 +1,29 @@
+<section class="docs_section mat-typography">
+  <h1>{{ title }}</h1>
+
+  <h21-header [showNotifications]="true"
+              [notificationCount]="notificationCount"
+              [notifications]="notifications"
+              (notificationsDialogOpen)="onOpen()"
+              (notificationsDialogClose)="onClose()"
+              [actions]="actions"
+              (cardAction)="onAction($event)">
+  </h21-header>
+
+  <div class="h21-mt-2">
+    <button mat-flat-button color="primary" (click)="openWhiteLabelDialog()">
+      White label
+    </button>
+  </div>
+
+  <div class="h21-mt-4">
+    <button mat-flat-button color="primary" class="h21-ml-3" (click)="confirmOpen()"> Confirm </button>
+    <button mat-flat-button color="primary" class="h21-ml-3" (click)="messageOpen(1)"> Success </button>
+    <button mat-flat-button color="primary" class="h21-ml-3" (click)="messageOpen(2)"> Warning </button>
+    <button mat-flat-button color="primary" class="h21-ml-3" (click)="messageOpen(3)"> Question </button>
+    <button mat-flat-button color="primary" class="h21-ml-3" (click)="messageOpen(4)"> Error </button>
+    <button mat-flat-button color="primary" class="h21-ml-3" (click)="messageOpen(5)"> Stop </button>
+    <button mat-flat-button color="primary" class="h21-ml-3" (click)="messageOpen(6)"> Info </button>
+  </div>
+
+</section>

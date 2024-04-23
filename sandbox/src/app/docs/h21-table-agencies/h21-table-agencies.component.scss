@@ -1,0 +1,37 @@
+$h21-fg-ashen-blue: #4f5a7c;
+$h21-gray-57: #757575;
+.h21-table-agencies {
+    table {
+        width: 100%;
+    }
+    .mat-cell {
+        padding:20px 15px 20px 0!important;
+    }
+    .logo {
+        display: block;
+        height: 24px;
+        width: auto;
+        margin-left: 15px;
+    }
+    .title {
+        font-size: 20px;
+        color:	$h21-fg-ashen-blue;
+        font-weight: 500;
+    }
+    .adress {
+        font-size: 14px;
+        color: $h21-gray-57;
+        font-weight: 500;
+        margin-top: 0.25rem;
+    }
+    .action-cell {
+        padding-right: 10px !important;
+        text-align: right;
+    }
+}
+.table-heading {
+    font-size: 30px;
+    margin: 1em 0;
+    font-weight: 300;
+    font-family: 'Roboto', serif;
+}

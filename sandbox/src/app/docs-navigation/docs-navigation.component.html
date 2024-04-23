@@ -1,0 +1,78 @@
+<nav class="c-docs-navigation">
+  <mat-accordion>
+    <mat-expansion-panel [ngClass]="'c-docs-navigation_mat-expansion-panel'">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Style</mat-panel-title>
+      </mat-expansion-panel-header>
+      <ul>
+        <li><a mat-button href="{{docsPagePath}}/style/layout" (click)="onChangeComponent($event); false;">Layout</a></li>
+        <li><a mat-button href="{{docsPagePath}}/style/colors" (click)="onChangeComponent($event); false;">Colors</a></li>
+        <li><a mat-button href="{{docsPagePath}}/style/typography"
+               (click)="onChangeComponent($event); false;">Typography</a></li>
+        <li><a mat-button href="{{docsPagePath}}/style/icons" (click)="onChangeComponent($event); false;">Icons</a></li>
+        <li><a mat-button href="{{docsPagePath}}/style/logotype" (click)="onChangeComponent($event); false;">Logotype</a>
+        </li>
+      </ul>
+    </mat-expansion-panel>
+    <mat-expansion-panel [ngClass]="'c-docs-navigation_mat-expansion-panel'" (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Components</mat-panel-title>
+      </mat-expansion-panel-header>
+      <ul>
+        <li><a mat-button href="{{docsPagePath}}/components/in-development" (click)="onChangeComponent($event); false;">In development</a>
+        </li>
+        <li><a mat-button href="{{docsPagePath}}/components/header" (click)="onChangeComponent($event); false;">Header</a>
+        </li>
+        <li><a mat-button href="{{docsPagePath}}/components/buttons"
+               (click)="onChangeComponent($event); false;">Buttons</a></li>
+        <li><a mat-button href="{{docsPagePath}}/components/button-toggle" (click)="onChangeComponent($event); false;">Button
+          toggle</a></li>
+        <li><a mat-button href="{{docsPagePath}}/components/two_month_calendar"
+               (click)="onChangeComponent($event); false;">Two month calendar</a></li>
+        <li><a mat-button href="{{docsPagePath}}/components/autocomplete" (click)="onChangeComponent($event); false;">Autocomplete</a>
+        </li>
+        <li><a mat-button href="{{docsPagePath}}/components/select" (click)="onChangeComponent($event); false;">Select</a>
+        </li>
+        <li><a mat-button href="{{docsPagePath}}/components/search_components"
+               (click)="onChangeComponent($event); false;">Search components</a></li>
+        <!--<li><a mat-button href="{{docsPagePath}}/components/forms" (click)="onChangeComponent($event); false;">Forms</a></li>-->
+        <!--<li><a mat-button href="{{docsPagePath}}/components/tabs" (click)="onChangeComponent($event); false;">Tabs</a></li>-->
+        <!--<li><a mat-button href="{{docsPagePath}}/components/tooltips" (click)="onChangeComponent($event); false;">Tooltips</a></li>-->
+        <!--<li><a mat-button href="{{docsPagePath}}/components/grid" (click)="onChangeComponent($event); false;">Grid</a></li>-->
+        <!--<li><a mat-button href="{{docsPagePath}}/components/images" (click)="onChangeComponent($event); false;">Images</a></li>-->
+        <!--<li><a mat-button href="{{docsPagePath}}/components/counter-input" (click)="onChangeComponent($event); false;">Counter Input</a></li>-->
+        <!--<li><a mat-button href="{{docsPagePath}}/components/dashboard" (click)="onChangeComponent($event); false;">Dashboard</a></li>-->
+        <!--<li><a mat-button href="{{docsPagePath}}/components/profile_user_card" (click)="onChangeComponent($event); false;">Profile user card</a></li>-->
+        <li><a mat-button href="{{docsPagePath}}/components/top_toolbar" (click)="onChangeComponent($event); false;">Top
+          toolbar</a></li>
+        <!-- TABLES -->
+        <li><a mat-button href="{{docsPagePath}}/components/maps" (click)="onChangeComponent($event); false;">Maps</a>
+        </li>
+        <li><a mat-button href="{{docsPagePath}}/components/profile-image-docs"
+               (click)="onChangeComponent($event); false;">Profile Image</a></li>
+        <li><a mat-button href="{{docsPagePath}}/components/dialog-panel" (click)="onChangeComponent($event); false;">Dialog
+          panel</a></li>
+      </ul>
+    </mat-expansion-panel>
+    <mat-expansion-panel [ngClass]="'c-docs-navigation_mat-expansion-panel'" (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>How to use</mat-panel-title>
+      </mat-expansion-panel-header>
+      <ul>
+        <li><a mat-button href="#">Article</a></li>
+      </ul>
+    </mat-expansion-panel>
+    <mat-expansion-panel [ngClass]="'c-docs-navigation_mat-expansion-panel'" (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>Demo</mat-panel-title>
+      </mat-expansion-panel-header>
+      <ul>
+        <li><a mat-button href="/demo/">Search page</a></li>
+        <li><a mat-button href="/profile_demo/">Profile page</a></li>
+      </ul>
+    </mat-expansion-panel>
+  </mat-accordion>
+</nav>

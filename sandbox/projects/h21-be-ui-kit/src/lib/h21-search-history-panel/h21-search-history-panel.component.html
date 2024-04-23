@@ -1,0 +1,20 @@
+<div class="c-h21-search-history-panel">
+  <div *ngFor="let item of data; trackBy: trackByFn" class="search-history-card">
+    <div class="row search-history-card_row" *ngIf="item.payment">
+      <div class="col-4 search-history-card_param">Payment</div>
+      <div class="col-8 search-history-card_value">{{ item.payment }}</div>
+    </div>
+    <div class="row search-history-card_row" *ngIf="item.destination">
+      <div class="col-4 search-history-card_param">Destination</div>
+      <div class="col-8 search-history-card_value">{{ item.destination }}</div>
+    </div>
+    <div class="row search-history-card_row" *ngIf="item.adultCount">
+      <div class="col-4 search-history-card_param">Adults</div>
+      <div class="col-8 search-history-card_value">{{ item.adultCount }}</div>
+    </div>
+    <div class="row history-card_row" *ngIf="item.roomCount">
+      <div class="col-4 search-history-card_param">Rooms</div>
+      <div class="col-8 search-history-card_value">{{ item.roomCount }}</div>
+    </div>
+  </div>
+</div>

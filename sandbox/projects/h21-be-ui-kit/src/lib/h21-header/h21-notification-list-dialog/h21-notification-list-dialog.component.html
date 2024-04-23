@@ -1,0 +1,29 @@
+<div class="h21-notification-list-dialog h21-dialog-panel mat-typography"
+     [@toggleSlide]="animationState"
+     (@toggleSlide.start)="onAnimationStart($event)"
+     (@toggleSlide.done)="onAnimationDone($event)">
+
+  <button mat-icon-button (click)="close()" class="h21-dialog-panel_close __size-l">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <div class="h21-dialog-panel_title">
+    <h2>{{ title }}</h2>
+  </div>
+
+  <div class="h21-dialog-panel_content">
+    <div class="h21-notification-list" *ngIf="notifications?.length > 0">
+      <div class="h21-notification-list-item"
+           [class.__is-unread]="note.isUnread"
+           *ngFor="let note of notifications; trackBy: trackByFn">
+        <mat-icon class="h21-notification-list-item_icon" *ngIf="note.icon">{{ note.icon }}</mat-icon>
+        <div class="h21-notification-list-item_text">
+          <p *ngIf="note.text">{{ note.text }}</p>
+          <p class="h21-notification-list-item_date" mat-line *ngIf="note.createDate">
+            {{ note.createDate.date }} {{ note.dateTimeSplitter || ':' }} {{ note.createDate.time }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

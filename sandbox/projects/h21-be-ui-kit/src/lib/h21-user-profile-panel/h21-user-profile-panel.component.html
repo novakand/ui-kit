@@ -1,0 +1,79 @@
+<div class="c-h21-user-profile-panel h21-dialog-panel"
+     #container
+     tabindex="0"
+     cdkTrapFocus
+     [@toggleSlide]="animationState"
+     (@toggleSlide.start)="onAnimationStart($event)"
+     (@toggleSlide.done)="onAnimationDone($event)">
+
+  <button mat-icon-button (click)="close()" class="h21-dialog-panel_close __size-l">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <mat-card class="c-h21-user-profile-panel_card">
+    <mat-card-header>
+
+      <div mat-card-avatar>
+        <h21-profile-image size="elastic"
+                           [firstName]="dialogData.user.firstName"
+                           [lastName]="dialogData.user.lastName"
+                           [fileHash]="dialogData.user.picture"
+        ></h21-profile-image>
+        <span *ngIf="dialogData.user.position"> {{ dialogData.user.position }} </span>
+      </div>
+
+      <mat-card-title *ngIf="dialogData.user.firstName || dialogData.user.lastName">
+        {{ dialogData.user.firstName }}<br>{{ dialogData.user.lastName }}
+      </mat-card-title>
+
+      <mat-card-subtitle *ngIf="dialogData.user.email">
+        {{ dialogData.user.email }}
+      </mat-card-subtitle>
+
+      <mat-card-subtitle *ngIf="profile$ | async as profile" class="c-h21-user-profile-panel_card-subtitle-flex-row">
+        <ng-container>
+          {{ profile.shortName }}
+          <div class="w-spacer">&nbsp;</div>
+          <button mat-icon-button
+                  class="c-h21-user-profile-panel_select-company-button"
+                  *ngIf="companyClaim.isAvailable()"
+                  matTooltip="Select a company profile"
+                  (click)="onActionClick('changeCompanyProfile')">
+            <mat-icon>business_center</mat-icon>
+          </button>
+        </ng-container>
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-action-list>
+        <ng-container *ngFor="let action of dialogData.actions; trackBy: trackByFn">
+          <ng-container *ngIf="action.isLink; then actionLink else actionButton"></ng-container>
+
+          <!-- Action button template -->
+          <ng-template #actionButton>
+            <button mat-list-item
+                    *ngIf="action.visibility"
+                    [disabled]="action.disabled"
+                    (click)="onActionClick(action.name)">
+              <mat-icon> {{ action.icon }} </mat-icon>
+              <span> {{ action.label }} </span>
+            </button>
+          </ng-template>
+
+          <!-- Action link template -->
+          <ng-template #actionLink>
+            <a mat-list-item
+               [routerLink]="[action.route]"
+               *ngIf="action.visibility"
+               (click)="close()">
+              <mat-icon> {{ action.icon }} </mat-icon>
+              <span> {{ action.label }} </span>
+            </a>
+          </ng-template>
+        </ng-container>
+      </mat-action-list>
+    </mat-card-content>
+  </mat-card>
+
+</div>

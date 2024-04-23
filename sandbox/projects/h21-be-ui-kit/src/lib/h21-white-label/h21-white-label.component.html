@@ -1,0 +1,207 @@
+<div class="c-h21-white-label h21-dialog-panel"
+     #container
+     tabindex="0"
+     cdkTrapFocus
+     [@toggleSlide]="animationState"
+     (@toggleSlide.start)="onAnimation($event)"
+     (@toggleSlide.done)="onAnimation($event)">
+
+  <button mat-icon-button (click)="close()" class="h21-dialog-panel_close __size-l">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <div class="h21-dialog-panel_header">
+    <h2>White label</h2>
+  </div>
+
+  <div class="h21-dialog-panel_content">
+    <mat-tab-group class="c-h21-white-label_tab-group"
+                   [selectedIndex]="selectedTab"
+                   (selectedTabChange)="onChangeTab($event)">
+
+      <!-- Color scheme tab -->
+      <mat-tab label="Color scheme">
+        <mat-progress-bar *ngIf="inProgress"
+                          [@toggleVisibility]
+                          mode="indeterminate"
+                          color="primary"
+                          class="h21-dialog-panel_progress"
+        ></mat-progress-bar>
+
+        <div class="c-h21-white-label_logotype-container">
+          <div *ngIf="current.logoFileHash; then logotypePicture else logotypeUpload"></div>
+        </div>
+        <div *ngIf="!current.logoFileHash"
+             [@toggleVisibility]
+             class="c-h21-white-label_logotype-hint"
+             [class.c-h21-white-label_logotype-hint__invalid]="!fileIsCorrect">
+          <span *ngIf="fileIsCorrect">File size limit is 200 Kb.<br/>Valid formats are PNG and SVG with transparent background.</span>
+          <span *ngIf="!fileIsCorrect">{{ incorrectFileText }}</span>
+        </div>
+
+        <mat-button-toggle-group [vertical]="true" class="wl-color-theme-list" [value]="current.id">
+          <mat-button-toggle *ngFor="let theme of themes; trackBy: trackByFn"
+                             class="wl-color-theme-list-item"
+                             (change)="onChange(theme)"
+                             [value]="theme.id">
+            <div class="wl-color-theme-list-item_name"> {{ theme.name }} </div>
+            <div class="w-spacer"></div>
+            <div class="wl-color-theme-list-item_color-set">
+              <ng-container *ngFor="let element of theme.elements; trackBy: trackByFn">
+                <span *ngIf="element.colorHexCode != null"
+                      [ngStyle]="{'background-color': element.colorHexCode}"></span>
+              </ng-container>
+            </div>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </mat-tab>
+
+      <!-- Custom colors tab -->
+      <mat-tab label="Custom colors">
+
+        <mat-progress-bar *ngIf="inProgress"
+                          [@toggleVisibility]
+                          mode="indeterminate"
+                          color="primary"
+                          class="h21-dialog-panel_progress"
+        ></mat-progress-bar>
+
+        <div class="c-h21-white-label_logotype-container">
+          <div *ngIf="current.logoFileHash; then logotypePicture else logotypeUpload"></div>
+        </div>
+        <div *ngIf="!current.logoFileHash"
+             [@toggleVisibility]
+             class="c-h21-white-label_logotype-hint"
+             [class.c-h21-white-label_logotype-hint__invalid]="!fileIsCorrect">
+          <span *ngIf="fileIsCorrect">File size limit is 200 Kb.<br/>Valid formats are PNG and SVG with transparent background.</span>
+          <span *ngIf="!fileIsCorrect">{{ incorrectFileText }}</span>
+        </div>
+
+        <div class="h21-mt-2 h21-mb-2">
+          <mat-form-field color="primary" class="__w-100">
+            <input type="text"
+                   matInput
+                   placeholder="Theme name"
+                   required
+                   [formControl]="themeName">
+            <mat-error *ngIf="themeName.hasError('required')">You must enter a value</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="h21-mb-2">
+          <mat-slide-toggle class="h21-slide-toggle"
+                            color="accent"
+                            labelPosition="before"
+                            [(ngModel)]="current.isDark"
+          >Dark theme
+          </mat-slide-toggle>
+        </div>
+
+        <div class="c-h21-white-label_wl-control" *ngFor="let color of current.elements; trackBy: trackByFn">
+          <div class="row">
+            <div [class.col-6]="hasContrastColor(color.name)"
+                 [class.col-12]="!hasContrastColor(color.name)">
+              <span class="c-h21-white-label_wl-control-label"> {{ color.name }}</span>
+              <div class="c-h21-white-label_wl-control-body">
+                <dx-color-box [(value)]="color.colorHexCode"
+                              (onValueChanged)="color.colorRgbCode = hexToRgb($event)"
+                              stylingMode="underlined"
+                              applyValueMode="instantly"
+                              class="c-h21-white-label_color-box"
+                ></dx-color-box>
+              </div>
+            </div>
+            <div class="col-6" *ngIf="hasContrastColor(color.name)">
+              <span class="c-h21-white-label_wl-control-label"> {{ color.name }} (contrast)</span>
+              <div class="c-h21-white-label_wl-control-body">
+                <dx-color-box [(value)]="color.contrastHexCode"
+                              (onValueChanged)="color.contrastRgbCode = hexToRgb($event)"
+                              stylingMode="underlined"
+                              applyValueMode="instantly"
+                              class="c-h21-white-label_color-box"
+                ></dx-color-box>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="c-h21-white-label_wl-control">
+          <span class="c-h21-white-label_wl-control-label">Border-radius button ({{ current.buttonBorderRadius }}
+            px)</span>
+          <div class="c-h21-white-label_wl-control-body">
+            <mat-slider color="primary"
+                        [min]="0"
+                        [max]="30"
+                        [step]="1"
+                        [(ngModel)]="current.buttonBorderRadius"
+            ></mat-slider>
+          </div>
+        </div>
+      </mat-tab>
+
+      <!-- Profile whitelabel tab -->
+      <mat-tab label="Profile WL" *ngIf='isProfileWlAvailable'>
+        <h21-white-label-list (wlProfileIsSelected)="setWlProfileSelected($event)" [loadProfiles]="loadProfiles"
+                              [reset]="resetClick"></h21-white-label-list>
+      </mat-tab>
+
+    </mat-tab-group>
+  </div>
+
+  <div class="h21-dialog-panel_actions">
+    <button mat-stroked-button
+            color="primary"
+            (click)="reset()"
+    >Reset
+    </button>
+    <button mat-raised-button
+            color="primary"
+            *ngIf="isProfileWlAvailable && !isProfilesTab"
+            [disabled]="inProgress"
+            (click)="next()"
+    >Next
+    </button>
+    <button mat-raised-button
+            color="primary"
+            *ngIf="!isProfileWlAvailable"
+            [disabled]="inProgress"
+            (click)="apply()"
+    >Apply
+    </button>
+    <button mat-raised-button
+            color="primary"
+            [disabled]="isDisabled() || inProgress"
+            *ngIf="isProfilesTab"
+            (click)="save()"
+    >Save
+    </button>
+    <button mat-raised-button
+            color="primary"
+            [disabled]="!current.name || inProgress"
+            *ngIf="isCustomColorsTab"
+            (click)="export()"
+    >Export
+    </button>
+  </div>
+</div>
+
+<!-- Logotype h21-upload button template -->
+<ng-template #logotypeUpload>
+  <button mat-button class="c-h21-white-label_logotype-upload-btn" (click)="fileInput.click()">
+    <mat-icon class="__size-l">add_photo_alternate</mat-icon>
+    <span>Click here to upload a logo.</span>
+  </button>
+</ng-template>
+
+<!-- Logotype picture template -->
+<ng-template #logotypePicture>
+  <button mat-icon-button class="c-h21-white-label_logotype-delete-btn" *ngIf="isDeleteLogoAvailable"
+          (click)="deleteLogo()">
+    <mat-icon>delete</mat-icon>
+  </button>
+  <img *ngIf="current.logoFileUrl" [src]="current.logoFileUrl | safeResourceUrl"
+       class="c-h21-white-label_logotype-picture"
+       alt="logotype"/>
+</ng-template>
+
+<!-- Logotype h21-upload input -->
+<input #fileInput type="file" accept="image/svg+xml,image/png" class="__display-none" (change)="uploadLogo($event)"/>

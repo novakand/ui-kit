@@ -1,0 +1,143 @@
+<div class="c-users-links-dialog h21-dialog-panel"
+     #container
+     tabindex="0"
+     cdkTrapFocus
+     [@toggleSlide]="animationState"
+     (@toggleSlide.start)="onAnimationStart($event)"
+     (@toggleSlide.done)="onAnimationDone($event)">
+
+  <button mat-icon-button
+          (click)="close()"
+          class="h21-dialog-panel_close __text-color-white __size-l">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <div class="h21-dialog-panel_header h21-dialog-panel_header__primary">
+
+    <h2 class="__text-weight-light __text-color-white"> {{ title }} </h2>
+
+    <mat-form-field class="h21-form-field-plain __w-100" floatLabel="never" *ngIf="!userProfileLinkId">
+      <input matInput
+             autocomplete="off"
+             #searchText
+             placeholder="Enter company name"
+             [disabled]="activeStep === 1"
+             (keyup)='keyUp.next({ event: $event, text: searchText.value})'>
+      <button mat-icon-button
+              matSuffix
+              [disabled]="activeStep === 1"
+              (click)="search(searchText.value)">
+        <mat-icon>search</mat-icon>
+      </button>
+      <mat-hint *ngIf="showEnterHint">Press "Enter" to search</mat-hint>
+    </mat-form-field>
+
+  </div>
+
+  <div class="h21-dialog-panel_content">
+    <mat-progress-bar color="primary"
+                      *ngIf="inProgress"
+                      mode="indeterminate"
+                      class="h21-dialog-panel_progress"
+    ></mat-progress-bar>
+
+    <mat-horizontal-stepper linear #stepper class="h21-dialog-panel_full-width">
+
+      <!-- Step 1. Company -->
+      <mat-step [stepControl]="firstForm" *ngIf="!userProfileLinkId">
+        <form [formGroup]="firstForm">
+
+          <ng-template matStepLabel>Company</ng-template>
+
+          <div class="h21-dialog-panel_full-width" *ngIf="inProgress || noProgress">
+            <h21-card-list-loader [showNoResult]="noProgress"></h21-card-list-loader>
+          </div>
+
+          <div *ngIf="!inProgress && !noProgress">
+            <mat-list class="h21-card-list">
+              <mat-list-item *ngFor="let company of companies; trackBy: trackByFn">
+                <mat-card class="h21-card-list_card h21-card-list_card__clickable"
+                          [tabindex]="companyIsSelected(company)? -1 : 0"
+                          [class.__is-selected]="companyIsSelected(company)"
+                          (keydown.enter)="selectCompany(company)"
+                          (click)="selectCompany(company)">
+                  <mat-card-header>
+                    <h21-profile-image mat-card-avatar
+                                       [firstName]="company.shortName"
+                                       [fileHash]="company.logoFileHash"
+                                       size="medium"
+                    ></h21-profile-image>
+                    <mat-card-title>{{ company.shortName }}</mat-card-title>
+                    <mat-card-subtitle>{{ company.registrationNumber }}</mat-card-subtitle>
+                    <mat-chip-list class="h21-chip-list" *ngIf="company.typeId">
+                      <mat-chip class="h21-chip"
+                                [ngClass]="getCompanyTypeCssClassName(companyType(company.typeId))"
+                                [disableRipple]="true"
+                                [selectable]="false"
+                                [removable]="false">{{ companyType(company.typeId) }}</mat-chip>
+                    </mat-chip-list>
+                  </mat-card-header>
+                </mat-card>
+              </mat-list-item>
+            </mat-list>
+          </div>
+
+        </form>
+      </mat-step>
+
+      <!-- Step 2. User role -->
+      <mat-step [stepControl]="secondForm">
+        <form [formGroup]="secondForm">
+
+          <ng-template matStepLabel>User role</ng-template>
+
+          <div *ngIf="selectedCompany != null" class="h21-dialog-panel_full-width h21-mb-2">
+            <mat-card class="h21-card-list_card __is-selected"
+                      tabindex="-1">
+              <mat-card-header>
+                <h21-profile-image mat-card-avatar
+                                   [firstName]="selectedCompany.shortName"
+                                   [fileHash]="selectedCompany.logoFileHash"
+                                   size="medium"
+                ></h21-profile-image>
+                <mat-card-title>{{ selectedCompany.shortName }}</mat-card-title>
+                <mat-card-subtitle>{{ selectedCompany.registrationNumber }}</mat-card-subtitle>
+              </mat-card-header>
+            </mat-card>
+          </div>
+
+          <!-- Job title -->
+          <mat-form-field class="__w-100 h21-mb-1">
+            <input type="text"
+                   autocomplete="off"
+                   matInput
+                   placeholder="Job title"
+                   formControlName="jobTitle" />
+          </mat-form-field>
+
+          <!-- Role -->
+          <mat-form-field class="__w-100 h21-mb-1">
+            <mat-select placeholder="Role"
+                        panelClass="h21-select-panel"
+                        formControlName="roleId"
+                        multiple>
+              <mat-option *ngFor="let role of roles$ | async; trackBy: trackByFn" [value]="role.id">
+                {{ role.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="secondForm.controls['roleId'].hasError('required')">
+              You must choose a role
+            </mat-error>
+          </mat-form-field>
+        </form>
+      </mat-step>
+
+    </mat-horizontal-stepper>
+  </div>
+
+  <div class="h21-dialog-panel_actions" *ngIf="activeStep === 1 || userProfileLinkId" [@toggleSlideDownUp]>
+    <button mat-stroked-button color="primary" (click)="close()">Cancel</button>
+    <button mat-raised-button color="primary" [disabled]="inProgress" (click)="save()">Save</button>
+  </div>
+
+</div>

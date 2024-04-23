@@ -1,0 +1,47 @@
+<div class="c-h21-air-search-result-card">
+  <ng-container *ngFor="let item of data.items; trackBy: trackByFn">
+    <div class="c-h21-air-search-result-card_flight row no-gutters">
+      <div class="col-sm-2">
+        <div class="c-h21-air-search-result-card_airline-logo">
+          <img src="{{ item.arrivalLogo }}" alt=""/>
+        </div>
+        <span class="c-h21-air-search-result-card_small-label">{{ item.arrivalDateTime | date: 'EEE, MMM dd' }}</span>
+      </div>
+      <div class="col-sm-2">
+        <span class="c-h21-air-search-result-card_large-label">{{ item.arrivalDateTime | date: 'HH:mm' }}</span>
+        <span class="c-h21-air-search-result-card_small-label">({{ item.arrivalAirportCode }})</span>
+      </div>
+      <div class="col-sm-2">
+        <div class="c-h21-air-search-result-card_transfer-indicator">
+          <mat-icon *ngIf="item.transfers">flight</mat-icon>
+        </div>
+        <span class="c-h21-air-search-result-card_small-label">{{ getTimeString(item) }}</span>
+      </div>
+      <div class="col-sm-2">
+        <span class="c-h21-air-search-result-card_large-label">{{ item.departureDateTime | date: 'HH:mm' }}</span>
+        <span class="c-h21-air-search-result-card_small-label">({{ item.departureAirportCode }})</span>
+      </div>
+      <div class="col-sm-2">
+        <div class="c-h21-air-search-result-card_airline-logo">
+          <img src="{{ item.departureLogo }}" alt=""/>
+        </div>
+        <span class="c-h21-air-search-result-card_small-label">{{ item.departureDateTime | date: 'EEE, MMM dd' }}</span>
+      </div>
+      <div class="col-sm-2 c-h21-air-search-result-card_icons-box">
+        <mat-icon svgIcon="h21_no_baggage"></mat-icon>
+        <mat-icon svgIcon="h21_no_luggage"></mat-icon>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </ng-container>
+
+  <div class="c-h21-air-search-result-card_bottom row no-gutters">
+    <div class="col-sm-2">
+      <span class="c-h21-air-search-result-card_price">{{ data.price }} &euro;</span>
+    </div>
+    <div class="col-sm-10 c-h21-air-search-result-card_buttons-box">
+      <button mat-stroked-button color="primary">2 options</button>
+      <button mat-raised-button color="accent">View to book</button>
+    </div>
+  </div>
+</div>

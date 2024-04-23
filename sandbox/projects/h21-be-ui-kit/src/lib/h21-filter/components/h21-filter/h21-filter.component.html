@@ -1,0 +1,52 @@
+<form [formGroup]="form">
+
+  <ng-container *ngFor="let control of controls; trackBy: trackByFn">
+    <ng-container [ngSwitch]="control.controlType">
+
+      <mat-form-field *ngSwitchCase="'textbox'" color="primary" class="__w-100 h21-mb-1">
+        <input type="text"
+               autocomplete="off"
+               matInput
+               [formControlName]="control.key"
+               [placeholder]="control.label" />
+      </mat-form-field>
+
+      <mat-form-field *ngSwitchCase="'dropdown'" color="primary" class="__w-100 h21-mb-1">
+        <mat-select panelClass="h21-select-panel"
+                    [placeholder]="control.label"
+                    [multiple]="control.multiple"
+                    [formControlName]="control.key">
+          <mat-option *ngFor="let type of control.list; trackBy: trackByFn"
+                      [value]="type[control.selectValue]">
+            {{ type.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <ng-container *ngSwitchCase="'datepicker'">
+        <h4 class="h21-dialog-panel_caption">{{ control.range.title }}</h4>
+        <div class="row h21-mb-1">
+          <div class="col-6" *ngFor="let picker of control.range.pickers; trackBy: trackByFn">
+            <h21-filter-date-picker [control]="picker"
+                                    (emitPicker)="setPickerValue($event, picker.key)">
+            </h21-filter-date-picker>
+          </div>
+        </div>
+      </ng-container>
+
+      <mat-form-field *ngSwitchCase="'countries-autocomplete'" color="primary" class="__w-100 h21-mb-1">
+        <input matInput placeholder="Choose a country" type="text" #countryData [matAutocomplete]="country" [formControlName]="control.key" [placeholder]="control.label" />
+        <mat-autocomplete #country="matAutocomplete" class="h21-autocomplete-panel" [displayWith]="displayFn.bind(this)">
+          <mat-option *ngFor="let country of countries$ | async; trackBy: trackByFn" [value]="country.code">
+            <span [title]="country.name">{{ country.name }}</span>
+          </mat-option>
+        </mat-autocomplete>
+        <mat-error *ngIf="form.get(control.key).hasError('match')">
+          Invalid value
+        </mat-error>
+      </mat-form-field>
+
+    </ng-container>
+  </ng-container>
+
+</form>

@@ -1,0 +1,239 @@
+{
+  "ui": [
+	{
+	  "name": "UI Primary",
+	  "cssClass": "color-example__ui-primary",
+	  "hex": "#0044d6",
+	  "rgba": "4 68 214 1",
+	  "scssName": "$h21-ui-primary"
+	},
+	{
+	  "name": "UI Primary Light",
+	  "cssClass": "color-example__ui-primary-light",
+	  "hex": "#2c67e6",
+	  "rgba": "44 102 230 1",
+	  "scssName": "$h21-ui-primary-light"
+	},
+	{
+	  "name": "UI Accent",
+	  "cssClass": "color-example__ui-accent",
+	  "hex": "#28a745",
+	  "rgba": "40 167 69 1",
+	  "scssName": "$h21-ui-accent"
+	},
+	{
+	  "name": "UI Accent Light",
+	  "cssClass": "color-example__ui-accent-light",
+	  "hex": "#3dcc5d",
+	  "rgba": "61 204 93 1",
+	  "scssName": "$h21-ui-accent-light"
+	},
+	{
+	  "name": "UI Warn",
+	  "cssClass": "color-example__ui-warn",
+	  "hex": "#ff0000",
+	  "rgba": "255 0 0 1",
+	  "scssName": "$h21-ui-warn"
+	},
+	{
+	  "name": "UI Warn Light",
+	  "cssClass": "color-example__ui-warn-light",
+	  "hex": "#ff5050",
+	  "rgba": "255 80 80 1",
+	  "scssName": "$h21-ui-warn-light"
+	}
+  ],
+  "foreground": [
+	{
+	  "name": "Text Primary",
+	  "cssClass": "color-example__text-primary",
+	  "hex": "#27334d",
+	  "rgba": "39 51 77 1",
+	  "scssName": "$h21-fg-base"
+	},
+	{
+	  "name": "Text Secondary",
+	  "cssClass": "color-example__text-ashen-blue",
+	  "hex": "#4f5a7c",
+	  "rgba": "79 90 124 1",
+	  "scssName": "$h21-fg-ashen-blue"
+	},
+	{
+	  "name": "Text Tetriary",
+	  "cssClass": "color-example__text-ashen-blue-light",
+	  "hex": "#606b8d",
+	  "rgba": "96 107 141 1",
+	  "scssName": "$h21-fg-ashen-blue-light"
+	},
+	{
+	  "name": "Text Gray",
+	  "cssClass": "color-example__text-gray",
+	  "hex": "#757575",
+	  "rgba": "117 117 117 1",
+	  "scssName": "$h21-fg-gray"
+	},
+	{
+	  "name": "Text Black 12",
+	  "cssClass": "color-example__text-black-12",
+	  "hex": "#e2e2e2",
+	  "rgba": "0 0 0 12",
+	  "scssName": "$h21-black-12-opacity"
+	},
+	{
+	  "name": "Text Black 16",
+	  "cssClass": "color-example__text-black-16",
+	  "hex": "#d8d8d8",
+	  "rgba": "0 0 0 16",
+	  "scssName": "$h21-black-16-opacity"
+	},
+	{
+	  "name": "Text Black 26",
+	  "cssClass": "color-example__text-black-26",
+	  "hex": "#bdbdbd",
+	  "rgba": "0 0 0 26",
+	  "scssName": "$h21-black-26-opacity"
+	},
+	{
+	  "name": "Text Black 42",
+	  "cssClass": "color-example__text-black-42",
+	  "hex": "#9b9b9b",
+	  "rgba": "0 0 0 42",
+	  "scssName": "$h21-black-42-opacity"
+	},
+	{
+	  "name": "Text Black 57",
+	  "cssClass": "color-example__text-black-57",
+	  "hex": "#757575",
+	  "rgba": "0 0 0 57",
+	  "scssName": "$h21-black-57-opacity"
+	},
+	{
+	  "name": "Text Black 73",
+	  "cssClass": "color-example__text-black-73",
+	  "hex": "#4a4a4a",
+	  "rgba": "0 0 0 73",
+	  "scssName": "$h21-black-73-opacity"
+	},
+	{
+	  "name": "Text Black 87",
+	  "cssClass": "color-example__text-black-87",
+	  "hex": "#212121",
+	  "rgba": "0 0 0 87",
+	  "scssName": "$h21-black-87-opacity"
+	}
+  ],
+  "background": [
+	{
+	  "name": "Background dark",
+	  "cssClass": "color-example__bg-dark",
+	  "hex": "#27334d",
+	  "rgba": "39 51 77 1",
+	  "scssName": "$h21-bg-dark"
+	},
+	{
+	  "name": "Background light",
+	  "cssClass": "color-example__bg-light",
+	  "hex": "#faf9f9",
+	  "rgba": "250 249 249 1",
+	  "scssName": "$h21-bg-light"
+	},
+	{
+	  "name": "Red light",
+	  "cssClass": "color-example__bg-red-light",
+	  "hex": "#e26666",
+	  "rgba": "226 102 102 1",
+	  "scssName": "$h21-bg-red-light"
+	},
+	{
+	  "name": "Green light",
+	  "cssClass": "color-example__bg-green-light",
+	  "hex": "#deffe6",
+	  "rgba": "222 255 230 1",
+	  "scssName": "$h21-bg-green-light"
+	},
+	{
+	  "name": "Different UI background dark",
+	  "cssClass": "color-example__bg-ashen-blue-dark",
+	  "hex": "#4f5a7c",
+	  "rgba": "79 90 124 1",
+	  "scssName": "$h21-bg-ashen-blue-dark"
+	},
+	{
+	  "name": "Different UI background light 1",
+	  "cssClass": "color-example__bg-ashen-blue-light-1",
+	  "hex": "#e4ebfb",
+	  "rgba": "228 235 251 1",
+	  "scssName": "$h21-bg-ashen-blue-light-1"
+	},
+	{
+	  "name": "Different UI background light 2",
+	  "cssClass": "color-example__bg-ashen-blue-light-2",
+	  "hex": "#eceef6",
+	  "rgba": "236 238 246 1",
+	  "scssName": "$h21-bg-ashen-blue-light-2"
+	},
+	{
+	  "name": "Different UI background light 3",
+	  "cssClass": "color-example__bg-ashen-blue-light-3",
+	  "hex": "#f0f4fc",
+	  "rgba": "240 244 252 1",
+	  "scssName": "$h21-bg-ashen-blue-light-3"
+	},
+	{
+	  "name": "Background gray 2",
+	  "cssClass": "color-example__bg-gray-2",
+	  "hex": "#fbfbfb",
+	  "rgba": "251 251 251 1",
+	  "scssName": "$h21-gray-2"
+	},
+	{
+	  "name": "Background gray 7",
+	  "cssClass": "color-example__bg-gray-7",
+	  "hex": "#f0f0f0",
+	  "rgba": "240 240 240 1",
+	  "scssName": "$h21-gray-7"
+	},
+	{
+	  "name": "Background gray 9",
+	  "cssClass": "color-example__bg-gray-9",
+	  "hex": "#ebebeb",
+	  "rgba": "235 235 235 1",
+	  "scssName": "$h21-gray-9"
+	},
+	{
+	  "name": "Background gray 13",
+	  "cssClass": "color-example__bg-gray-13",
+	  "hex": "#e3e3e3",
+	  "rgba": "227 227 227 1",
+	  "scssName": "$h21-gray-13"
+	},
+	{
+	  "name": "Background gray 33",
+	  "cssClass": "color-example__bg-gray-33",
+	  "hex": "#b4b4b4",
+	  "rgba": "180 180 180 1",
+	  "scssName": "$h21-gray-33"
+	},
+	{
+	  "name": "Background gray 37",
+	  "cssClass": "color-example__bg-gray-37",
+	  "hex": "#ababab",
+	  "rgba": "171 171 171 1",
+	  "scssName": "$h21-gray-37"
+	},
+	{
+	  "name": "Background gray 44",
+	  "cssClass": "color-example__bg-gray-44",
+	  "hex": "#999999",
+	  "rgba": "153 153 153 1",
+	  "scssName": "$h21-gray-44"
+	},
+	{
+	  "name": "Background gray 57",
+	  "cssClass": "color-example__bg-gray-57",
+	  "hex": "#757575",
+	  "rgba": "117 117 117 1",
+	  "scssName": "$h21-gray-57"
+	}
+  ]
+}
